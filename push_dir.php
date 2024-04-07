@@ -5,11 +5,12 @@
   $servers = [
     [
       'ftp_server'  => "ftpupload.net",
-      'ftp_user'    => 'if0_35882111',
-      'ftp_pass'    => 'GNS1oMHbsX',
-      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
-      'remote_dir'  => '/imjur.000.pe/htdocs'
-    ],[
+      'ftp_user'    => 'if0_36324953',
+      'ftp_pass'    => 'p7bQZRnvTdjuCtK',
+      'local_dir'   => '/home/whitehotrobot/imjur.42web.io/dist_public',
+      'remote_dir'  => '/htdocs'
+    ],
+    /*[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
@@ -93,7 +94,7 @@
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ],
+    ],*/
   ];
 
   function recurse($dir){
