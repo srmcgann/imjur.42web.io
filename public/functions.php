@@ -1,5 +1,5 @@
 <?php
-  require_once('../db.php');
+  require_once('db.php');
   
   function getServerTZOffset () {
     $tz = date_default_timezone_get();
