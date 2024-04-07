@@ -1,2 +1,2 @@
-cd imjur.000.pe/htdocs
-put -r /home/whitehotrobot/imjur.000.pe/dist_public/*
+cd /htdocs
+put -r /home/whitehotrobot/imjur.42web.io/dist_public/*

@@ -86,7 +86,7 @@ export default {
     },
     origin(){
       let ret = window.location.origin
-      if(ret.toLowerCase().indexOf('imjur.000.pe') === -1){
+      if(ret.toLowerCase().indexOf(this.state.rootDomain) === -1){
         ret += '/imjur'
       }
       return ret

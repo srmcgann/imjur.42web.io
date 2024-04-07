@@ -1,4 +1,4 @@
-# imjur.000.pe
+# imjur.42web.io
 
 ## Project setup
 ```
