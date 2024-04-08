@@ -472,13 +472,11 @@ export default {
         .then(res => res.json()).then(data => {
           console.log(data)
           if(data[0]){
-            //this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            //this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
+            this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
             console.log(`deleted ${count} items`)
-            //alert(`deleted ${count} items`)
-            this.state.links = []
-            this.fetchUserLinks(this.state.loggedinUserID)
-            //location.reload()
+            //this.state.links = []
+            //this.fetchUserLinks(this.state.loggedinUserID)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
           }
