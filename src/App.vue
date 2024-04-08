@@ -392,6 +392,7 @@ export default {
           this.state.loadingAssets = false
           if(!!(+data[0])){
             this.state.userLinks = []
+            this.state.links = []
             data[1].map((v, i) => {
               let obj = {
                 size: +data[2][i].size,
