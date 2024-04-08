@@ -36,22 +36,6 @@ export default {
     height: 100vh;
     font-size: 14px;
   }
-  .cancelButton{
-    background: #822;
-    color: #f88;
-    text-shadow: 1px 1px 3px #40f;
-    font-weight: 900;
-    width: 125px;
-    font-family: Courier Prime;
-    font-size: 14px;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1100;
-    right: 20px;
-    top: 14px;
-  }
   .modalInner{
     text-align: center;
     padding: 25px;

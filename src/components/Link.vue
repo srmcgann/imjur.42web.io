@@ -48,15 +48,15 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
-      <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
-      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
+      <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
+      <a :href="link.href" class="openButton" @click.prevent.stop="stte.openLink(link)" title="open link in new tab"></a><br>
+      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
     </div>
     <br>
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
       <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>
-      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="fileName"></td></tr>
+      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
     </table>
     
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -84,11 +84,6 @@ export default {
   computed: {
     views(){
       return 'views: ' + this.link.views.toLocaleString()
-    },
-    fileName(){
-      let ret = this.link.origin.split(': ')[1]
-      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
-      return ret
     },
     size(){
       let MB_ = 1024**2
@@ -123,16 +118,6 @@ export default {
     }
   },
   methods: {
-    download(){
-      let a = document.createElement('a')
-      a.download = this.fileName
-      a.href = this.link.href
-      a.style.position = 'absolute'
-      a.style.opacity = .01
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-    },
     updateLinkSelected(){
       if(this.link.selected){
         this.link.selected = false
@@ -140,12 +125,6 @@ export default {
         this.link.selected = true
       }
       console.log('selected', this.link.selected)
-    },
-    copy(){
-      this.state.copy(this.link.href)
-    },
-    open(){
-      open(this.link.href, '_blank')
     },
     preview(){
       this.state.previewPosition = this.link.ct

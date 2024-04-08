@@ -73,6 +73,7 @@ export default {
         copy: null,
         next: null,
         prev: null,
+        fileName: null,
         login: null,
         register: null,
         URLbase: null,
@@ -255,7 +256,20 @@ export default {
         break
       }
     },
-    copy(val){
+    downloadLink(link, fileName){
+      let a = document.createElement('a')
+      a.download
+      a.href = link.href
+      a.style.position = 'absolute'
+      a.style.opacity = .01
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+    },
+    openLink(link){
+      open(link.href, '_blank')
+    },
+    copyLink(val){
       let copyEl = document.createElement('div')
       copyEl.innerHTML = this.URLbase + '/' + val
       copyEl.style.opacity = .01
@@ -625,6 +639,11 @@ export default {
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
     },
+    fileName(link){
+      let ret = link.origin.split(': ')[1]
+      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      return ret
+    },    
     checkLogin(){
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
@@ -754,6 +773,7 @@ export default {
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.URLbase = this.URLbase
+    this.state.fileName = this.fileName
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
@@ -832,6 +852,23 @@ button{
 a{
   text-decoration: none;
   color: #08f;
+}
+.cancelButton{
+  background: #822;
+  color: #f88;
+  text-shadow: 1px 1px 3px #40f;
+  font-weight: 900;
+  width: 125px;
+  font-family: Courier Prime;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1100;
+  right: 20px;
+  top: 14px;
+  min-width: 120px;
 }
 .copyLinkButton, .openButton, .downloadButton{
   display: inline-block;

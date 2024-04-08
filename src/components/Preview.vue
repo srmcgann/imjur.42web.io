@@ -4,9 +4,9 @@
       close/cancel
     </button>
     <div class="linkButtons">
-      <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
-      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
+      <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
+      <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
+      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
     </div>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
@@ -127,22 +127,6 @@ export default {
     height: 100vh;
     font-size: 14px;
   }
-  .cancelButton{
-    background: #822;
-    color: #f88;
-    text-shadow: 1px 1px 3px #40f;
-    font-weight: 900;
-    width: 125px;
-    font-family: Courier Prime;
-    font-size: 14px;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1100;
-    right: 20px;
-    top: 14px;
-  }
   .slideshow{
     margin: 100px;
     height: 100%;
@@ -193,5 +177,13 @@ export default {
     color: #fff;
     text-shadow: 2px 2px 2px #000;
     background: #001b;
+  }
+  .linkButtons{
+    margin-top: 11px;
+    display: inline-block
+    right: 23px;
+    position: absolute;
+    z-index: 10;
+    top: 42;
   }
 </style>
