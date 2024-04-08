@@ -6,9 +6,26 @@
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
       <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
-      <div v-if="state.links.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
-      <div v-if="state.userLinks.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
-      <div v-if="state.userLinks.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
+      <div
+        v-if="state.links.length > 1"
+        class="rightButton"
+        @click="state.next()"
+        title="view next asset [right arrow]"
+      ></div>
+      <div
+        v-if="state.userLinks.length > 1"
+        class="leftButton fade"
+        ref = "leftButton"
+        @click="state.prev()"
+        title="view previous asset [left arrow]"
+      ></div>
+      <div
+        v-if="state.userLinks.length > 1"
+        class="rightButton fade"
+        ref = "rightButton"
+        @click="state.next()"
+        title="view next asset [right arrow]"
+      ></div>
     </div>
   </div>
 </template>
@@ -25,6 +42,12 @@ export default {
   },
   methods: {
     bumpNavButtonOpacity(){
+      this.$refs.leftButton.classList.remove('fade')
+      this.$refs.rightButton.classList.remove('fade')
+      this.$refs.leftButton.clientHeight = this.$refs.leftButton.clientHeight
+      this.$refs.rightButton.clientHeight = this.$refs.rightButton.clientHeight
+      this.$refs.leftButton.classList.add('fade')
+      this.$refs.rightButton.classList.add('fade')
       this.$refs.preview.style.opacity = 1
     },
     close(){
@@ -141,20 +164,20 @@ export default {
     }
     100% {
       opacity: 0;
-      box-shadow: 0 0 150px 150px #ff4c0022;
     }
+  }
+  .fade{
+    animation: fadeOut 5s 1 linear;
   }
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
     opacity: 1;
-    animation: fadeOut 5s 1 linear;
   }
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
     opacity: 1;
-    animation: fadeOut 5s 1 linear;
   }
   .previewInner{
     text-align: center;
