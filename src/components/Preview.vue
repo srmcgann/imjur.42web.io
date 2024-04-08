@@ -44,8 +44,8 @@ export default {
     bumpNavButtonOpacity(){
       this.$refs.leftButton.classList.remove('fade')
       this.$refs.rightButton.classList.remove('fade')
-      this.$refs.leftButton.clientHeight = this.$refs.leftButton.clientHeight
-      this.$refs.rightButton.clientHeight = this.$refs.rightButton.clientHeight
+      this.$refs.leftButton.style.height = this.$refs.leftButton.clientHeight + 'px'
+      this.$refs.rightButton.style.height = this.$refs.rightButton.clientHeight + 'px'
       this.$refs.leftButton.classList.add('fade')
       this.$refs.rightButton.classList.add('fade')
       this.$refs.preview.style.opacity = 1
