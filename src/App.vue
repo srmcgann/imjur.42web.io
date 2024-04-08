@@ -837,7 +837,7 @@ a{
   display: inline-block;
   background-position: center center;
   background-repeat: no-repeat;
-  background-image: url(../assets/link.png);
+  background-image: url(./assets/link.png);
   width: 32px;
   height: 32px;
   border-radius: 0px;
