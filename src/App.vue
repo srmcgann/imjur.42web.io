@@ -424,6 +424,7 @@ export default {
                 id: +data[2][i].id,
                 slug: data[2][i].slug,
                 originalSlug: data[2][i].originalSlug,
+                originalDate: data[2][i].originalDate,
                 origin: data[2][i].origin,
                 date: data[2][i].date,
                 linkType: 'userLink',
@@ -680,7 +681,7 @@ export default {
       return ret ? ret : 'added just now...'
     },
     prettyDate(link){
-      return (new Date(link.date))toLocaleString()
+      return (new Date(link.date)).toLocaleString()
     },
     firstSeen(link){
       let tseconds = (((new Date()) - (new Date(link.originalDate)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
@@ -843,7 +844,7 @@ export default {
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
     this.state.setCookie = this.setCookie
-    this.state.jumpToPage= this.jumpToPage
+    this.state.jumpToPage = this.jumpToPage
     this.state.checkLogin = this.checkLogin
     this.state.closeModal = this.closeModal
     this.state.prettyDate = this.prettyDate
