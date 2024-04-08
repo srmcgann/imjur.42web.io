@@ -1,7 +1,7 @@
 <template>
   <table class="assetData">
     <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
-    <tr><td class="tdLeft">slug</td><td class="tdRight" v-html="<a target=\"_blank\">link.slug</a>"></td></tr>
+    <tr><td class="tdLeft">slug</td><td class="tdRight" v-html="lslug"></td></tr>
     <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
     <tr><td class="tdLeft">date uploaded</td><td class="tdRight" v-html="state.prettyDate(link)"></td></tr>
     <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
@@ -24,6 +24,11 @@ export default {
   },
   data(){
     return {
+    }
+  },
+  computed:{
+    lSlug(){
+      return `<a href="${state.link.href}" target="_blank">${state.link.slug}</a>`
     }
   },
   methods: {
