@@ -85,6 +85,8 @@ export default {
         regusername: '',
         username: '',
         userView: false,
+        prettyDate: null,
+        firstSeen: null,
         password: '',
         maxResultsPerPage: 8,
         showUserSettings: null,
@@ -677,6 +679,24 @@ export default {
       //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
       return ret ? ret : 'added just now...'
     },
+    prettyDate(link){
+      return (new Date(link.date))toLocaleString()
+    },
+    firstSeen(link){
+      let tseconds = (((new Date()) - (new Date(link.originalDate)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
+      let years = (tseconds/31536000)|0
+      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
+      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
+      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
+      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
+      let ret = ''
+      ret += years ? `${years} year${years>1?'s':''}, ` : ''
+      ret += days ? `${days} day${days>1?'s':''}, ` : ''
+      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
+      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
+      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
+      return ret ? ret : 'just now...'
+    },
     fileName(link){
       let ret = link.origin.split(': ')[1]
       if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
@@ -818,6 +838,7 @@ export default {
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
+    this.state.firstSeen = this.firstSeen
     this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
@@ -825,6 +846,7 @@ export default {
     this.state.jumpToPage= this.jumpToPage
     this.state.checkLogin = this.checkLogin
     this.state.closeModal = this.closeModal
+    this.state.prettyDate = this.prettyDate
     this.state.advancePage = this.advancePage
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
@@ -876,25 +898,6 @@ a:visited{
 }
 button:focus{
   outline: none;
-}
-.assetData{
-  border-collapse: collapse;
-  font-size: 14px;
-  text-shadow: 2px 2px 2px #000;
-  background: #0003;
-  width: 100%;
-}
-.tdLeft{
-  text-align: right;
-  color: #f80;
-  border-bottom: 1px solid #4fc2;
-  padding: 3px;
-}
-.tdRight{
-  text-align: left;
-  color: #0f8;
-  border-bottom: 1px solid #4fc2;
-  padding: 3px;
 }
 button{
   font-size: 18px;

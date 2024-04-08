@@ -15,7 +15,8 @@ todo
   ✔ checkboxes & "with selected" toobar
   ✔ uploading progress bars
   ✔ upload progress bars
-  * download button on preview modal
+  ✔ link tool buttons on preview modal
+  * URL uploads
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
@@ -23,10 +24,10 @@ todo
         * comments
         * votes
         
-  * URL uploads
   * admin panel
   * optional autodelete
   * log & display asset origin
+  * search
   * social media metadata
   * gallery / trending
   * load/resource balancing
@@ -53,12 +54,10 @@ todo
       <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
     </div>
     <br>
-    <table class="assetData">
-      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
-      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
-      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
-    </table>
     
+    <AssetData :state="state" :link="link" />
+    
+
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
@@ -66,9 +65,11 @@ todo
 </template>
 
 <script>
+import AssetData from './AssetData'
 
 export default {
   name: 'Link',
+  components: { AssetData },
   props: [ 'state', 'link' ],
   data(){
     return {

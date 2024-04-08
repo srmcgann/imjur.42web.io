@@ -11,12 +11,7 @@
           <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
           <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
         </div>
-        <table class="assetData">
-          <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
-          <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
-          <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
-          <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
-        </table>
+        <AssetData :state="state" :link="link" />
         <div
           v-if="state.userLinks.length > 1"
           class="leftButton"
@@ -37,8 +32,11 @@
 </template>
 
 <script>
+import AssetData from './AssetData'
+
 export default {
   name: 'Preview',
+  components: { AssetData },
   props: [ 'state', 'link' ],
   data(){
     return {

@@ -39,6 +39,7 @@ error_reporting(E_ALL);
       'views' => $row['views'],
       'description' => $row['description'],
       'originalSlug' => $row['originalSlug'],
+      'originalDate' => $row['originalDate'],
       'serverTZO' => getServerTZOffset(),
     ];
     switch($row['filetype']){

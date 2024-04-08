@@ -64,7 +64,9 @@ error_reporting(E_ALL);
           if(mysqli_num_rows($res)){
             $row = mysqli_fetch_assoc($res);
             $originalSlug = $row['slug'];
+            $originalDate = $row['originalDate'];
             $unlink = true;
+            $oDate = $row[];
           }else{
             $originalSlug = $slug;
           }
@@ -127,6 +129,10 @@ SQL;
           $sql = "SELECT date FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
           $res = mysqli_query($link, $sql);
           $date = mysqli_fetch_assoc($res)['date'];
+          if($originalSlug == $slug){
+            $originalDate = $date;
+          }
+          $sql = "UPDATE imjurUploads SET originalDate=\"$originalDate\" WHERE slug LIKE BINARY \"$slug\"";
           $success         = true;
           $links[]         = "$uploadDir/$slug.$suffix";
           $sizes[]         = $size;
