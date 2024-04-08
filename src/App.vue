@@ -262,7 +262,7 @@ export default {
     },
     downloadLink(link, fileName){
       let a = document.createElement('a')
-      a.download
+      a.download = fileName
       a.href = link.href
       a.style.position = 'absolute'
       a.style.opacity = .01
