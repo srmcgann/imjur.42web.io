@@ -70,7 +70,7 @@ export default {
           avatar: 'avatarDefault.png',
         },
         loggedinUserName: '',
-        copy: null,
+        copyLink: null,
         next: null,
         prev: null,
         fileName: null,
@@ -769,11 +769,11 @@ export default {
     this.state.closeModal = this.closeModal
     this.state.prev = this.prev
     this.state.next = this.next
-    this.state.copy = this.copy
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.URLbase = this.URLbase
     this.state.fileName = this.fileName
+    this.state.copyLink = this.copyLink
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
