@@ -24,7 +24,7 @@ export default {
     }
   },
   methods: {
-    bumpNavButtonOpacity{
+    bumpNavButtonOpacity(){
       this.$refs.preview.style.opacity = 1
     },
     close(){
