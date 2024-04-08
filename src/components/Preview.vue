@@ -12,10 +12,10 @@
           <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
         </div>
         <table class="assetData">
-          <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
-          <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
           <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
+          <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
           <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
+          <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
         </table>
         <div
           v-if="state.userLinks.length > 1"
@@ -190,5 +190,6 @@ export default {
     left: 50%;
     transform: translate(-50%);
     background: #000a;
+    max-width: 500px;
   }
 </style>
