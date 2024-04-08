@@ -71,6 +71,7 @@ export default {
         },
         loggedinUserName: '',
         copyLink: null,
+        downloadLink: null,
         next: null,
         prev: null,
         fileName: null,
@@ -774,6 +775,7 @@ export default {
     this.state.URLbase = this.URLbase
     this.state.fileName = this.fileName
     this.state.copyLink = this.copyLink
+    this.state.openLink = this.openLink
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
@@ -787,6 +789,7 @@ export default {
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
+    this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
