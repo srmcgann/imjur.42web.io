@@ -3,34 +3,35 @@
     <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
-    <div class="linkButtons">
-      <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
-      <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
-    </div>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
-      <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
-      <div
-        v-if="state.links.length > 1"
-        class="rightButton"
-        @click="state.next()"
-        title="view next asset [right arrow]"
-      ></div>
-      <div
-        v-if="state.userLinks.length > 1"
-        class="leftButton fade"
-        ref = "leftButton"
-        @click="state.prev()"
-        title="view previous asset [left arrow]"
-      ></div>
-      <div
-        v-if="state.userLinks.length > 1"
-        class="rightButton fade"
-        ref = "rightButton"
-        @click="state.next()"
-        title="view next asset [right arrow]"
-      ></div>
+      <div class="fade" ref="inputs">
+        <div class="linkButtons">
+          <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
+          <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
+          <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
+        </div>
+        <table class="assetData">
+          <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
+          <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
+          <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
+          <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
+        </table>
+        <div
+          v-if="state.userLinks.length > 1"
+          class="leftButton"
+          ref = "leftButton"
+          @click="state.prev()"
+          title="view previous asset [left arrow]"
+        ></div>
+        <div
+          v-if="state.userLinks.length > 1"
+          class="rightButton"
+          ref = "rightButton"
+          @click="state.next()"
+          title="view next asset [right arrow]"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,13 +48,9 @@ export default {
   },
   methods: {
     bumpNavButtonOpacity(){
-      this.$refs.leftButton.classList.remove('fade')
-      this.$refs.rightButton.classList.remove('fade')
-      this.$refs.leftButton.style.height = this.$refs.leftButton.clientHeight + 'px'
-      this.$refs.rightButton.style.height = this.$refs.rightButton.clientHeight + 'px'
-      this.$refs.leftButton.classList.add('fade')
-      this.$refs.rightButton.classList.add('fade')
-      this.$refs.preview.style.opacity = 1
+      this.$refs.inputs.classList.remove('fade')
+      this.$refs.inputs.style.height = this.$refs.leftButton.clientHeight + 'px'
+      this.$refs.inputs.classList.add('fade')
     },
     close(){
       this.state.closePreview()

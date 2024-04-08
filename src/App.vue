@@ -53,6 +53,8 @@ export default {
         fetchUserLinks: null,
         setCookie: null,
         mode: null,
+        age: null,
+        views: null,
         deleteSelected: null,
         getAvatar: null,
         showPreview: false,
@@ -640,6 +642,40 @@ export default {
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
     },
+    views(link){
+      return 'views: ' + link.views.toLocaleString()
+    },
+    size(link){
+      let MB_ = 1024**2
+      let tbytes = link.size
+      let MB = tbytes / MB_ | 0
+      let KB = ((tbytes / MB_) - MB) * MB_ / 1024 | 0
+      let B = (((tbytes / MB_) - MB) * MB_ / 1024 - KB) * KB | 0
+      let ret
+      if(MB){
+        ret = (Math.round(tbytes / MB_*100)/100) + ' MB'
+      } else if(KB) {
+        ret = (Math.round(((tbytes / MB_) - MB) * MB_ / 1024*100)/100) + ' KB'
+      } else {
+        ret = link.size.toLocaleString() + ' B'
+      }
+      return ret
+    },
+    age(link){
+      let tseconds = (((new Date()) - (new Date(link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
+      let years = (tseconds/31536000)|0
+      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
+      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
+      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
+      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
+      let ret = ''
+      ret += years ? `${years} year${years>1?'s':''}, ` : ''
+      ret += days ? `${days} day${days>1?'s':''}, ` : ''
+      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
+      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
+      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
+      return ret ? ret : 'added just now...'
+    },
     fileName(link){
       let ret = link.origin.split(': ')[1]
       if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
@@ -767,9 +803,10 @@ export default {
         break
       }
     }
-    this.state.closeModal = this.closeModal
+    this.state.age = this.age
     this.state.prev = this.prev
     this.state.next = this.next
+    this.state.views = this.views
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.URLbase = this.URLbase
@@ -785,6 +822,7 @@ export default {
     this.state.setCookie = this.setCookie
     this.state.jumpToPage= this.jumpToPage
     this.state.checkLogin = this.checkLogin
+    this.state.closeModal = this.closeModal
     this.state.advancePage = this.advancePage
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll

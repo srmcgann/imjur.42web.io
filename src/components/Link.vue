@@ -42,7 +42,7 @@ todo
       <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">select</span><br>
     </label>
     
-    <div class="views" v-html="views">
+    <div class="views" v-html="state.views(link)">
     </div>
     
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
@@ -54,8 +54,8 @@ todo
     </div>
     <br>
     <table class="assetData">
-      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
-      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>
+      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
+      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
       <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
     </table>
     
@@ -82,40 +82,6 @@ export default {
     }
   },
   computed: {
-    views(){
-      return 'views: ' + this.link.views.toLocaleString()
-    },
-    size(){
-      let MB_ = 1024**2
-      let tbytes = this.link.size
-      let MB = tbytes / MB_ | 0
-      let KB = ((tbytes / MB_) - MB) * MB_ / 1024 | 0
-      let B = (((tbytes / MB_) - MB) * MB_ / 1024 - KB) * KB | 0
-      let ret
-      if(MB){
-        ret = (Math.round(tbytes / MB_*100)/100) + ' MB'
-      } else if(KB) {
-        ret = (Math.round(((tbytes / MB_) - MB) * MB_ / 1024*100)/100) + ' KB'
-      } else {
-        ret = this.link.size.toLocaleString() + ' B'
-      }
-      return ret
-    },
-    age(){
-      let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
-      let years = (tseconds/31536000)|0
-      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
-      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
-      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
-      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
-      let ret = ''
-      ret += years ? `${years} year${years>1?'s':''}, ` : ''
-      ret += days ? `${days} day${days>1?'s':''}, ` : ''
-      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
-      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
-      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
-      return ret ? ret : 'added just now...'
-    }
   },
   methods: {
     updateLinkSelected(){
