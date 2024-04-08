@@ -157,12 +157,9 @@ export default {
   }
   @keyframes fadeOut{
     0% {
-      opacity: 0;
-    }
-    1% {
       opacity: 1;
     }
-    75% {
+    66% {
       opacity: 1;
     }
     100% {
@@ -170,17 +167,17 @@ export default {
     }
   }
   .fade{
-    animation: fadeOut 5s 1 linear;
+    animation: fadeOut 3s 1 linear;
   }
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
-    opacity: 1;
+    opacity: .05;
   }
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
-    opacity: 1;
+    opacity: .05;
   }
   .previewInner{
     text-align: center;
