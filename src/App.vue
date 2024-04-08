@@ -847,18 +847,18 @@ a{
   margin-left: 3px;
 }
 .openButton{
-  background-image: url(../assets/open.png);
+  background-image: url(./assets/open.png);
   background-color: #08f;
   background-size: 80% 80%;
 }
 .copyLinkButton{
   background-size: contain;
-  background-image: url(../assets/link.png);
+  background-image: url(./assets/link.png);
   background-color: #f06;
 }
 .downloadButton{
   background-size: contain;
-  background-image: url(../assets/download.png);
+  background-image: url(./assets/download.png);
   background-color: #0000;
   background-size: 52px 37px;
 }
