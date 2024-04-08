@@ -3,6 +3,11 @@
     <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
+    <div class="linkButtons">
+      <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
+      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
+      <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
+    </div>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
       <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
