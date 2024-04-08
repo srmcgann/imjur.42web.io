@@ -5,7 +5,7 @@
     </button>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
-      <div class="fade" ref="inputs">
+      <div class="inputs fade" ref="inputs">
         <div class="linkButtons">
           <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
           <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
@@ -158,12 +158,13 @@ export default {
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
-    opacity: .05;
   }
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
-    opacity: .05;
+  }
+  .inputs{
+    opacity: 0;
   }
   .previewInner{
     text-align: center;
@@ -182,5 +183,12 @@ export default {
     position: absolute;
     z-index: 10;
     top: 42px;
+  }
+  .assetData{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background: #000a;
   }
 </style>

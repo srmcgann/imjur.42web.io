@@ -877,6 +877,25 @@ a:visited{
 button:focus{
   outline: none;
 }
+.assetData{
+  border-collapse: collapse;
+  font-size: 14px;
+  text-shadow: 2px 2px 2px #000;
+  background: #0003;
+  width: 100%;
+}
+.tdLeft{
+  text-align: right;
+  color: #f80;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+}
+.tdRight{
+  text-align: left;
+  color: #0f8;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+}
 button{
   font-size: 18px;
   border: 2px solid #0008;
