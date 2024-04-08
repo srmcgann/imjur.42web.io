@@ -55,6 +55,7 @@ export default {
         mode: null,
         age: null,
         views: null,
+        size: null,
         deleteSelected: null,
         getAvatar: null,
         showPreview: false,
@@ -804,6 +805,7 @@ export default {
       }
     }
     this.state.age = this.age
+    this.state.size = this.size
     this.state.prev = this.prev
     this.state.next = this.next
     this.state.views = this.views
