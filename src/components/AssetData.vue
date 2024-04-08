@@ -19,8 +19,6 @@ export default {
   name: 'AssetData',
   props: [ 'state', 'link' ],
   components: {
-    Pages,
-    Link
   },
   data(){
     return {
