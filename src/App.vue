@@ -230,7 +230,7 @@ export default {
         break
         case 'default':
           //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
-          if(this.state.curPage < this.state.totalPages) this.state.curPage++
+          if(this.state.curPage < this.state.totalPages-1) this.state.curPage++
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
