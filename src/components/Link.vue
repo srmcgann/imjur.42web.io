@@ -260,35 +260,6 @@ export default {
     padding: 3px;
     width: calc(100% - 10px);
   }
-  .copyLinkButton, .openButton, .downloadButton{
-    display: inline-block;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: url(../assets/link.png);
-    width: 32px;
-    height: 32px;
-    border-radius: 0px;
-    border: none;
-    cursor: pointer;
-    margin-top: 0px;
-    margin-left: 3px;
-  }
-  .openButton{
-    background-image: url(../assets/open.png);
-    background-color: #08f;
-    background-size: 80% 80%;
-  }
-  .copyLinkButton{
-    background-size: contain;
-    background-image: url(../assets/link.png);
-    background-color: #f06;
-  }
-  .downloadButton{
-    background-size: contain;
-    background-image: url(../assets/download.png);
-    background-color: #0000;
-    background-size: 52px 37px;
-  }
   .linkThumb{
     float: left;
     width: 200px;
@@ -320,10 +291,6 @@ export default {
     color: #0f8;
     border-bottom: 1px solid #4fc2;
     padding: 3px;
-  }
-  .linkButtons{
-    margin-top: 11px;
-    display: inline-block;
   }
   .views{
     position: relative;

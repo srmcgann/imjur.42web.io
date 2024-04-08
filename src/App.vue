@@ -833,6 +833,39 @@ a{
   text-decoration: none;
   color: #08f;
 }
+.copyLinkButton, .openButton, .downloadButton{
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url(../assets/link.png);
+  width: 32px;
+  height: 32px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 3px;
+}
+.openButton{
+  background-image: url(../assets/open.png);
+  background-color: #08f;
+  background-size: 80% 80%;
+}
+.copyLinkButton{
+  background-size: contain;
+  background-image: url(../assets/link.png);
+  background-color: #f06;
+}
+.downloadButton{
+  background-size: contain;
+  background-image: url(../assets/download.png);
+  background-color: #0000;
+  background-size: 52px 37px;
+}
+.linkButtons{
+  margin-top: 11px;
+  display: inline-block;
+}
 .copyButton{
   display: inline-block;
   width: 30px;
