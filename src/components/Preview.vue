@@ -147,12 +147,13 @@ export default {
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
-    opacity: 0;
+    opacity: 1;
+    animation: fadeOut 5s 1 linear;
   }
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
-    opacity: 0;
+    opacity: 1;
     animation: fadeOut 5s 1 linear;
   }
   .previewInner{
