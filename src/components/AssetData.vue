@@ -8,7 +8,7 @@
     <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
     <tr><td class="tdLeft">id</td><td class="tdRight" v-html="link.id"></td></tr>
     <tr><td class="tdLeft">origin</td><td class="tdRight" v-html="link.origin.split(':')[0]"></td></tr>
-    <tr><td class="tdLeft">first seen</td><td class="tdRight" v-html="state.firstSeen(link.firstSeen)"></td></tr>
+    <tr><td class="tdLeft">first seen</td><td class="tdRight" v-html="state.firstSeen(link)"></td></tr>
   </table>
 </template>
 
