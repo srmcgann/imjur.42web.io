@@ -14,7 +14,7 @@ todo
   ✔ lightbox sim / previews
   ✔ checkboxes & "with selected" toobar
   ✔ uploading progress bars
-  * upload progress bars
+  ✔ upload progress bars
   * download button on preview modal
   * users, optional logins/profiles
     └-> ✔ login button

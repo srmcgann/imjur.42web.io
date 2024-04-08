@@ -1,5 +1,5 @@
 <template>
-  <div class="preview">
+  <div class="preview" @mousemove="bumpNavButtonOpacity()" ref="preview">
     <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
@@ -24,6 +24,9 @@ export default {
     }
   },
   methods: {
+    bumpNavButtonOpacity{
+      this.$refs.preview.style.opacity = 1
+    },
     close(){
       this.state.closePreview()
     }
@@ -129,13 +132,28 @@ export default {
     background-size: contain;
     cursor: pointer;
   }
+  @keyframes fadeOut{
+    0% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      box-shadow: 0 0 150px 150px #ff4c0022;
+    }
+  }
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
+    opacity: 0;
   }
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
+    opacity: 0;
+    animation: fadeOut 5s 1 linear;
   }
   .previewInner{
     text-align: center;
