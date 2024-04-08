@@ -180,7 +180,7 @@ export default {
   }
   .linkButtons{
     margin-top: 11px;
-    display: inline-block
+    display: inline-block;
     right: 23px;
     position: absolute;
     z-index: 10;
