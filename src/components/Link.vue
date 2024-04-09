@@ -51,7 +51,7 @@ todo
     <div class="linkButtons">
       <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
       <a :href="link.href" class="openButton" @click.prevent.stop="stte.openLink(link)" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
+      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))" title="download asset"></div><br>
     </div>
     <br>
     

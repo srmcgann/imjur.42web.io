@@ -78,6 +78,7 @@ export default {
         next: null,
         prev: null,
         fileName: null,
+        fullFileName: null,
         login: null,
         register: null,
         URLbase: null,
@@ -703,6 +704,9 @@ export default {
       if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
       return ret
     },    
+    fullFileName(link){
+      return link.origin.split(': ')[1]
+    },    
     checkLogin(){
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
@@ -852,6 +856,7 @@ export default {
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
+    this.state.fullFileName = this.fullFileName
     this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
     this.state.setLinksOwner = this.setLinksOwner
