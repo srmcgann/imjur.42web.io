@@ -557,7 +557,7 @@ export default {
         }
       })
     },
-    getMode(){
+    getMode(){w
       let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
       console.log(vars)
       if(vars.length>0){
@@ -601,6 +601,7 @@ export default {
             let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
             if(vars[l]){
               this.state.curPage = (+vars[l])-1
+              if(''+this.state.curPage == 'NaN') this.state.curPage = 1
               if(vars[l+1]){
                 this.state.search.string = decodeURIComponent(vars[l+1])
                 search = '/' + vars[l+1]
