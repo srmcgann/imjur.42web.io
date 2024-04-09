@@ -1,7 +1,21 @@
 <template>
   <table class="assetData">
     <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
-    <tr><td class="tdLeft">slug</td><td class="tdRight" v-html="lslug"></td></tr>
+    <tr>
+      <td class="tdLeft">
+        slug
+      </td>
+      <td class="tdRight">
+        <a
+          :href="link.href"
+          target="_blank"
+          title="open link in new tab"
+          v-html="link.slug"
+          class="assetDataSlug"
+        >
+        </a>
+      </td>
+    </tr>
     <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
     <tr><td class="tdLeft">date uploaded</td><td class="tdRight" v-html="state.prettyDate(link)"></td></tr>
     <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
@@ -25,9 +39,6 @@ export default {
     }
   },
   computed:{
-    lslug(){
-      return `<a href="${this.link.href}" target="_blank">${this.link.slug}</a>`
-    }
   },
   methods: {
   },
@@ -55,5 +66,19 @@ export default {
     color: #0f8;
     border-bottom: 1px solid #4fc2;
     padding: 3px;
+  }
+  .assetDataSlug{
+    background-color: $80f;
+    text-shadow: 1px 1px 2px #000;
+    color: #fff;
+    border-radius: 5px;
+    min-width: 85px;
+    display: inline-block;
+    background-image: url(../assets/open.png);
+    background-position: 85 3px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 </style>
