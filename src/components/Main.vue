@@ -278,7 +278,7 @@ export default {
     this.$refs.main.focus()
     this.state.loadFiles = this.loadFiles
     this.preload = [ ...this.preload,
-      [document.createElement('video'), 'loading.mp4'],
+      //[document.createElement('video'), 'loading.mp4'],
     ]
     this.preload.map(v => {
       v[0].src = this.state.URLbase + '/' + v[1]

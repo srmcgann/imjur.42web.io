@@ -67,7 +67,6 @@ error_reporting(E_ALL);
             $originalSlug = $row['slug'];
             $originalDate = $row['originalDate'];
             $unlink = true;
-            $oDate = $row[];
           }else{
             $originalSlug = $slug;
           }
