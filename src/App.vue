@@ -613,7 +613,7 @@ export default {
                 this.fetchUserLinks(this.state.loggedinUserID)
               }
             }else{
-              if(location.href !== this.URLbase) location.href = this.URLbase
+              if(location.href !== this.URLbase + '/') location.href = this.URLbase
             }
           break
         }
