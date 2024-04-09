@@ -623,6 +623,14 @@ export default {
         if(window.location.href !== this.URLbase() + '/') window.location.href = window.location.origin
       }
     },
+    URLbase(){
+      let ret = window.location.origin
+      console.log('ret', ret)
+      if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
+        ret += '/imjur'
+      }
+      return ret
+    },
     logout(){
       history.pushState(null,null,this.URLbase())
       let cookies = document.cookie
@@ -753,14 +761,6 @@ export default {
         this.state.showModal = false
       }
       */
-    },
-    URLbase(){
-      let ret = window.location.origin
-      console.log('ret', ret)
-      if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
-        ret += '/imjur'
-      }
-      return ret
     }
   },
   computed:{
