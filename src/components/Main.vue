@@ -168,7 +168,7 @@ export default {
           //data.append('file', v)
           data.append('batchMetaData', JSON.stringify(batchMetaData))
           let request = new XMLHttpRequest()
-          request.open('POST', `${this.state.URLbase()}/` + 'upload.php')
+          request.open('POST', `${this.state.URLbase}/` + 'upload.php')
           request.upload.addEventListener('progress', e => {
             let perc = (e.loaded / e.total)*100
             this.filesUploading[i].uploadName = v.name
@@ -281,7 +281,7 @@ export default {
       //[document.createElement('video'), 'loading.mp4'],
     ]
     this.preload.map(v => {
-      v[0].src = this.state.URLbase() + '/' + v[1]
+      v[0].src = this.state.URLbase + '/' + v[1]
     })
   }
 }

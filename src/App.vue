@@ -174,16 +174,16 @@ export default {
       let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = this.URLbase() + '/u/' + this.state.user.name + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + search
         break
         case 'default':
-          //window.location.href = this.URLbase() + search
+          //window.location.href = this.URLbase + search
           this.state.curPage = 0
           this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
-          window.location.href = this.URLbase() + '/track/' + this.state.curTrack + search
+          window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
         break
       }
     },
@@ -191,20 +191,20 @@ export default {
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-        window.location.href = this.URLbase() + '/u/' + this.user.name + '/' + pageNo + search
+        window.location.href = this.URLbase + '/u/' + this.user.name + '/' + pageNo + search
         break
         case 'default':
-          //window.location.href = this.URLbase() + '/' + pageNo + search
+          //window.location.href = this.URLbase + '/' + pageNo + search
           this.state.curPage = pageNo
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           if(this.state.curPage){
-            history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1))
+            history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
           }else{
-            history.pushState(null,null,this.URLbase())
+            history.pushState(null,null,this.URLbase)
           }
         break
         case 'track':
-        window.location.href = this.URLbase() + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
+        window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
         break
       }
     },
@@ -212,16 +212,16 @@ export default {
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = this.URLbase() + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
         break
         case 'default':
-          //window.location.href = this.URLbase() + '/' + this.state.totalPages + search
+          //window.location.href = this.URLbase + '/' + this.state.totalPages + search
           this.state.curPage = this.state.totalPages - 1
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
-          window.location.href = this.URLbase() + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
         break
       }
     },
@@ -229,16 +229,16 @@ export default {
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = this.URLbase() + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
         break
         case 'default':
-          //window.location.href = this.URLbase() + '/' + (this.state.curPage + 2) + search
+          //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
           if(this.state.curPage < this.state.totalPages-1) this.state.curPage++
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
-          window.location.href = this.URLbase() + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
         break
       }
     },
@@ -246,20 +246,20 @@ export default {
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = this.URLbase() + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
         break
         case 'default':
-          //window.location.href = this.URLbase() + '/' + this.state.curPage + search
+          //window.location.href = this.URLbase + '/' + this.state.curPage + search
           if(this.state.curPage) this.state.curPage--
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           if(this.state.curPage){
-            history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1))
+            history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
           }else{
-            history.pushState(null,null,this.URLbase())
+            history.pushState(null,null,this.URLbase)
           }
         break
         case 'track':
-          window.location.href = this.URLbase() + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
         break
       }
     },
@@ -274,11 +274,11 @@ export default {
       a.remove()
     },
     openLink(link){
-      open(`${this.URLbase()}/` + link.href, '_blank')
+      open(`${this.URLbase}/` + link.href, '_blank')
     },
     copyLink(val){
       let copyEl = document.createElement('div')
-      copyEl.innerHTML = this.URLbase() + '/' + val
+      copyEl.innerHTML = this.URLbase + '/' + val
       copyEl.style.opacity = .01
       copyEl.style.position = 'absolute'
       document.body.appendChild(copyEl)
@@ -336,7 +336,7 @@ export default {
         let sendData = {
           userName: this.state.loggedinUserName, passhash: this.state.passhash,
         }
-        fetch(`${this.URLbase()}/` + 'checkEnabled.php',{
+        fetch(`${this.URLbase}/` + 'checkEnabled.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -383,7 +383,7 @@ export default {
         passhash: this.state.passhash,
         ids: JSON.parse(JSON.stringify(this.state.links)).map(v=>{ return v.id})
       }
-      fetch(`${this.URLbase()}/` + 'setOwner.php',{
+      fetch(`${this.URLbase}/` + 'setOwner.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -401,7 +401,7 @@ export default {
           page: this.state.curPage,
           maxResultsPerPage: this.state.maxResultsPerPage
         }
-        fetch(`${this.URLbase()}/` + 'fetchUserLinks.php',{
+        fetch(`${this.URLbase}/` + 'fetchUserLinks.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -484,7 +484,7 @@ export default {
           slugs
         }
         console.log('sendData', sendData)
-        fetch(`${this.URLbase()}/` + 'delete.php', {
+        fetch(`${this.URLbase}/` + 'delete.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -523,7 +523,7 @@ export default {
     },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
-      fetch(`${this.URLbase()}/` + 'login.php',{
+      fetch(`${this.URLbase}/` + 'login.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -581,16 +581,16 @@ export default {
               if(vars[3]){
                 this.state.search.string = decodeURIComponent(vars[3])
                 search = '/' + vars[3]
-                history.pushState(null,null,this.URLbase() + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
+                history.pushState(null,null,this.URLbase + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
                 this.beginSearch()
               }else{
                 if(!this.state.curUserPage || this.state.curUserPage < 0 || this.state.curUserPage > 1e6) this.state.curUserPage = 0
-                history.pushState(null,null,this.URLbase() + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+                history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
                 this.getPages()
               }
             } else {
               this.state.curUserPage = 0
-              history.pushState(null,null,this.URLbase() + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+              history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
               this.getPages()
             }*/
           break
@@ -603,36 +603,28 @@ export default {
               if(vars[l+1]){
                 this.state.search.string = decodeURIComponent(vars[l+1])
                 search = '/' + vars[l+1]
-                //history.pushState(null,null,this.URLbase() + '/' + (this.state.curPage + 1)) + search
+                //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
                 //this.beginSearch()
                 this.state.curPage = 0
                 this.state.jumpToPage(0)
               }else{
-                history.pushState(null,null,this.URLbase() + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
+                history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
                 this.fetchUserLinks(this.state.loggedinUserID)
               }
             }else{
-              if(location.href !== this.URLbase() + '/') location.href = this.URLbase()
+              if(location.href !== this.URLbase + '/') location.href = this.URLbase
             }
           break
         }
       }else{
         this.state.mode = 'default'
         this.getPages()
-        if(window.location.href !== this.URLbase() + '/') window.location.href = window.location.origin
+        if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
       }
-    },
-    URLbase(){
-      let ret = window.location.origin
-      console.log('ret', ret)
-      if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
-        ret += '/imjur'
-      }
-      return ret
     },
     logout(){
-      history.pushState(null,null,this.URLbase())
+      history.pushState(null,null,this.URLbase)
       let cookies = document.cookie
       cookies.split(';').map(v=>{
         if(v.indexOf('autoplay')==-1){
@@ -764,8 +756,16 @@ export default {
     }
   },
   computed:{
+    URLbase(){
+      let ret = window.location.origin
+      if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
+        ret += '/imjur'
+      }
+      return ret
+    }
   },
   mounted(){
+  
     window.onmousedown = e => {
       this.state.keys[18] = false
     }

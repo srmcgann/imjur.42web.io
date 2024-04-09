@@ -123,7 +123,7 @@ export default{
     savePassword(){
       if(this.validate){
         let sendData = {userName: this.state.loggedinUserName, currentPassword: this.currentPassword, newPassword: this.newPassword}
-        fetch(`${this.state.URLbase()}/` + 'changePassword.php',{
+        fetch(`${this.state.URLbase}/` + 'changePassword.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ export default{
     },
     updateAvatar(){
       let sendData = {userName: this.state.loggedinUserName, passhash: this.state.passhash, newAvatar: this.state.loggedInUser.avatar}
-      fetch(`${this.state.URLbase()}/` + 'updateAvatar.php',{
+      fetch(`${this.state.URLbase}/` + 'updateAvatar.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

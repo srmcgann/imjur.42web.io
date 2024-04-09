@@ -102,7 +102,7 @@ export default {
     getThumb(){
       let l
       try{
-        this.img.src = this.linkType == 'audio' ? this.state.URLbase() + '/' + 'musicNotes.svg' : this.state.URLbase() + '/' + 'thumb.php?res=resources/' + (this.link.originalSlug + '.' + this.link.href.split('.')[1])
+        this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (this.link.originalSlug + '.' + this.link.href.split('.')[1])
       } catch(error){
         console.log(error)
       }
@@ -165,7 +165,7 @@ export default {
         this.img.play()
         this.Draw()
       }
-      this.img.src = `${this.state.URLbase()}/` + this.link.href
+      this.img.src = `${this.state.URLbase}/` + this.link.href
     }
     if(this.linkType == 'image' || this.linkType == 'audio'){
       this.img = new Image()
