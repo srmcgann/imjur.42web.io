@@ -597,11 +597,12 @@ export default {
           default:
             this.state.mode = 'default'
             let search = ''
-            if(vars[0]){
-              this.state.curPage = (+vars[0])-1
-              if(vars[1]){
-                this.state.search.string = decodeURIComponent(vars[1])
-                search = '/' + vars[1]
+            let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
+            if(vars[l]){
+              this.state.curPage = (+vars[l])-1
+              if(vars[l+1]){
+                this.state.search.string = decodeURIComponent(vars[l+1])
+                search = '/' + vars[l+1]
                 //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
                 //this.beginSearch()
                 this.state.curPage = 0
@@ -757,7 +758,7 @@ export default {
   computed:{
     URLbase(){
       let ret = window.location.origin
-      if(ret.toLowerCase().indexOf(this.state.rootDomain) === -1){
+      if(ret.toLowerCase().split('.')[0] !== 'imgur'){
         ret += '/imjur'
       }
       return ret
