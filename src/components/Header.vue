@@ -39,6 +39,7 @@ export default {
     left: 0;
     width: calc(100vw - 20px);
     z-index: 100;
+    min-width: 720px;
   }
   .headerImg{
     cursor: pointer;

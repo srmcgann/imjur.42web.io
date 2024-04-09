@@ -35,7 +35,10 @@
       >
         deselect all
       </button>
-      <div class="username" v-html="'welcome,&nbsp;&nbsp;&nbsp;<br>' + state.username"></div>
+      <div class="username">
+      <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
+      {{state.username}}
+      </div>
     </div>
     <div v-else class="toolbarSection">
     </div>
@@ -80,6 +83,7 @@ export default {
     top: 52px;
     z-index: 100;
     width: calc(100vw - 20px);
+    min-width: 720px;
   }
   .toolbarSection{
     display: inline-block;

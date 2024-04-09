@@ -137,7 +137,7 @@ export default {
     float: right;
     margin-left: 5px;
     margin-top: -2px;
-    width: 260px;
+    width: 216px;
   }
   .userbutton:focus{
     outline: none;

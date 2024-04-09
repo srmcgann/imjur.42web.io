@@ -198,6 +198,7 @@ export default {
     vertical-align: top;
     border: 3px solid #4086;
     padding: 5px;
+    width: 300px
   }
   .href{
     font-size: .6em;
@@ -221,7 +222,9 @@ export default {
   }
   .views{
     position: relative;
-    margin-left: 200px;
+    min-width: 124px;
+    text-align: right;
+    right: 10px;
   }
 </style>
 
