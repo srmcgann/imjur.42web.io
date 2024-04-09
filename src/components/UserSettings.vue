@@ -7,7 +7,7 @@
       <div class="spacerDiv"></div>
       your avatar<br>
       <div class="editAvatarImgContainer">
-        <img :src="state.loggedInUser.avatar" class="editAvatarImg">
+        <img :src="state.URLbase + '/' + state.loggedInUser.avatar" class="editAvatarImg">
       </div>
       <input style="opacity: 0; position: absolute;z-index: -1;" ref="tabAnchor"
         v-on:keydown.shift.tab="$refs.cancelButton.focus()"
