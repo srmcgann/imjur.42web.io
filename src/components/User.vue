@@ -43,7 +43,7 @@
           @click="showSettings()"
           class="avatar"
           :title="`logged in as ${state.loggedinUserName}. click to show user settings`"
-          :style="`background-image: url(${state.loggedInUser.avatar})`"
+          :style="`background-image: url(${state.URLbase + '/' + state.loggedInUser.avatar})`"
         ></div>
       </div>
     </div>
