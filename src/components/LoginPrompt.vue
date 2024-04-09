@@ -162,7 +162,7 @@ export default{
     submit(){
       if(this.validate){
         let sendData = {userName: this.state.regusername, password: this.state.regpassword, avatar: this.state.defaultAvatar}
-        fetch('submitReg.php',{
+        fetch(`${this.state.URLbase}/` + 'submitReg.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -218,7 +218,7 @@ export default{
       this.userNameAvailable = true
       if(this.state.regusername){
         let sendData = {userName: this.state.regusername}
-        fetch('checkUserNameAvailability.php',{
+        fetch(`${this.state.URLbase}/` + 'checkUserNameAvailability.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

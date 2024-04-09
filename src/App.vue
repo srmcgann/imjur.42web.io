@@ -336,7 +336,7 @@ export default {
         let sendData = {
           userName: this.state.loggedinUserName, passhash: this.state.passhash,
         }
-        fetch('checkEnabled.php',{
+        fetch(`${this.URLbase}/` + 'checkEnabled.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -383,7 +383,7 @@ export default {
         passhash: this.state.passhash,
         ids: JSON.parse(JSON.stringify(this.state.links)).map(v=>{ return v.id})
       }
-      fetch('setOwner.php',{
+      fetch(`${this.URLbase}/` + 'setOwner.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -401,7 +401,7 @@ export default {
           page: this.state.curPage,
           maxResultsPerPage: this.state.maxResultsPerPage
         }
-        fetch('fetchUserLinks.php',{
+        fetch(`${this.URLbase}/` + 'fetchUserLinks.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -484,7 +484,7 @@ export default {
           slugs
         }
         console.log('sendData', sendData)
-        fetch('delete.php', {
+        fetch(`${this.URLbase}/` + 'delete.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -523,7 +523,7 @@ export default {
     },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
-      fetch('login.php',{
+      fetch(`${this.URLbase}/` + 'login.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
