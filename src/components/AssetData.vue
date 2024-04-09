@@ -26,7 +26,7 @@ export default {
   },
   computed:{
     lslug(){
-      return `<a href="${this.state.link.href}" target="_blank">${this.state.link.slug}</a>`
+      return `<a href="${this.link.href}" target="_blank">${this.link.slug}</a>`
     }
   },
   methods: {
