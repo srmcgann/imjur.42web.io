@@ -68,14 +68,14 @@ export default {
     padding: 3px;
   }
   .assetDataSlug{
-    background-color: $80f;
+    background-color: #80f;
     text-shadow: 1px 1px 2px #000;
     color: #fff;
     border-radius: 5px;
     min-width: 85px;
     display: inline-block;
     background-image: url(../assets/open.png);
-    background-position: 85 3px;
+    background-position: 85px 3px;
     background-repeat: no-repeat;
     background-size: 10px 10px;
     padding-left: 10px;
