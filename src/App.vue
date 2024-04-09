@@ -1076,6 +1076,7 @@ select:focus{
   text-align: left;
   position: absolute;
   margin-left: 30px;
+  z-index: 10;
 }
 
 /* Hide the browser's default checkbox */
