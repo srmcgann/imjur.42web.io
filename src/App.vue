@@ -758,7 +758,7 @@ export default {
   computed:{
     URLbase(){
       let ret = window.location.origin
-      if(ret.toLowerCase().split('.')[0] !== 'imgur'){
+      if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
         ret += '/imjur'
       }
       return ret
