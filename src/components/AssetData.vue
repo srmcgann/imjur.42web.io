@@ -68,7 +68,7 @@ export default {
     padding: 3px;
   }
   .assetDataSlug{
-    background-color: #80f;
+    background-color: #08f;
     text-shadow: 1px 1px 2px #000;
     color: #fff;
     border-radius: 5px;
