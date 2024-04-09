@@ -70,7 +70,7 @@ export default {
       this.asset.style.backgroundSize = 'contain'
       this.asset.style.backgroundRepeat = 'no-repeat'
       this.asset.style.backgroundPosition = 'center center'
-      this.asset.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.state.URLbase + '/' + this.link.href})`
+      this.asset.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.state.URLbase() + '/' + this.link.href})`
       this.$refs.slideshow.appendChild(this.asset)
     }
     if(this.linkType == 'audio'){
@@ -85,7 +85,7 @@ export default {
         this.asset.play()
       }
       this.$refs.slideshow.appendChild(this.asset)
-      this.asset.src = this.state.URLbase + '/' + this.link.href
+      this.asset.src = this.state.URLbase() + '/' + this.link.href
     }
     if(this.linkType == 'video'){
       this.asset = document.createElement('video')
@@ -103,7 +103,7 @@ export default {
         this.asset.play()
       }
       this.$refs.slideshow.appendChild(this.asset)
-      this.asset.src = this.state.URLbase + '/' + this.link.href
+      this.asset.src = this.state.URLbase() + '/' + this.link.href
     }
   },
   beforeUnmount(){
