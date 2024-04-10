@@ -66,7 +66,7 @@ export default {
   },
   computed:{
     multipleLinks(){
-      return state.userLinks.length > 1 || state.links.length > 1
+      return this.state.userLinks.length > 1 || this.state.links.length > 1
     }
   },
   methods: {
