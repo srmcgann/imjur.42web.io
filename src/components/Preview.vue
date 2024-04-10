@@ -204,11 +204,11 @@ export default {
   .linkButtons{
     margin-top: 11px;
     display: inline-block;
-    right: 10px;
+    right: 16px;
     position: absolute;
     width: 44px;
     z-index: 10;
-    top: 20px;
+    top: 40px;
   }
   .assetData{
     position: absolute;
