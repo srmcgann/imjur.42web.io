@@ -11,6 +11,10 @@
       v-if="state.showModal"
       :content="state.modalContent"
     />
+    <Loading
+      :state="state"
+      v-if="state.showLoading"
+    />
     <Preview
       :state="state"
       v-if="state.showPreview"
@@ -27,20 +31,22 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Preview from './components/Preview'
 import Toolbar from './components/Toolbar'
+import Loading from './components/Loading'
 import LoginPrompt from './components/LoginPrompt'
 import UserSettings from './components/UserSettings'
 
 export default {
   name: 'App',
   components: {
+    Main,
+    Modal,
+    Footer,
     Header,
     Toolbar,
-    Main,
-    Footer,
-    UserSettings,
-    Modal,
+    Loading,
     Preview,
     LoginPrompt,
+    UserSettings,
   },
   data(){
     return {
@@ -58,6 +64,7 @@ export default {
         size: null,
         deleteSelected: null,
         getAvatar: null,
+        showLoading: false,
         showPreview: false,
         rootDomain: location.hostname,
         modalContent: '',

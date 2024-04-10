@@ -70,7 +70,14 @@ export default {
       this.asset.style.backgroundSize = 'contain'
       this.asset.style.backgroundRepeat = 'no-repeat'
       this.asset.style.backgroundPosition = 'center center'
-      this.asset.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.state.URLbase + '/' + this.link.href})`
+      let loadingItem = new Image()
+      this.state.showLoading = true
+      loadingItem.onload = () => {
+        this.state.showLoading = false
+      }
+      let res = this.linkType == 'audio' ? 'musicNotes.svg' : this.state.URLbase + '/' + this.link.href
+      loadingItem.src = res
+      this.asset.style.backgroundImage = `url(${res})`
       this.$refs.slideshow.appendChild(this.asset)
     }
     if(this.linkType == 'audio'){
