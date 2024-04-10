@@ -45,11 +45,11 @@
         type="text"
         ref="uploadURL"
         style="width:360px;height: calc(100% - 5px);font-size: 20px; background: #000; color: #4f8; border: 1px solid red; width: 310px"
-        @keydown.prevent
+        @keydown.stop
         v-model="state.uploadFromURL"
         placeholder="upload from a URL... it might work!" class="uploadFromURL"
       >
-      <button @click="uploadByURL()" class="goButton">go</button>
+      <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     </div>
   </div>
 </template>
