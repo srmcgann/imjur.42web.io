@@ -49,7 +49,7 @@
         @keydown.stop
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
-        placeholder="upload from a URL... it might work!" class="uploadFromURL"
+        placeholder="OR, upload from a URL... it might work!" class="uploadFromURL"
       >
       <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     </div>
@@ -111,7 +111,7 @@ export default {
         }).then(res => res.json()).then(data => {
           if(data[0]){
             if(data[0]){
-              this.$refs.uploadURL = ''
+              this.state.uploadFromURL = ''
               data[1].map((v, j)=>{
                 this.state.addLink(data[2][j], data[3][j], j, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
                 this.state.previewLink = this.state.links[this.state.links.length-1]

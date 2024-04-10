@@ -17,7 +17,7 @@ todo
   ✔ upload progress bars
   ✔ link tool buttons on preview modal
   ✔ URL uploads
-  * anonymous uploads are autodeleted after 24hrs
+  ✔ anonymous uploads are autodeleted after 24hrs
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
