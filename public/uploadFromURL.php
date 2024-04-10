@@ -61,7 +61,7 @@ error_reporting(E_ALL);
         if($size>100000000){
           echo "too big";
         }elseif($size){
-          set_time_limit(0);
+          //set_time_limit(0);
           $fp = fopen ( $name, 'w');
           $ch = curl_init(str_replace(" ","%20",$url));
           echo $name;
