@@ -33,6 +33,32 @@
     return $ret==""?"0":$ret;
   }
  
+	function exists($url){
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_NOBODY, true);
+		curl_exec($ch);
+		$r = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		return $r==200?1:0;
+	}
+
+	function retrieve_remote_file_size($url){
+
+		/*
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_HEADER, TRUE);
+		curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+		curl_setopt($ch, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+		$data = curl_exec($ch);
+		$size = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+		curl_close($ch);
+		return $size;
+		*/
+		$head = array_change_key_case(get_headers($url, TRUE));
+		return $head['content-length'];
+	}
+
   function genSlug(){
     global $link;
     $rndmax = getrandmax();
