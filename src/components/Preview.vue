@@ -33,14 +33,14 @@
         </div>
         <AssetData :state="state" :link="link" />
         <div
-          v-if="state.userLinks.length > 1 || state.links.length > 1"
+          v-if="multipleLinks"
           class="leftButton"
           ref = "leftButton"
           @click="state.prev()"
           title="view previous asset [left arrow]"
         ></div>
         <div
-          v-if="state.userLinks.length > 1 || state.links.length > 1"
+          v-if="multipleLinks"
           class="rightButton"
           ref = "rightButton"
           @click="state.next()"
@@ -64,10 +64,17 @@ export default {
       linkType: ''
     }
   },
+  computed:{
+    multipleLinks(){
+      return state.userLinks.length > 1 || state.links.length > 1
+    }
+  },
   methods: {
     bumpNavButtonOpacity(){
       this.$refs.inputs.classList.remove('fade')
-      this.$refs.inputs.style.height = this.$refs.leftButton.clientHeight + 'px'
+      if(this.multipleLinks) {
+        this.$refs.inputs.style.height = this.$refs.leftButton.clientHeight + 'px'
+      }
       this.$refs.inputs.classList.add('fade')
     },
     close(){
