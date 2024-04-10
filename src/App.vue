@@ -322,7 +322,7 @@ export default {
     },
     getAvatar(id){
       //if(typeof this.state.userInfo[id] == 'undefined' || !this.state.userInfo[id].avatar){
-        return this.state.loggedIn ? this.state.loggedInUser.avatar : `${this.state.URLbase}/` + this.state.defaultAvatar
+        return this.state.loggedIn ? (this.state.loggedInUser.avatar == this.state.defaultAvatar ? `${this.state.URLbase}/` + this.state.loggedInUser.avatar) : `${this.state.URLbase}/` + this.state.defaultAvatar
       //} else {
       //  this.state.userInfo[id].avatar = this.state.userInfo[id].avatar.replace(' ','')
       //  return this.state.userInfo[id].avatar
