@@ -80,7 +80,9 @@ export default {
   methods: {
     uploadByURL(){
       let URL = this.state.uploadFromURL
-      this.state.modalContent = `<br><br><br><br>importing asset:<br><br>&rarr; ${this.state.uploadFromURL}....`
+      let assetFileName = this.state.uploadFromURL.split('/')
+      assetFileName = decodeURIComponent(assetFileName[assetFileName.length-1].split('?')[0])
+      this.state.modalContent = `<br><br><br><br>importing asset:<br><br><div style="color: #f80">&rarr; ${assetFileName}<br><br></div><video autoplay muted loop src="${this.state.URLbase}/loading.mp4"></video>`
       this.state.showModal = true
       let batchMetaData = {
         loggedIn: this.state.loggedIn,
