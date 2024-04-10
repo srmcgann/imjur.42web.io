@@ -7,7 +7,7 @@
       </td>
       <td class="tdRight">
         <a
-          :href="link.href"
+          :href="state.URLbase + '/' + link.href"
           target="_blank"
           title="open link in new tab"
           v-html="link.slug"
