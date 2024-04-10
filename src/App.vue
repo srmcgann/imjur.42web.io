@@ -469,6 +469,7 @@ export default {
     },
     deleteSelected(){
       let count = 0
+      let confirmed = false
       let linksToProcess = []
       let userLinksToProcess = []
       let slugs = []
@@ -486,8 +487,10 @@ export default {
           slugs = [...slugs, v.slug]
         }
       })
-      if(!count) return
-      if(prompt(`\n\nARE YOU SURE YOU WANT TO DELETE ${count} ITEM${count>1?'S':''}?\n\n\n   >>> THIS ACTION CANNOT BE UNDONE! <<<\n\n\n  type 'yes' to continue"`).toLowerCase().indexOf('yes') != -1){
+      if(!count) return confirmed
+      let prmpt = prompt(`\n\nARE YOU SURE YOU WANT TO DELETE ${count} ITEM${count>1?'S':''}?\n\n\n   >>> THIS ACTION CANNOT BE UNDONE! <<<\n\n\n  type 'yes' to continue"`)
+      if(prmpt && prmpt.toLowerCase().indexOf('yes') != -1){
+        confirmed = true
         console.log('deleting selected...')
         let sendData = {
           userName: this.state.username,
@@ -515,6 +518,7 @@ export default {
           }
         })
       }
+      return confirmed
     },
     deleteSingle(link){
       this.deSelectAll()
@@ -532,7 +536,6 @@ export default {
       this.state.userLinks.map(v=>{
         if(v.id == link.id) v.selected = true
       })
-      this.deleteSelected()
       lsel.map((v, i) => {
         this.state.links[i].selected = v
       })
@@ -1010,8 +1013,7 @@ a{
   border-radius: 0px;
   border: none;
   cursor: pointer;
-  margin-top: 0px;
-  margin-left: 3px;
+  margin: 4px;
 }
 .openButton{
   background-image: url(./assets/open.png);
@@ -1031,12 +1033,15 @@ a{
 }
 .deleteSingleButton{
   background-image: url(./assets/trash.png);
-  background-color: #400;
-  background-size: 80% 80%;
+  background-color: #0000;
+  background-size: 100% 100%;
 }
 .linkButtons{
-  margin-top: 11px;
+  margin-top: 26px;
   display: inline-block;
+  width: 82px;
+  text-aign: center;
+  line-height: 0;
 }
 .copyButton{
   display: inline-block;

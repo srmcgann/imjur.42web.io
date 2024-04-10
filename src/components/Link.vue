@@ -53,23 +53,23 @@ todo
         class="copyLinkButton"
         @click.prevent.stop="state.copyLink(link.href)"
         title="copy link to clipboard"
-      ></div><br>
+      ></div>
       <a
         :href="state.URLbase + '/' + link.href"
         class="openButton"
         @click.prevent.stop="state.openLink(link)"
         title="open link in new tab"
-      ></a><br>
+      ></a>
       <div
         class="downloadButton"
         @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))"
         title="download asset"
-      ></div><br>
+      ></div>
       <div
         class="deleteSingleButton"
         @click.prevent.stop="state.deleteSingle(link)"
         title="delete asset"
-      ></div><br>
+      ></div>
     </div>
     <br>
     
@@ -216,7 +216,7 @@ export default {
     vertical-align: top;
     border: 3px solid #4086;
     padding: 5px;
-    width: 300px
+    width: 310px
   }
   .href{
     font-size: .6em;
