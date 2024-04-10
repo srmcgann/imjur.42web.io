@@ -81,6 +81,7 @@ export default {
         },
         loggedinUserName: '',
         copyLink: null,
+        deleteSingle: null,
         downloadLink: null,
         next: null,
         prev: null,
@@ -514,6 +515,30 @@ export default {
         })
       }
     },
+    deleteSingle(link){
+      this.deselectAll()
+      let lsel = []
+      let ulsel = []
+      this.state.links.map(v=>{
+        lsel = [...lsel, v.selected]
+      })
+      this.state.userLinks.map(v=>{
+        ulsel = [...ulsel, v.selected]
+      })
+      this.state.links.map(v=>{
+        if(v.id == link.id) v.selected = true
+      })
+      this.state.userLinks.map(v=>{
+        if(v.id == link.id) v.selected = true
+      })
+      this.deleteSelected()
+      lsel.map((v, i) => {
+        this.state.links[i].selected = v
+      })
+      ulsel.map((v, i) => {
+        this.state.userLinks[i].selected = v
+      })
+    },
     setCookie() {
       let cookies = document.cookie
       cookies.split(';').map(v=>{
@@ -866,6 +891,7 @@ export default {
     this.state.advancePage = this.advancePage
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
+    this.state.deleteSingle = this.deleteSingle
     this.state.closePrompts = this.closePrompts
     this.state.fullFileName = this.fullFileName
     this.state.downloadLink = this.downloadLink
@@ -952,7 +978,7 @@ a{
   top: 14px;
   min-width: 120px;
 }
-.copyLinkButton, .openButton, .downloadButton{
+.copyLinkButton, .openButton, .downloadButton, .deleteSingleButton{
   display: inline-block;
   background-position: center center;
   background-repeat: no-repeat;
@@ -980,6 +1006,11 @@ a{
   background-image: url(./assets/download.png);
   background-color: #0000;
   background-size: 52px 37px;
+}
+.deleteSingleButton{
+  background-image: url(./assets/trash.png);
+  background-color: #400;
+  background-size: 80% 80%;
 }
 .linkButtons{
   margin-top: 11px;

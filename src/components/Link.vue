@@ -49,9 +49,27 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
-      <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
-      <a :href="state.URLbase + '/' + link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))" title="download asset"></div><br>
+      <div
+        class="copyLinkButton"
+        @click.prevent.stop="state.copyLink(link.href)"
+        title="copy link to clipboard"
+      ></div><br>
+      <a
+        :href="state.URLbase + '/' + link.href"
+        class="openButton"
+        @click.prevent.stop="state.openLink(link)"
+        title="open link in new tab"
+      ></a><br>
+      <div
+        class="downloadButton"
+        @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))"
+        title="download asset"
+      ></div><br>
+      <div
+        class="deleteSingleButton"
+        @click.prevent.stop="state.deleteSingle(link)"
+        title="delete asset"
+      ></div><br>
     </div>
     <br>
     
