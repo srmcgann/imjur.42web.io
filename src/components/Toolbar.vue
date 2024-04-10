@@ -131,7 +131,7 @@ export default {
     font-size: 20px;
   }
   .goButton{
-    min-widdth: unset;
+    min-width: unset;
     width: 42px;
     vertical-align: top;
     height: 36px;
