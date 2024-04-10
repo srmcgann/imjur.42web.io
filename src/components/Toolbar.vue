@@ -110,7 +110,7 @@ export default {
               this.$refs.uploadURL.value = ''
               data[1].map((v, j)=>{
                 this.state.addLink(data[2][j], data[3][j], j, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
-                this.state.previewLink = this.links[this.links.length-1]
+                this.state.previewLink = this.state.links[this.state.links.length-1]
                 this.state.showPreview = true
               })
             }
