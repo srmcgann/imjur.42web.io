@@ -64,7 +64,7 @@ error_reporting(E_ALL);
             $res = mysqli_query($link, $sql);
             if(mysqli_num_rows($res)){
               $row = mysqli_fetch_assoc($res);
-              $originalSlug = $row['slug'];
+              $originalSlug = $row['originalSlug'];
               $originalDate = $row['originalDate'];
               $unlink = true;
             }else{
@@ -164,5 +164,5 @@ error_reporting(E_ALL);
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates]);
 ?>
