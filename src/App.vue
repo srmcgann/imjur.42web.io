@@ -63,6 +63,7 @@ export default {
         views: null,
         size: null,
         deleteSelected: null,
+        multipleLinks: null,
         getAvatar: null,
         showLoading: false,
         showPreview: false,
@@ -817,6 +818,9 @@ export default {
     }
   },
   computed:{
+    multipleLinks(){
+      return this.state.userLinks.length > 1 || this.state.links.length > 1
+    },
     URLbase(){
       let ret = window.location.origin
       if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
@@ -923,6 +927,7 @@ export default {
     this.state.fullFileName = this.fullFileName
     this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
+    this.state.multipleLinks = this.multipleLinks
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
     this.state.deleteSelected = this.deleteSelected
