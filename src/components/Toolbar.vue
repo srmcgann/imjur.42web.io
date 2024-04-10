@@ -40,7 +40,7 @@
         deselect all
       </button>
     </div>
-    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 34px;">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 36px; margin-top: -2px;">
       <input
         type="text"
         style="width:360px;height: 100%;display: inline-block;font-size: 20px;"
