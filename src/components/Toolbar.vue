@@ -118,6 +118,8 @@ export default {
 
               this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>&rarr;${data[8][j]}` + '</div>'
               this.state.showModal = true              
+              this.$refs.uploadURL.focus()
+              this.$refs.uploadURL.value = ''
             }else{
               this.state.showModal = true
               this.state.showRegister = true
