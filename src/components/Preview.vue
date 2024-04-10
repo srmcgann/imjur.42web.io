@@ -31,14 +31,14 @@
         </div>
         <AssetData :state="state" :link="link" />
         <div
-          v-if="state.multipleLinks"
+          v-if="state.multipleLinks()"
           class="leftButton"
           ref = "leftButton"
           @click="state.prev()"
           title="view previous asset [left arrow]"
         ></div>
         <div
-          v-if="state.multipleLinks"
+          v-if="state.multipleLinks()"
           class="rightButton"
           ref = "rightButton"
           @click="state.next()"
