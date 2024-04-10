@@ -66,7 +66,7 @@ error_reporting(E_ALL);
           $ch = curl_init(str_replace(" ","%20",$url));
           //echo $name;
           curl_setopt($ch, CURLOPT_FILE, $fp);
-          //curl_setopt($ch, CURLOPT_RETURN_TRANSFER, false);
+          curl_setopt($ch, CURLOPT_RETURN_TRANSFER, false);
           curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
           curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 OPR/79.0.4143.73',);
           curl_exec($ch); 
