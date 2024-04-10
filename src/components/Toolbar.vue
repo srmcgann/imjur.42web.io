@@ -42,8 +42,13 @@
     </div>
     <div v-else class="toolbarSection">
     </div>
-    <div class="toolbarSection">
-      <input type="text" v-model="state.uploadFromURL" placeholder="upload from a URL... it might work!" class="uploadFromURL">
+    <br><div class="toolbarSection" style="border-top: 4px solid #40fa">
+      <input
+        type="text"
+        style="width:360px;"
+        v-model="state.uploadFromURL"
+        placeholder="upload from a URL... it might work!" class="uploadFromURL"
+      >
     </div>
   </div>
 </template>
@@ -89,7 +94,7 @@ export default {
   }
   .toolbarSection{
     display: inline-block;
-    border-left: 8px solid #40fa;
+    border-left: 6px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;

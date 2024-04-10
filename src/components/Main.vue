@@ -298,7 +298,7 @@ export default {
     box-sizing: border-box;
     text-align: center;
     position: absolute;
-    padding-top: 100px;
+    padding-top: 120px;
     z-index: 0;
     padding-bottom: 200px;
     width: 100vw;

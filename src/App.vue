@@ -1044,7 +1044,7 @@ input[type=text]{
   font-size: 24px;
   background: #0004;
   border: none;
-  border-bottom: 2px solid #2fa;
+  border-bottom: 6px solid #40fa;
   width: 300px;
   color: #ffa;
 }
