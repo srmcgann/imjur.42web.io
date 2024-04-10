@@ -108,7 +108,7 @@ export default {
         }).then(res => res.json()).then(data => {
           if(data[0]){
             if(data[0]){
-              this.$refs.uploadURL.value = ''
+              this.$refs.uploadURL = ''
               data[1].map((v, j)=>{
                 this.state.addLink(data[2][j], data[3][j], j, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
                 this.state.previewLink = this.state.links[this.state.links.length-1]
@@ -137,7 +137,7 @@ export default {
             this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6006; color: #f00; padding: 100px; text-align: left;">' + `failed to import asset:<br><br>error: &rarr;${data[5]}` + '</div>'
             this.state.showModal = true              
           }
-          this.$refs.uploadURL.value = ''
+          this.$refs.uploadURL = ''
           //this.$refs.uploadURL.focus()
           this.state.showLoading = false
         })
