@@ -181,7 +181,7 @@ export default {
               let data = JSON.parse(e.currentTarget.responseText)
               if(data[0]){
                 data[1].map((v, j)=>{
-                  this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
+                  this.state.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
                 })
               }
             }
@@ -244,27 +244,6 @@ export default {
         files = Array.from(e.dataTransfer.files)
       }
       if(files.length) this.processUpload(files)
-    },
-    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id, date, originalDate){
-    
-      let obj = {
-        size,
-        type,
-        ct,
-        href,
-        slug,
-        origin,
-        selected,
-        userID,
-        id,
-        originalSlug,
-        linkType: 'link',
-        serverTZO,
-        views,
-        date,
-        originalDate
-      }
-      this.state.links.push(obj)
     },
     loadFiles(){
       //if(this.state.links.length) return

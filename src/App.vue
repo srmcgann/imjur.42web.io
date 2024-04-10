@@ -136,6 +136,7 @@ export default {
         loggedIn: false,
         loginPromptVisible: false,
         getPages: null,
+        addLink: null,
         previewPosition: 0,
         keys: Array(128).fill(false),
       }
@@ -702,6 +703,26 @@ export default {
       }
       return ret
     },
+    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id, date, originalDate){
+      let obj = {
+        size,
+        type,
+        ct,
+        href,
+        slug,
+        origin,
+        selected,
+        userID,
+        id,
+        originalSlug,
+        linkType: 'link',
+        serverTZO,
+        views,
+        date,
+        originalDate
+      }
+      this.state.links.push(obj)
+    },
     age(link){
       let tseconds = (((new Date()) - (new Date(link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - (location.origin.toLowerCase().indexOf('000webhostapp') === -1 ? 4: 0))
       let years = (tseconds/31536000)|0
@@ -872,6 +893,7 @@ export default {
     this.state.views = this.views
     this.state.login = this.login
     this.state.logout = this.logout
+    this.state.addLink = this.addLink
     this.state.URLbase = this.URLbase
     this.state.fileName = this.fileName
     this.state.copyLink = this.copyLink
