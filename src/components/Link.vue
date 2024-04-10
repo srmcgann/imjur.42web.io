@@ -165,7 +165,7 @@ export default {
         this.img.play()
         this.Draw()
       }
-      this.img.src = `${this.state.URLbase}/` + this.link.href
+      this.img.src = `${this.state.URLbase}/resources/` + this.link.originalSlug + this.link.href.split('.')[1]
     }
     if(this.linkType == 'image' || this.linkType == 'audio'){
       this.img = new Image()
