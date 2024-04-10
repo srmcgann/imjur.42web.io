@@ -116,7 +116,7 @@ export default {
               //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, ids){
               //this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
 
-              this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>&rarr;${data[8][j]}` + '</div>'
+              this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>&rarr;${data[8][0]}` + '</div>'
               this.state.showModal = true              
               this.$refs.uploadURL.focus()
               this.$refs.uploadURL.value = ''

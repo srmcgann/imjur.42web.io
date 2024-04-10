@@ -60,6 +60,7 @@ export default {
     color: #f80;
     border-bottom: 1px solid #4fc2;
     padding: 3px;
+    max-width: 65px;
   }
   .tdRight{
     text-align: left;
