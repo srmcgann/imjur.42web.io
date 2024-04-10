@@ -25,8 +25,9 @@ error_reporting(E_ALL);
   $resourceDir   = 'resources';
   
   
-  $url           = $_POST['URL'];
+  $url = mysqli_real_escape_string($link, $data->{'URL'});
   if($url){
+    $bmd = mysqli_real_escape_string($link, $data->{'batchMetaData'});
     
     $unlink = false;
     //$tmp_name = $_FILES["uploads_$ct"]['tmp_name'];
@@ -81,9 +82,6 @@ error_reporting(E_ALL);
       $error = "not found";
     }
 
-
-
-    
     
     if($ok){
       $type = mime_content_type("$resourceDir/$slug");
@@ -138,7 +136,7 @@ error_reporting(E_ALL);
             
             $userID = -1;
 
-            $bmd = json_decode($_POST['batchMetaData']);
+            //$bmd = json_decode($_POST['batchMetaData']);
             if($bmd->{'loggedIn'}){
               $uID = mysqli_real_escape_string($link, $bmd->{'userID'});
               $passhash = mysqli_real_escape_string($link, $bmd->{'passhash'});

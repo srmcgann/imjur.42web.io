@@ -186,7 +186,6 @@ export default {
               this.state.modalContent = ''
               this.state.closeModal()
               if(this.state.loggedIn){
-                console.log('logged in tho?')
                 this.state.links = []
                 this.state.fetchUserLinks(this.state.loggedinUserID)
                 this.state.jumpToPage(0)
