@@ -136,6 +136,7 @@ error_reporting(E_ALL);
               "file size" => $size,
               "sender IP" => $_SERVER['REMOTE_ADDR'],
               "original name" => $originalName,
+              "original URL" => $url,
             ]));
             
             $userID = -1;
@@ -153,7 +154,7 @@ error_reporting(E_ALL);
             
             
             $description = '';
-            $origin = mysqli_real_escape_string($link, "user file: $originalName");
+            $origin = mysqli_real_escape_string($link, "web file: $originalName");
             
   $sql = <<<SQL
   INSERT INTO imjurUploads (id, 
