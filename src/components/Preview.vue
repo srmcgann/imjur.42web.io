@@ -69,9 +69,7 @@ export default {
   methods: {
     bumpNavButtonOpacity(){
       this.$refs.inputs.classList.remove('fade')
-      if(this.state.multipleLinks) {
-        this.$refs.inputs.style.height = this.$refs.leftButton.clientHeight + 'px'
-      }
+      this.$refs.inputs.style.height = this.$refs.inputs.clientHeight + 'px'
       this.$refs.inputs.classList.add('fade')
     },
     close(){
