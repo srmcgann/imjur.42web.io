@@ -41,6 +41,8 @@
       </button>
     </div>
     <div v-else class="toolbarSection">
+    </div>
+    <div class="toolbarSection">
       <input type="text" v-model="state.uploadFromURL" placeholder="upload from a URL... it might work!" class="uploadFromURL">
     </div>
   </div>
@@ -84,7 +86,6 @@ export default {
     top: 52px;
     z-index: 100;
     width: calc(100vw - 20px);
-    min-width: 720px;
   }
   .toolbarSection{
     display: inline-block;
