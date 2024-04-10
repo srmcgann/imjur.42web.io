@@ -546,6 +546,9 @@ export default {
       })
       this.state.showPreview = false
     },
+    multipleLinks(){
+      return this.state.userLinks.length > 1 || this.state.links.length > 1
+    },
     setCookie() {
       let cookies = document.cookie
       cookies.split(';').map(v=>{
@@ -818,9 +821,6 @@ export default {
     }
   },
   computed:{
-    multipleLinks(){
-      return this.state.userLinks.length > 1 || this.state.links.length > 1
-    },
     URLbase(){
       let ret = window.location.origin
       if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
