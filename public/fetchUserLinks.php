@@ -25,9 +25,10 @@ error_reporting(E_ALL);
   $meta = [];
   for($i=0; $i<mysqli_num_rows($res); ++$i){
     $row = mysqli_fetch_assoc($res);
+    $slug = $row['slug'];
     $m = [
       'id' => $row['id'],
-      'slug' => $row['slug'],
+      'slug' => $slug,
       'size' => json_decode($row['meta'])->{'file size'},
       'name' => json_decode($row['meta'])->{'original name'},
       'type' => $row['filetype'],
