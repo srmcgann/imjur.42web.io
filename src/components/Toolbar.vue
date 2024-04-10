@@ -82,7 +82,7 @@ export default {
       let URL = this.state.uploadFromURL
       let assetFileName = this.state.uploadFromURL.split('/')
       assetFileName = decodeURIComponent(assetFileName[assetFileName.length-1].split('?')[0])
-      this.state.modalContent = `<br><br><br><br>importing asset:<br><br><div style="color: #f80">&rarr; ${assetFileName}<br><br></div><video autoplay muted loop src="${this.state.URLbase}/loading.mp4"></video>`
+      this.state.modalContent = `<br><br><br><br><br><br>importing asset<br><br><div style="color: #f80">${assetFileName}<br><br></div><video autoplay muted loop src="${this.state.URLbase}/loading.mp4" style="width: calc(100vw - 50px); opacity: .8"></video>`
       this.state.showModal = true
       let batchMetaData = {
         loggedIn: this.state.loggedIn,
@@ -103,10 +103,8 @@ export default {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(sendData),
-        })
-        .then(res => res.json())
-        .then(data => {
-          if(!!(+data[0])){
+        }).then(res => res.json()).then(data => {
+          if(data[0]){
             //this.$refs.main.style.zIndex = 0
             this.state.modalContent = ''
             this.state.closeModal()
@@ -114,24 +112,20 @@ export default {
               this.state.links = []
               this.state.fetchUserLinks(this.state.loggedinUserID)
               this.state.jumpToPage(0)
-
-              //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, ids){
-              //this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
-
               this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>&rarr;${data[8][0]}` + '</div>'
               this.state.showModal = true              
-              this.$refs.uploadURL.focus()
-              this.$refs.uploadURL.value = ''
             }else{
+              this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #0846; color: #8f8; padding: 100px; text-align: left;">' + `excellent choice, uploading here...<br><br>you have not logged in though, which means your links will be lost soon.<br><br>If you register, nothing is needed except a name of your choosing and a password you will remember, then these uploads will be auto-saved to your new profile...<br><br>just don't close the page or refresh before you login or register!<br><br><br>thanks for using imjur!` + '</div>'
               this.state.showModal = true
               this.state.showRegister = true
               this.state.showLoginPrompt = true
-              this.$refs.uploadURL.value = ''
-              this.$refs.uploadURL.focus()
-              this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6006; color: #f00; padding: 100px; text-align: left;">' + `failed to import asset:<br><br>error: &rarr;${data[5]}` + '</div>'
-              this.state.showModal = true              
             }
+          }else{
+            this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6006; color: #f00; padding: 100px; text-align: left;">' + `failed to import asset:<br><br>error: &rarr;${data[5]}` + '</div>'
+            this.state.showModal = true              
           }
+          this.$refs.uploadURL.value = ''
+          this.$refs.uploadURL.focus()
         })
       }
     }
