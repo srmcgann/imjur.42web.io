@@ -26,7 +26,7 @@ error_reporting(E_ALL);
   
   
   $data = json_decode(file_get_contents('php://input'));
-  $url = mysqli_real_escape_string($link, $data->{'URL'});
+  $url = $data->{'URL'};
   if($url){
     $bmd = $data->{'batchMetaData'};
     
@@ -59,12 +59,12 @@ error_reporting(E_ALL);
       if($ok){
         $size=retrieve_remote_file_size($url);
         if($size>100000000){
-          echo "too big";
+          $error = "too big";
         }elseif($size){
           //set_time_limit(0);
           $fp = fopen ( $name, 'w');
           $ch = curl_init(str_replace(" ","%20",$url));
-          echo $name;
+          //echo $name;
           curl_setopt($ch, CURLOPT_FILE, $fp);
           //curl_setopt($ch, CURLOPT_RETURN_TRANSFER, false);
           curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
