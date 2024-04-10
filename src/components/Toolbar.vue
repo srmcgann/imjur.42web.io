@@ -106,7 +106,11 @@ export default {
           body: JSON.stringify(sendData),
         }).then(res => res.json()).then(data => {
           if(data[0]){
-            //this.$refs.main.style.zIndex = 0
+            if(data[0]){
+              data[1].map((v, j)=>{
+                this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
+              })
+            }
             this.state.modalContent = ''
             this.state.closeModal()
             if(this.state.loggedIn){
@@ -116,10 +120,14 @@ export default {
               this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>${data[8][0]}` + '</div>'
               this.state.showModal = true              
             }else{
-              this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #0846; color: #8f8; padding: 100px; text-align: left; word-break: auto-phrase;">' + `excellent choice, uploading here...<br><br>you have not logged in though, which means your links will be lost soon.<br><br>If you register, nothing is needed except a name of your choosing and a password you will remember, then these uploads will be auto-saved to your new profile...<br><br>just don't close the page or refresh before you login or register!<br><br><br>thanks for using imjur!` + '</div>'
-              this.state.showModal = true
-              this.state.showRegister = true
-              this.state.showLoginPrompt = true
+              if(data[0]){
+                this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #0846; color: #8f8; padding: 100px; text-align: left;word-break: auto-phrase;">' + `excellent choice, uploading here...<br><br>you have not logged in though, which means your links will be lost soon.<br><br>If you register, nothing is needed except a name of your choosing and a password you will remember, then these uploads will be auto-saved to your new profile...<br><br>just don't close the page or refresh before you login or register!<br><br><br>thanks for using imjur!` + '</div>'
+                this.state.showModal = true
+                this.state.showRegister = true
+                this.state.showLoginPrompt = true
+              }else{
+                this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+              }
             }
           }else{
             this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6006; color: #f00; padding: 100px; text-align: left;">' + `failed to import asset:<br><br>error: &rarr;${data[5]}` + '</div>'

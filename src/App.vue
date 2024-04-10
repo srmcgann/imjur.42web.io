@@ -951,7 +951,7 @@ button{
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 900;
-  min-width: 200px;
+  min-width: 116px;
   cursor: pointer;
   font-family: Courier Prime;
   color: #000;
