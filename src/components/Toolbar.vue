@@ -127,6 +127,7 @@ export default {
           }
           this.$refs.uploadURL.value = ''
           this.$refs.uploadURL.focus()
+          this.state.showLoading = false
         })
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="loading">
-    <video class="loadingVid" autoplay muted loop src="${this.state.URLbase}/loading.mp4" style="width: calc(100vw - 50px); opacity: .5"></video>
+    <video class="loadingVid" autoplay muted loop :src="`${state.URLbase}/loading.mp4`" style="width: calc(100vw - 50px); opacity: .5"></video>
   </div>
 </template>
 
