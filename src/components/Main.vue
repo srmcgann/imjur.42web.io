@@ -43,21 +43,23 @@
         @click="this.loadFiles()"
       >
         throw sum filez [click/drop]<br><br>
-        accepted : gif<br>
+        accepted : <font style="color: #ff0;">gif<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;png<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jp[e]g<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
-        max size : 25MB<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br></font>
+        max size : <font style="color: #ff0;">25MB<br></font>
         <span style="font-size: .7em;">(per file)</span><br><br>
-        max files: 15<br>
+        max files: <font style="color: #ff0;">15<br></font>
         <span style="font-size: .7em;">(at a time)</span><br><br><br>
         <div style="font-size: .6em;">
-        WARRANTY: none<br><br>
-        all anonymous uploads will be deleted after 24 hours!<br>
+        WARRANTY: <font style="color: #ff0;">none<br><br></font>
+        <span style="color: #f00;font-size: 1.2em;">
+          <b>all anonymous uploads will<br>be deleted after 24 hours!</b>
+        <span><br>
         this website is a work-in-progress.<br>
-        your files will likely be deleted</div>
+        your files will likely be deleted anyway :D</div>
       </div>
       <div v-if="state.links.length || state.userLinks.length" class="links">
         <Link
@@ -403,10 +405,10 @@ export default {
   }
   #dropTargetCaption{
     display: inline-block;
-    width: 340px;
+    width: 400px;
     position: fixed;
     left: 50%;
-    top: calc(50% - 24px);
+    top: calc(50% - 26px);
     transform: translate(-50%, -50%);
     padding: 38px;
     border-radius: 32%;
