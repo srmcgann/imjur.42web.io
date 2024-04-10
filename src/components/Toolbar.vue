@@ -126,7 +126,7 @@ export default {
             this.state.showModal = true              
           }
           this.$refs.uploadURL.value = ''
-          this.$refs.uploadURL.focus()
+          //this.$refs.uploadURL.focus()
           this.state.showLoading = false
         })
       }
