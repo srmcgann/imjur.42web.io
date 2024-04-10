@@ -181,6 +181,7 @@ export default {
               if(!q.completed) finished = false
             })
             if(finished) {
+              console.log('finished')
               this.showUploadProgress = false
               this.$refs.main.style.zIndex = 0
               if(this.state.loggedIn){
@@ -191,28 +192,21 @@ export default {
                 this.state.jumpToPage(0)
               }else{
                 let data = JSON.parse(e.currentTarget.responseText)
-                if(data[0]){
-                  data[1].map((v, j)=>{
-                    this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
-                  })
-                  this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #0846; color: #8f8; padding: 100px; text-align: left;">' + `excellent choice, uploading here...<br><br>you have not logged in though, which means your links will be lost soon.<br><br>If you register, nothing is needed except a name of your choosing and a password you will remember, then these uploads will be auto-saved to your new profile...<br><br>just don't close the page or refresh before you login or register!<br><br><br>thanks for using imjur!` + '</div>'
-                  this.state.showModal = true
-                  this.state.showRegister = true
-                  this.state.showLoginPrompt = true
-                }else{
-                  this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+                if(e.currentTarget.responseText[0] != '<'){
+                  let data = JSON.parse(e.currentTarget.responseText)
+                  if(data[0]){
+                    data[1].map((v, j)=>{
+                      //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, ids){
+                      this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
+                    })
+                    this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #0846; color: #8f8; padding: 100px; text-align: left;">' + `excellent choice, uploading here...<br><br>you have not logged in though, which means your links will be lost soon.<br><br>If you register, nothing is needed except a name of your choosing and a password you will remember, then these uploads will be auto-saved to your new profile...<br><br>just don't close the page or refresh before you login or register!<br><br><br>thanks for using imjur!` + '</div>'
+                    this.state.showModal = true
+                    this.state.showRegister = true
+                    this.state.showLoginPrompt = true
+                  }else{
+                    this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+                  }
                 }
-              }
-            }
-            if(e.currentTarget.responseText[0] != '<'){
-              let data = JSON.parse(e.currentTarget.responseText)
-              if(data[0]){
-                data[1].map((v, j)=>{
-                  //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, ids){
-                  this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
-                })
-              }else{
-                this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
               }
             }
           })
