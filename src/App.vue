@@ -543,6 +543,7 @@ export default {
       ulsel.map((v, i) => {
         this.state.userLinks[i].selected = v
       })
+      this.state.showPreview = false
     },
     setCookie() {
       let cookies = document.cookie
