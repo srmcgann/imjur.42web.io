@@ -59,7 +59,7 @@ error_reporting(E_ALL);
       case 'video/mp4': $suffix = 'mp4';  break;
     }
     $originalSlug = $row['originalSlug'];
-    $links[] = "$uploadDir/$originalSlug.$suffix";
+    $links[] = "$uploadDir/$slug.$suffix";
     $meta[] = $m;
   }
   if(sizeof($links)){
