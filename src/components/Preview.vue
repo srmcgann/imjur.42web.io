@@ -13,14 +13,14 @@
         </div>
         <AssetData :state="state" :link="link" />
         <div
-          v-if="state.userLinks.length > 1"
+          v-if="state.userLinks.length > 1 || state.links.length > 1"
           class="leftButton"
           ref = "leftButton"
           @click="state.prev()"
           title="view previous asset [left arrow]"
         ></div>
         <div
-          v-if="state.userLinks.length > 1"
+          v-if="state.userLinks.length > 1 || state.links.length > 1"
           class="rightButton"
           ref = "rightButton"
           @click="state.next()"
