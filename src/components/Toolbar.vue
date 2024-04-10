@@ -94,7 +94,7 @@ export default {
           URL,
           batchMetaData
         }
-        fetch(`${this.URLbase}/` + 'uploadFromURL.php',{
+        fetch(`${this.state.URLbase}/` + 'uploadFromURL.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
