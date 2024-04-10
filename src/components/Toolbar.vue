@@ -94,7 +94,7 @@ export default {
   }
   .toolbarSection{
     display: inline-block;
-    border-left: 6px solid #40fa;
+    border: 6px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;
