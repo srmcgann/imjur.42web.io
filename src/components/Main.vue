@@ -57,7 +57,7 @@
         WARRANTY: <font style="color: #ff0;">none<br><br></font>
         <span style="color: #f00;font-size: 1.2em;">
           <b>all anonymous uploads will<br>be deleted after 24 hours!</b>
-        <span><br>
+        </span><br>
         this website is a work-in-progress.<br>
         your files will likely be deleted anyway :D</div>
       </div>
