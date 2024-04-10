@@ -80,6 +80,7 @@ export default {
   methods: {
     uploadByURL(){
       let URL = this.state.uploadFromURL
+      if(!URL) return
       let assetFileName = this.state.uploadFromURL.split('/')
       assetFileName = decodeURIComponent(assetFileName[assetFileName.length-1].split('?')[0])
       this.state.modalContent = `<br><br><br><br><br><br>importing asset<br><br><div style="color: #f80">${assetFileName}<br><br></div>`

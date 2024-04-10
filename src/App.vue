@@ -979,7 +979,7 @@ button{
   font-size: 18px;
   border: 2px solid #0008;
   border-radius: 6px;
-  background: #adcc;
+  background: #ff0;
   padding: 4px;
   padding-left: 10px;
   padding-right: 10px;
