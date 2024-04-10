@@ -101,6 +101,7 @@ export default {
     position: absolute;
     text-align: right;
     right: 5px;
+    line-height: .8em;
   }
   .deleteButton{
     color: #f88;
