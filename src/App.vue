@@ -1040,8 +1040,8 @@ a{
 .linkButtons{
   margin-top: 26px;
   display: inline-block;
-  width: 82px;
-  text-aign: center;
+  width: 90px;
+  text-align: center;
   line-height: 0;
 }
 .copyButton{

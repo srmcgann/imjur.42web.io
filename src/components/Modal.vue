@@ -48,5 +48,6 @@ export default {
     color: #fff;
     text-shadow: 2px 2px 2px #000;
     background: #001b;
+    word-break: auto-phrase;
   }
 </style>

@@ -107,6 +107,7 @@ export default {
         }).then(res => res.json()).then(data => {
           if(data[0]){
             if(data[0]){
+              this.$refs.uploadURL.value = ''
               data[1].map((v, j)=>{
                 this.state.addLink(data[2][j], data[3][j], j, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j], data[12][j],data[13][j])
               })

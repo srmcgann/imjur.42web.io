@@ -7,9 +7,29 @@
       <div class="slideshow" ref="slideshow"></div>
       <div class="inputs fade" ref="inputs">
         <div class="linkButtons">
-          <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
-          <a :href="state.URLbase + '/' + link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
-          <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))" title="download asset"></div><br>
+          <div class="linkButtons">
+            <div
+              class="copyLinkButton"
+              @click.prevent.stop="state.copyLink(link.href)"
+              title="copy link to clipboard"
+            ></div>
+            <a
+              :href="state.URLbase + '/' + link.href"
+              class="openButton"
+              @click.prevent.stop="state.openLink(link)"
+              title="open link in new tab"
+            ></a>
+            <div
+              class="downloadButton"
+              @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))"
+              title="download asset"
+            ></div>
+            <div
+              class="deleteSingleButton"
+              @click.prevent.stop="state.deleteSingle(link)"
+              title="delete this asset only"
+            ></div>
+          </div>
         </div>
         <AssetData :state="state" :link="link" />
         <div

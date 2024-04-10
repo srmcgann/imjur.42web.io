@@ -68,7 +68,7 @@ todo
       <div
         class="deleteSingleButton"
         @click.prevent.stop="state.deleteSingle(link)"
-        title="delete asset"
+        title="delete this asset only"
       ></div>
     </div>
     <br>
@@ -216,7 +216,7 @@ export default {
     vertical-align: top;
     border: 3px solid #4086;
     padding: 5px;
-    width: 310px
+    width: 324px
   }
   .href{
     font-size: .6em;
