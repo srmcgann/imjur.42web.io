@@ -516,7 +516,7 @@ export default {
       }
     },
     deleteSingle(link){
-      this.deselectAll()
+      this.deSelectAll()
       let lsel = []
       let ulsel = []
       this.state.links.map(v=>{
