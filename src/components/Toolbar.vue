@@ -40,10 +40,11 @@
         deselect all
       </button>
     </div>
-    <div class="toolbarSection" style="border-top: 4px solid #40fa">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 34px;">
       <input
         type="text"
-        style="width:360px;"
+        style="width:360px;height: 100%;display: inline-block;font-size: 20px;"
+        @keydown.prevent.stop
         v-model="state.uploadFromURL"
         placeholder="upload from a URL... it might work!" class="uploadFromURL"
       >
@@ -81,18 +82,18 @@ export default {
 
 <style scoped>
   .toolbar{
-    height: 65px;
-    background: linear-gradient(90deg, #3336, #3336, #3333);
+    background: linear-gradient(90deg, #402, #111c, #3333);
     color: #4fa;
     font-size: 20px;
     position: absolute;
     top: 52px;
     z-index: 100;
-    width: calc(100vw - 20px);
+    width: calc(100vw - 160px);
+    padding-right: 135px;
   }
   .toolbarSection{
     display: inline-block;
-    border: 6px solid #40fa;
+    border: 4px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;
@@ -117,5 +118,8 @@ export default {
     color: #888;
     background-color: #333d;
     border-color: #0008;
+  }
+  .uploadFromURL{
+    font-size: 20px;
   }
 </style>
