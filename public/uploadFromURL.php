@@ -20,7 +20,7 @@ error_reporting(E_ALL);
   $originalSlugs = [];
   $error         = '';
   $success       = false;
-  $maxFileSize   = 25000000;
+  $maxFileSize   = 100000000;
   $uploadDir     = 'uploads';
   $resourceDir   = 'resources';
   
@@ -59,6 +59,7 @@ error_reporting(E_ALL);
       }
       if($ok){
         $size=retrieve_remote_file_size($url);
+        $oSize = $size;
         if($size>100000000){
           $error = "too big";
         }elseif($size){
@@ -214,7 +215,9 @@ error_reporting(E_ALL);
             unlink("$resourceDir/$slug");
           }
         }else{
-          $error = "ERROR<br>one or more files were too large. $maxFileSize max";
+          $mfmb = floor($maxFileSize / 1024);
+          $mfmb = floor($oSize / 1024);
+          $error = "ERROR<br>one or more files were too large. $mfmb MB max<br><br>Your file was $mfmb2 MB!";
           unlink("$resourceDir/$slug");
         }
         $ct++;
