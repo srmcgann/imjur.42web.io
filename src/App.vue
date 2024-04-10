@@ -91,6 +91,7 @@ export default {
         password: '',
         maxResultsPerPage: 8,
         showUserSettings: null,
+        uploadFromURL: '',
         invalidLoginAttempt: false,
         displayLoginRequired: false,
         userSettingsVisible: false,

@@ -4,6 +4,10 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
+    <div class="username">
+      <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
+      {{state.username}}
+    </div>
     <div v-if="state.loggedIn" class="toolbarSection">
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
@@ -35,12 +39,9 @@
       >
         deselect all
       </button>
-      <div class="username">
-      <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
-      {{state.username}}
-      </div>
     </div>
     <div v-else class="toolbarSection">
+      <input type="text" v-model="state.uploadFromURL" placeholder="upload from a URL... it might work!" class="uploadFromURL">
     </div>
   </div>
 </template>
@@ -75,7 +76,7 @@ export default {
 
 <style scoped>
   .toolbar{
-    height: 38px;
+    height: 65px;
     background: linear-gradient(90deg, #3336, #3336, #3333);
     color: #4fa;
     font-size: 20px;
