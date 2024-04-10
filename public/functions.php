@@ -34,12 +34,16 @@
   }
  
 	function exists($url){
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_NOBODY, true);
-		curl_exec($ch);
-		$r = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch);
-		return $r==200?1:0;
+    if(strpos($url, '.') !== false){
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_NOBODY, true);
+      curl_exec($ch);
+      $r = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+      curl_close($ch);
+      return $r==200?1:0;
+    }else{
+      return false;
+    }
 	}
 
 	function retrieve_remote_file_size($url){
