@@ -45,7 +45,8 @@
         type="text"
         ref="uploadURL"
         style="width:360px;height: calc(100% - 5px);font-size: 20px; background: #000; color: #4f8; border: 1px solid red; width: 310px"
-        @keydown.stop.enter="uploadByURL()"
+        @keydown.stop
+        @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
         placeholder="upload from a URL... it might work!" class="uploadFromURL"
       >
