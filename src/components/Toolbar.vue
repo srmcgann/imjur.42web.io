@@ -4,7 +4,7 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
-    <div class="username">
+    <div class="username" v-if="state.loggedIn">
       <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
       {{state.username}}
     </div>
@@ -40,9 +40,7 @@
         deselect all
       </button>
     </div>
-    <div v-else class="toolbarSection">
-    </div>
-    <br><div class="toolbarSection" style="border-top: 4px solid #40fa">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa">
       <input
         type="text"
         style="width:360px;"
