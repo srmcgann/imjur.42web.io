@@ -110,6 +110,7 @@ export default {
       this.asset.style.transform = 'translate(-50%, -50%)'
       this.asset.oncanplay = () => {
         this.asset.play()
+        this.state.showLoading = false
       }
       this.$refs.slideshow.appendChild(this.asset)
       this.asset.src = this.state.URLbase + '/' + this.link.href
@@ -128,6 +129,7 @@ export default {
       this.asset.style.transform = 'translate(-50%, -50%)'
       this.asset.oncanplay = () => {
         this.asset.play()
+        this.state.showLoading = false
       }
       this.$refs.slideshow.appendChild(this.asset)
       this.asset.src = this.state.URLbase + '/' + this.link.href

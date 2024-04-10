@@ -890,6 +890,7 @@ export default {
         break
         case 27:
           this.state.showPreview = false
+          this.showLoading = false
           if(!this.state.uploadInProgress && !this.state.showLoginPrompt) this.state.showModal = false
           this.closePrompts()
         break
