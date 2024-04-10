@@ -110,11 +110,11 @@ error_reporting(E_ALL);
             case 'video/mp4': $continue = true; $suffix = 'mp4';  break;
           }
           if($continue){
-            if($type == 'video/mp4' && strpos($_FILES["uploads_$ct"]["name"], '.mp3') !== false){
+            if($type == 'video/mp4' && strpos($url, '.mp3') !== false){
               $type = 'audio/mp3';
               $suffix = 'mp3';
             }
-            if($type == 'video/webm' && strpos($_FILES["uploads_$ct"]["name"], '.mp3') !== false){
+            if($type == 'video/webm' && strpos($url, '.mp3') !== false){
               $type = 'audio/mp3';
               $suffix = 'mp3';
             }
