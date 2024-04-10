@@ -25,6 +25,7 @@ error_reporting(E_ALL);
   $resourceDir   = 'resources';
   
   
+  $data = json_decode(file_get_contents('php://input'));
   $url = mysqli_real_escape_string($link, $data->{'URL'});
   if($url){
     $bmd = mysqli_real_escape_string($link, $data->{'batchMetaData'});
