@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal" ref="modal" tabindex="1000">
     <button
       v-if="!this.state.uploadInProgress"
       @click="close()"
@@ -22,6 +22,7 @@ export default {
     }
   },
   mounted(){
+    this.$refs.modal.focus()
   }
 }
 </script>
