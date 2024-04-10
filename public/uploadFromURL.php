@@ -45,6 +45,7 @@ error_reporting(E_ALL);
         case "jpg": $ok=1; break;
         case "zip": $ok=1; break;
         case "jpeg": $ok=1; break;
+        case "mp3": $ok=1; break;
         case "png": $ok=1; break;
         case "mkv": $ok=1; break;
         case "wav": $ok=1; break;
