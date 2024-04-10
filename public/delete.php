@@ -19,7 +19,7 @@ error_reporting(E_ALL);
     $anon = true;
   }
   if($anon || mysqli_num_rows($res)){
-    if($anon) $row = mysqli_fetch_assoc($res);
+    if(!$anon) $row = mysqli_fetch_assoc($res);
     if($anon || $row['enabled'] || $row['admin']){
       $userID = $anon ? -1 : $row['id'];
       forEach($slugs as $slug){
