@@ -11,12 +11,17 @@ error_reporting(E_ALL);
   $success = false;
   $delFileCount = 0;
   $delRecCount = 0;
-  $sql = "SELECT * FROM imjurUsers WHERE name LIKE \"$userName\" AND passhash LIKE BINARY \"$passhash\";";
-  $res = mysqli_query($link, $sql);
-  if(mysqli_num_rows($res)){
-    $row = mysqli_fetch_assoc($res);
-    if($row['enabled'] || $row['admin']){
-      $userID = $row['id'];
+  $anon = false;
+  if($userName && $passhash){
+    $sql = "SELECT * FROM imjurUsers WHERE name LIKE \"$userName\" AND passhash LIKE BINARY \"$passhash\";";
+    $res = mysqli_query($link, $sql);
+  }else{
+    $anon = true;
+  }
+  if($anon || mysqli_num_rows($res)){
+    if($anon) $row = mysqli_fetch_assoc($res);
+    if($anon || $row['enabled'] || $row['admin']){
+      $userID = $anon ? -1 : $row['id'];
       forEach($slugs as $slug){
         $slug = mysqli_real_escape_string($link, $slug);
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
