@@ -40,7 +40,7 @@ error_reporting(E_ALL);
     if(exists($url)){
       $path_parts = pathinfo($url);
       $ext=strtolower(substr($path_parts['extension'],0,strpos($path_parts['extension'],"?")?strpos($path_parts['extension'],"?"):1000));
-      $name=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
+      $originalName=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
       switch($ext){
         case "jpg": $ok=1; break;
         case "zip": $ok=1; break;
@@ -62,16 +62,18 @@ error_reporting(E_ALL);
           $error = "too big";
         }elseif($size){
           //set_time_limit(0);
-          $fp = fopen ( $name, 'w');
+          //$fp = fopen ( $name, 'w');
           $ch = curl_init(str_replace(" ","%20",$url));
           //echo $name;
-          curl_setopt($ch, CURLOPT_FILE, $fp);
-          curl_setopt($ch, CURLOPT_RETURN_TRANSFER, false);
+          //curl_setopt($ch, CURLOPT_FILE, $fp);
+          curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
           curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
           curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 OPR/79.0.4143.73',);
-          curl_exec($ch); 
+          $file = curl_exec($ch); 
+          file_put_contents($name, $file);
           curl_close($ch);
-          fclose($fp);
+          //fclose($fp);
           //echo $name;
         }else{
           $error = "not found";
@@ -128,11 +130,11 @@ error_reporting(E_ALL);
             }
             
             $id = alphaToDec($slug);
-            $original_name = basename($_FILES["uploads_$ct"]["name"]);
+            //$originalName = basename($_FILES["uploads_$ct"]["name"]);
             $meta = mysqli_real_escape_string($link, json_encode([
               "file size" => $size,
               "sender IP" => $_SERVER['REMOTE_ADDR'],
-              "original name" => $original_name,
+              "original name" => $originalName,
             ]));
             
             $userID = -1;
@@ -150,7 +152,7 @@ error_reporting(E_ALL);
             
             
             $description = '';
-            $origin = mysqli_real_escape_string($link, "user file: $original_name");
+            $origin = mysqli_real_escape_string($link, "user file: $originalName");
             
   $sql = <<<SQL
   INSERT INTO imjurUploads (id, 

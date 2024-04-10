@@ -43,8 +43,9 @@
     <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 35px;margin-top: -1px; width: 360px">
       <input
         type="text"
+        autofocus
         ref="uploadURL"
-        style="width:360px;height: calc(100% - 5px);font-size: 20px; background: #000; color: #4f8; border: 1px solid red; width: 310px"
+        style="width:360px;height: calc(100% - 2px);font-size: 14px; background: #000; color: #4f8; width: 310px;"
         @keydown.stop
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
@@ -104,7 +105,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
-            this.$refs.main.style.zIndex = 0
+            //this.$refs.main.style.zIndex = 0
             this.state.modalContent = ''
             this.state.closeModal()
             if(this.state.loggedIn){
@@ -171,7 +172,7 @@ export default {
   }
   .goButton{
     min-width: unset;
-    width: 42px;
+    width: 46px;
     vertical-align: top;
     height: 36px;
   }
