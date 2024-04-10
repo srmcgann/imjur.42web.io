@@ -521,7 +521,6 @@ export default {
       return confirmed
     },
     deleteSingle(link){
-      this.deSelectAll()
       let lsel = []
       let ulsel = []
       this.state.links.map(v=>{
@@ -530,12 +529,14 @@ export default {
       this.state.userLinks.map(v=>{
         ulsel = [...ulsel, v.selected]
       })
+      this.deSelectAll()
       this.state.links.map(v=>{
         if(v.id == link.id) v.selected = true
       })
       this.state.userLinks.map(v=>{
         if(v.id == link.id) v.selected = true
       })
+      this.deleteSelected()
       lsel.map((v, i) => {
         this.state.links[i].selected = v
       })
