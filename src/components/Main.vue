@@ -55,6 +55,7 @@
         <span style="font-size: .7em;">(at a time)</span><br><br><br>
         <div style="font-size: .6em;">
         WARRANTY: none<br><br>
+        all anonymous uploads will be deleted after 24 hours!<br>
         this website is a work-in-progress.<br>
         your files will likely be deleted</div>
       </div>

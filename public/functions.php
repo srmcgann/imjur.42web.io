@@ -1,6 +1,30 @@
 <?php
   require_once('db.php');
   
+  //maintenance
+  $sql = "SELECT * FROM imjurUploads WHERE userID = -1 AND DATEDIFF(date, NOW()) > 1";
+  $res = mysqli_query($link, $sql);
+  for($i=0; $i<mysqli_num_rows($res); ++$i){
+    $row          = mysqli_fetch_assoc($res);
+    $originalSlug = $row['originalSlug'];
+    $slug         = $row['slug'];
+    $uploadID     = $row['id'];
+    $sql = "DELETE FROM imjurUploads WHERE id = $uploadID AND userID = -1";
+    mysqli_query($link, $sql);
+    $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$originalSlug\"";
+    $res2 = mysqli_query($link, $sql);
+    if(mysqli_num_rows($res2) == 0 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
+      forEach(glob("resources/$originalSlug.*") as $file){
+        unlink($file);
+      }
+    }
+    $sql = "DELETE FROM imjurVotes WHERE uploadID = $uploadID";
+    mysqli_query($link, $sql);
+    $sql = "DELETE FROM imjurComments WHERE uploadID = $uploadID";
+    mysqli_query($link, $sql);
+  }
+  //
+  
   function getServerTZOffset () {
     $tz = date_default_timezone_get();
     $t = new DateTimeZone("$tz");
