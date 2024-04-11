@@ -44,7 +44,7 @@
           <tr v-for="(user, idx) in state.adminData.users">
             <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.avatar"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="`<div style="background-image: url(${user.avatar}))" class="avatar"></div>`></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
@@ -131,12 +131,24 @@ export default {
   background: #2228;
 }
 .actualAsset{
-  width: 100px;
+  width: 100%;
   height: 40px;
+  font-size: 14px;
   text-align: center;
   border-radius: 5px;
   background: #40f;
   color: #fff;
   display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.avatar{
+  width; 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40px 40px;
+  background-color: #000;
+  border-radius: 5px;
 }
 </style>
