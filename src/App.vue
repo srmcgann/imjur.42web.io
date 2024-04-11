@@ -6,7 +6,7 @@
     <Footer       :state="state" />
     <UserSettings :state="state" v-if="state.userSettingsVisible" />
     <LoginPrompt  :state="state" v-if="state.showLoginPrompt"/>
-    <Admin        :state="state" />
+    <Admin        :state="state" v-if="state.loggedIn && state.isAdmin"/>
     <Modal
       :state="state"
       v-if="state.showModal"
