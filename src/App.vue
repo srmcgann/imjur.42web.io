@@ -78,6 +78,7 @@ export default {
         loggedinUserID: null,
         closeModal: null,
         closePreview: null,
+        showAssetPreview: [],
         closePrompts: null,
         defaultAvatar: 'avatarDefault.png',
         loggedInUser: {
@@ -345,7 +346,7 @@ export default {
       console.log('getAssetData.php, data; ', data)
         if(data[0]){
           this.state.adminData = JSON.parse(data[1])
-          console.log('adminData', this.state.adminData)
+          this.state.showAssetPreview = Array(this.state.adminData.slugs.length).fill(false)
         }
       })
     },

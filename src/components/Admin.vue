@@ -16,7 +16,7 @@
           <tr>
             <td class="td" v-html="state.size(state.adminData.footprint)"></td>
             <td class="td" v-html="state.adminData['number assets'].toLocaleString()"></td>
-            <td class="td" v-html="state.adminData['orphaned assets']"></td>
+            <td class="td" v-html="sizeof(state.adminData['orphaned assets'])"></td>
           </tr>
         </table>
       </div>
@@ -33,9 +33,12 @@
             <td class="td">
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></a></td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><video autoplay loop muted :src="state.adminData.hrefs[idx]" class="avatar"></video></a></td>
+            <td v-if="!state.showAssetPreview[idx]">
+              <button @click="state.showAssetPreview[idx]=true">show preview</button>
+            </td>
+            <td v-else-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
+            <td v-else-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></a></td>
+            <td v-else-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><video autoplay loop muted :src="state.adminData.hrefs[idx]" class="avatar"></video></a></td>
             <td class="td">
               <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
@@ -156,7 +159,7 @@ export default {
   border-radius: 5px;
   color: #fff;
   display: inline-block;
-  padding-left: 5px;
+  padding-left: 0;
   padding-right: 5px;
 }
 table{
