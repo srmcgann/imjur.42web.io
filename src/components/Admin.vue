@@ -15,7 +15,7 @@
             <th>size</th>
             <th>type</th>
           </tr>
-          <tr v=for="idx in sortedBySizes">
+          <tr v-for="idx in sortedBySizes">
             <td class="rightTD">
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
@@ -42,7 +42,7 @@
               <th>joined</th>
               <th>seen</th>
             </tr>
-            <tr v=for="(user, idx) in state.adminData.users">
+            <tr v-for="(user, idx) in state.adminData.users">
               <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
               <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
               <td class="rightTD"><div class="actualAsset" v-html="user.avatar"></div></td>
