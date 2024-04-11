@@ -31,29 +31,28 @@
 
       <div class="adminSection">
         Users<br>
-          <table>
-            <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>avatar</th>
-              <th>admin</th>
-              <th>enabled</th>
-              <th>assets</th>
-              <th>joined</th>
-              <th>seen</th>
-            </tr>
-            <tr v-for="(user, idx) in state.adminData.users">
-              <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.avatar"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.dateJoined"></div></td>
-              <td class="rightTD"><div class="actualAsset" v-html="user.dateSeen"></div></td>
-            </tr>
-          </table>
-        </div>
+        <table>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>avatar</th>
+            <th>admin</th>
+            <th>enabled</th>
+            <th>assets</th>
+            <th>joined</th>
+            <th>seen</th>
+          </tr>
+          <tr v-for="(user, idx) in state.adminData.users">
+            <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.avatar"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.dateJoined"></div></td>
+            <td class="rightTD"><div class="actualAsset" v-html="user.dateSeen"></div></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
