@@ -342,6 +342,7 @@ export default {
       })
       .then(res => res.json())
       .then(data => {
+      console.log('getAssetData.php, data; ', data)
         if(data[0]){
           this.state.adminData = data[1]
           console.log('adminData', this.state.adminData)
