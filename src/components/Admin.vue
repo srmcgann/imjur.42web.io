@@ -44,7 +44,7 @@
           <tr v-for="(user, idx) in state.adminData.users">
             <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="`<div style="background-image: url(${user.avatar}))" class="avatar"></div>`></div></td>
+            <td class="rightTD"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
             <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
