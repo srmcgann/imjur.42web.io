@@ -14,13 +14,13 @@
             <th>orphaned assets</th>
           </tr>
           <tr>
-            <td class="tdRight" v-html="state.adminData.footprint"></td>
+            <td class="td" v-html="state.adminData.footprint"></td>
           </tr>
           <tr>
-            <td class="tdRight" v-html="state.adminData['number assets']"></td>
+            <td class="td" v-html="state.adminData['number assets']"></td>
           </tr>
           <tr>
-            <td class="tdRight" v-html="state.adminData['number orphaned assets']"></td>
+            <td class="td" v-html="state.adminData['number orphaned assets']"></td>
           </tr>
         </table>
       </div>
@@ -34,16 +34,16 @@
             <th>type</th>
           </tr>
           <tr v-for="idx in sortedBySizes">
-            <td class="tdRight">
+            <td class="td">
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="tdRight"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="tdRight"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="tdRight"><video :src="state.adminData.hrefs[idx]" class="avatar"></video></td>
-            <td class="tdRight">
+            <td v-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></a></td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><video autoplay loop muted :src="state.adminData.hrefs[idx]" class="avatar"></video></a></td>
+            <td class="td">
               <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
-            <td class="tdRight">
+            <td class="td">
               <div class="actualAsset" v-html="state.adminData.fileTypes[idx]"></div>
             </td>
           </tr>
@@ -64,14 +64,14 @@
             <th>seen</th>
           </tr>
           <tr v-for="(user, idx) in state.adminData.users">
-            <td class="tdRight"><div class="actualAsset" v-html="user.id"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.name"></div></td>
-            <td class="tdRight"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.admin"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.enabled"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.slugs.length"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.dateJoined"></div></td>
-            <td class="tdRight"><div class="actualAsset" v-html="user.dateSeen"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.id"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.name"></div></td>
+            <td class="td"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.admin"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.enabled"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.slugs.length"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.dateJoined"></div></td>
+            <td class="td"><div class="actualAsset" v-html="user.dateSeen"></div></td>
           </tr>
         </table>
       </div>
@@ -166,9 +166,12 @@ export default {
 table{
   border-collapse: collapse;
 }
-td{
+.td{
   text-align: center;
   border: 1px solid #4f88;
+  padding-3px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 th{
   font-size: .75em;
