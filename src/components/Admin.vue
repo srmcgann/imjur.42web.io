@@ -10,13 +10,13 @@
         <table>
           <tr>
             <th>footprint</th>
-            <th>number assets</th>
-            <th>orphaned assets</th>
+            <th>tot. assets</th>
+            <th>orphans</th>
           </tr>
           <tr>
             <td class="td" v-html="state.size(state.adminData.footprint)"></td>
             <td class="td" v-html="state.adminData['number assets'].toLocaleString()"></td>
-            <td class="td" v-html="state.adminData['number orphaned assets']"></td>
+            <td class="td" v-html="state.adminData['orphaned assets']"></td>
           </tr>
         </table>
       </div>
