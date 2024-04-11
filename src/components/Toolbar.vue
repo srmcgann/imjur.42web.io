@@ -36,12 +36,12 @@
         deselect all
       </button>
     </div>
-    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 35px;margin-top: -1px; width: 360px">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 44px;margin-top: -1px; width: 365px">
       <input
         type="text"
         autofocus
         ref="uploadURL"
-        style="width:360px;height: calc(100% - 2px);font-size: 14px; background: #000; color: #4f8; width: 310px;"
+        class="URLinput"
         @keydown.stop
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
@@ -156,8 +156,8 @@ export default {
     position: absolute;
     top: 52px;
     z-index: 100;
-    width: calc(100vw - 160px);
-    padding-right: 135px;
+    width: calc(100vw);
+    padding-right: 20px;
   }
   .toolbarSection{
     display: inline-block;
@@ -188,5 +188,8 @@ export default {
     width: 46px;
     vertical-align: top;
     height: 36px;
+  }
+  URLinput{
+    width:365px;height: calc(100% - 2px);font-size: 14px; background: #000; color: #4f8; width: 310px;
   }
 </style>

@@ -110,6 +110,9 @@ export default {
     text-align: right;
     right: 5px;
     line-height: .8em;
+    margin-right: 10px;
+    vertical-align: top;
+    margin-top: 6px;
   }
   .loginButton{
     border-radius: 5px;
