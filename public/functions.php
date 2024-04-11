@@ -115,6 +115,7 @@
       case 'video/mkv': $suffix = 'mkv';  break;
       case 'video/mp4': $suffix = 'mp4';  break;
     }
+    return $suffix;
   }
   
   function checkUserNameAvailability($userName){
