@@ -20,6 +20,7 @@ error_reporting(E_ALL);
     $ct            = 0;
     $fileSlugs     = [];
     $fileSizes     = [];
+    $suffixes      = [];
     $fileTypes     = [];
     $hrefs         = [];
     $users         = [];
@@ -32,7 +33,9 @@ error_reporting(E_ALL);
         $fs =  filesize($file);
         $footprint += $fs;
         $fileSizes[] = $fs;
-        $fileTypes[] = mime_content_type($file);
+        $ft = mime_content_type($type);
+        $fileTypes[] = $ft;
+        $suffixes[] = getSuffix($ft);
         $ct++;
         $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$slug\"";
         $res = mysqli_query($link, $sql);
@@ -41,7 +44,7 @@ error_reporting(E_ALL);
           $hrefs[] = '';
         }else{
           $row = mysqli_fetch_assoc($res);
-          $hrefs[] = $row['href'];
+          $hrefs[] = $file;
         }
       }
     }
@@ -54,16 +57,19 @@ error_reporting(E_ALL);
       $res2 = mysqli_query($link, $sql);
       $row['slugs']         = [];
       $row['originalSlugs'] = [];
+      $row['suffixes']      = [];
       $row['fileSizes']     = [];
       $row['fileTypes']     = [];
       $row['hrefs']         = [];
       for($j=0; $j<mysqli_num_rows($res2); ++$j){
+        $fs2 = getSuffix($row2['filetype']);
         $row2 = mysqli_fetch_assoc($res2);
         $row['fileSizes'][]     = $fileSizes[array_search($row2['slug'], $slugs)];
-        $row['hrefs'][]         = $row2['href'];
+        $row['hrefs'][]         = "$resourceDir/{$row2['slug']}.$fs2";
         $row['slugs'][]         = $row2['slug'];
         $row['originalSlugs'][] = $row2['originalSlug'];
         $row['fileTypes'][]     = $row2['filetype'];
+        $row['suffixes'][]      = $fs2;
       }
       
       $users[] = $row;

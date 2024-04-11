@@ -43,22 +43,7 @@ error_reporting(E_ALL);
       'originalDate' => $row['originalDate'],
       'serverTZO' => getServerTZOffset(),
     ];
-    switch($row['filetype']){
-      case 'audio/wav': $suffix = 'wav';  break;
-      case 'audio/x-wav': $suffix = 'wav';  break;
-      case 'audio/mp3': $suffix = 'mp3';  break;
-      case 'audio/mpeg': $suffix = 'mp3';  break;
-
-      case 'image/jpg': $suffix = 'jpg'; break;
-      case 'image/jpeg': $suffix = 'jpeg';  break;
-      case 'image/png': $suffix = 'png';  break;
-      case 'image/gif': $suffix = 'gif';  break;
-      case 'image/webp': $suffix = 'webp';  break;
-
-      case 'video/webm': $suffix = 'webm';  break;
-      case 'video/mkv': $suffix = 'mkv';  break;
-      case 'video/mp4': $suffix = 'mp4';  break;
-    }
+    $suffix = getSuffix($row['filetype']);
     $originalSlug = $row['originalSlug'];
     $links[] = "$uploadDir/$slug.$suffix";
     $meta[] = $m;
