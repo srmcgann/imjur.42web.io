@@ -44,7 +44,7 @@ error_reporting(E_ALL);
       "number assets"   => $ct,
       "footprint"       => $footprint,
     ]));
-    
+    $success = true;
     echo json_encode([$success, $adminData]);
   }else{
     echo json_encode([$success]);
