@@ -21,6 +21,7 @@ error_reporting(E_ALL);
     $fileSlugs     = [];
     $fileSizes     = [];
     $fileTypes     = [];
+    $hrefs         = [];
     $users         = [];
     $orphans       = [];
     $footprint     = 0;
@@ -37,6 +38,10 @@ error_reporting(E_ALL);
         $res = mysqli_query($link, $sql);
         if(!mysqli_num_rows($res)){
           $orphans[] = $slug;
+          $hrefs[] = '';
+        }else{
+          $row = mysqli_fetch_assoc($res);
+          $hrefs[] = $row['href'];
         }
       }
     }
@@ -51,9 +56,11 @@ error_reporting(E_ALL);
       $row['originalSlugs'] = [];
       $row['fileSizes']     = [];
       $row['fileTypes']     = [];
+      $row['hrefs']         = [];
       for($j=0; $j<mysqli_num_rows($res2); ++$j){
         $row2 = mysqli_fetch_assoc($res2);
         $row['fileSizes'][]     = $fileSizes[array_search($row2['slug'], $slugs)];
+        $row['hrefs'][]         = $row2['href'];
         $row['slugs'][]         = $row2['slug'];
         $row['originalSlugs'][] = $row2['originalSlug'];
         $row['fileTypes'][]     = $row2['filetype'];
@@ -63,6 +70,7 @@ error_reporting(E_ALL);
     }
     $adminData = json_encode([
       "slugs"           => $slugs,
+      "hrefs"           => $hrefs,
       "fileSizes"       => $fileSizes,
       "fileTypes"       => $fileTypes,
       "users"           => $users,

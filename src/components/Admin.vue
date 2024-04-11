@@ -37,7 +37,7 @@
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
             <td class="rightTD">
-              <div class="actualAsset" v-html="state.adminData.fileSizes[idx]"></div>
+              <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
             <td class="rightTD">
               <div class="actualAsset" v-html="state.adminData.fileTypes[idx]"></div>
@@ -98,7 +98,7 @@ export default {
         let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
           return {idx, size: this.state.adminData.fileSizes[idx]}
         })
-        ids.sort((a,b)=>a.size-b.size)
+        ids.sort((a,b)=>b.size-a.size)
         return ids.map(v=>v.idx)
       }else{
         return []

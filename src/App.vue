@@ -722,9 +722,9 @@ export default {
     views(link){
       return 'views: ' + link.views.toLocaleString()
     },
-    size(link){
+    size(size){
       let MB_ = 1024**2
-      let tbytes = link.size
+      let tbytes = size
       let MB = tbytes / MB_ | 0
       let KB = ((tbytes / MB_) - MB) * MB_ / 1024 | 0
       let B = (((tbytes / MB_) - MB) * MB_ / 1024 - KB) * KB | 0
@@ -734,7 +734,7 @@ export default {
       } else if(KB) {
         ret = (Math.round(((tbytes / MB_) - MB) * MB_ / 1024*100)/100) + ' KB'
       } else {
-        ret = link.size.toLocaleString() + ' B'
+        ret = size.toLocaleString() + ' B'
       }
       return ret
     },
