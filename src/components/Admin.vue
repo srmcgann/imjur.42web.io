@@ -76,11 +76,15 @@ export default {
   },
   computed: {
     sortedBySizes(){
-      let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
-        return {idx, size: this.state.adminData.fileSizes[idx]}
-      })
-      ids.sort((a,b)=>a.size-b.size)
-      return ids.map(v=>v.idx)
+      if(this.state.adminData){
+        let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
+          return {idx, size: this.state.adminData.fileSizes[idx]}
+        })
+        ids.sort((a,b)=>a.size-b.size)
+        return ids.map(v=>v.idx)
+      }else{
+        return []
+      }
     }
   },
   methods: {

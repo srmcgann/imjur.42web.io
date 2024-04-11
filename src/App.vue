@@ -113,7 +113,7 @@ export default {
         showUploadModal: false,
         loadingAssets: true,
         checkLogin: null,
-        adminData: {},
+        adminData: null,
         search: {
           string: '',
           //audiocloudTracks: [],
