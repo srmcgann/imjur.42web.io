@@ -37,7 +37,6 @@ error_reporting(E_ALL);
       $row = mysqli_fetch_assoc($res);
       $users[] = $row;
     }
-    $numberAssets = mysqli_num_rows();
     $adminData = mysqli_real_escape_string($link, json_encode([
       "slugs"           => $slugs,
       "fileSizes"       => $fileSizes,
