@@ -61,7 +61,7 @@
         this website is a work-in-progress.<br>
         your files will likely be deleted anyway :D</div>
       </div>
-      <div v-if="state.links.length || state.userLinks.length" class="links">
+      <div v-if="!state.showPreview && !state.showAdmin && (state.links.length || state.userLinks.length)" class="links">
         <Link
           :state="state"
           v-for="link in state.links"
