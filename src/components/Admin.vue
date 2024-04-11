@@ -29,6 +29,7 @@
         <table>
           <tr>
             <th>slug</th>
+            <th>preview</th>
             <th>size</th>
             <th>type</th>
           </tr>
@@ -36,6 +37,9 @@
             <td class="tdRight">
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="tdRight"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="tdRight"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="tdRight"><video :src="state.adminData.hrefs[idx]" class="avatar"></div></td>
             <td class="tdRight">
               <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
@@ -165,6 +169,9 @@ table{
 td{
   text-align: center;
   border: 1px solid #4f88;
+}
+th{
+  font-size: .75em;
 }
 .avatar{
   width: 100px;
