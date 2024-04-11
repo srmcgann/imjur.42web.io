@@ -10,7 +10,7 @@
         <table>
           <tr>
             <th>footprint</th>
-            <th>tot. assets</th>
+            <th>res files</th>
             <th>orphans</th>
           </tr>
           <tr>
@@ -34,7 +34,7 @@
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
             <td v-if="!state.showAssetPreview[idx]">
-              <button @click="state.showAssetPreview[idx]=true">show preview</button>
+              <button @click="state.showAvatarPreview[idx]=true">show preview</button>
             </td>
             <td v-else-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
             <td v-else-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></a></td>
