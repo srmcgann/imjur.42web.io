@@ -6,7 +6,55 @@
     v-if="state.showAdmin"
   >
     <div class="modalInner">
-      
+
+      <div class="adminSection">
+        Actual Assets, on drive<br>
+        <table>
+          <tr>
+            <th>slug</th>
+            <th>size</th>
+            <th>type</th>
+          </tr>
+          <tr v=for="idx in sortedBySizes">
+            <td class="rightTD">
+              <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
+            </td>
+            <td class="rightTD">
+              <div class="actualAsset" v-html="state.adminData.fileSizes[idx]"></div>
+            </td>
+            <td class="rightTD">
+              <div class="actualAsset" v-html="state.adminData.fileTypes[idx]"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="adminSection">
+        Users<br>
+          <table>
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>avatar</th>
+              <th>admin</th>
+              <th>enabled</th>
+              <th>assets</th>
+              <th>joined</th>
+              <th>seen</th>
+            </tr>
+            <tr v=for="(user, idx) in state.adminData.users">
+              <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.avatar"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.dateJoined"></div></td>
+              <td class="rightTD"><div class="actualAsset" v-html="user.dateSeen"></div></td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -26,6 +74,15 @@ export default {
   },
   data(){
     return {
+    }
+  },
+  computed{
+    sortedBySizes(){
+      let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
+        return {idx, size: this.state.adminData.fileSizes[idx]}
+      })
+      ids.sort((a,b)=>a.size-b.size)
+      return ids.map(v=>v.idx)
     }
   },
   methods: {
@@ -64,5 +121,20 @@ export default {
 }
 .modalInner{
   background: #420c;
+}
+.adminSection{
+  box-sizing: border-box;
+  margin: 40px;
+  padding: 5px;
+  background: #2228;
+}
+.actualAsset{
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  background: #40f;
+  color: #fff;
+  display: inline-block;
 }
 </style>
