@@ -47,12 +47,12 @@ export default {
 }
 .adminButton{
   position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translate(-50%);
-  min-width: 150px;
+  bottom: 3px;
+  z-index: 10000000;
+  min-width: 240px;
   background: #f80;
   color: #000;
+  right: 30px;
   border: 2px solid #f00;
 }
 .modalInner{
