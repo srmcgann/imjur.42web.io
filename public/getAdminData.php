@@ -21,20 +21,40 @@ error_reporting(E_ALL);
     $fileSlugs     = [];
     $fileSizes     = [];
     $users         = [];
+    $orphans       = [];
     $footprint     = 0;
     forEach(glob("$resourceDir/*") as $file){
       if(strpos($file, 'index.php') === false){
-        $slugs[] = explode('.', explode('/', $file)[1])[0];
+        $slug = explode('.', explode('/', $file)[1])[0];
+        $slugs[] = $slug;
         $fs =  filesize($file);
         $footprint += $fs;
         $fileSizes[] = $fs;
         $ct++;
+        $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$slug\"";
+        $res = mysqli_query($link, $sql);
+        if(!mysqli_num_rows($res)){
+          $orphans[] = $slug;
+        }
       }
     }
     $sql = "SELECT * FROM imjurUsers";
     $res = mysqli_query($link, $sql);
     for($i=0; $i<mysqli_num_rows($res); ++$i){
       $row = mysqli_fetch_assoc($res);
+      $userID = $row['id'];
+      $sql = "SELECT * FROM imjurUploads WHERE userID = $userID";
+      $res2 = mysqli_query($link, $sql);
+      $row['slugs']         = [];
+      $row['originalSlugs'] = [];
+      $row['sizes']         = [];
+      for($j=0; $j<mysqli_num_rows($res2); ++$j){
+        $row2 = mysqli_fetch_assoc($res2);
+        $row['sizes'][]         = $row2['size'];
+        $row['slugs'][]         = $row2['slug'];
+        $row['originalSlugs'][] = $row2['originalSlug'];
+      }
+      
       $users[] = $row;
     }
     $adminData = json_encode([
@@ -43,6 +63,7 @@ error_reporting(E_ALL);
       "users"           => $users,
       "number assets"   => $ct,
       "footprint"       => $footprint,
+      "orphaned assets" => $orphans,
     ]);
     $success = true;
     echo json_encode([$success, $adminData]);
