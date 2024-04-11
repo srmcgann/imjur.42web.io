@@ -132,22 +132,27 @@ export default {
 }
 .actualAsset{
   width: 100%;
-  height: 40px;
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   border-radius: 5px;
-  background: #40f;
   color: #fff;
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;
 }
+table{
+  border-collapse: collapse;
+}
+td{
+  text-align: center;
+  border: 1px solid #4f88;
+}
 .avatar{
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 70px;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 40px 40px;
+  background-size: contain;
   background-color: #000;
   border-radius: 5px;
 }
