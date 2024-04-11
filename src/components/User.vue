@@ -4,7 +4,7 @@
       <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
       {{state.username}}
     </div>
-    <div v-if="!state.loggedIn">
+    <div v-if="!state.loggedIn" style="display: inline-block;">
       <button
         @click="login()"
         class="loginButton"
