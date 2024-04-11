@@ -143,7 +143,7 @@ export default {
   padding-right: 5px;
 }
 .avatar{
-  width; 40px;
+  width: 40px;
   height: 40px;
   background-repeat: no-repeat;
   background-position: center center;
