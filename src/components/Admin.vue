@@ -65,7 +65,10 @@
           <tr v-for="(user, idx) in state.adminData.users">
             <td class="td"><div class="actualAsset" v-html="user.id"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.name"></div></td>
-            <td class="td"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
+            <td v-if="!state.showAvatarPreview[idx]">
+              <button @click="state.showAssetPreview[idx]=true">show preview</button>
+            </td>
+            <td v-else class="td"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.admin"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.enabled"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.slugs.length"></div></td>
@@ -184,5 +187,6 @@ th{
   background-size: contain;
   background-color: #000;
   border-radius: 5px;
+  display: inline-block;
 }
 </style>

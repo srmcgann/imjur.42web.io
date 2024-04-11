@@ -79,6 +79,7 @@ export default {
         closeModal: null,
         closePreview: null,
         showAssetPreview: [],
+        showAvatarPreview: [],
         closePrompts: null,
         defaultAvatar: 'avatarDefault.png',
         loggedInUser: {
@@ -347,6 +348,7 @@ export default {
         if(data[0]){
           this.state.adminData = JSON.parse(data[1])
           this.state.showAssetPreview = Array(this.state.adminData.slugs.length).fill(false)
+          this.state.showAvatarPreview= Array(this.state.adminData.users.length).fill(false)
         }
       })
     },
