@@ -39,7 +39,7 @@
             </td>
             <td v-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="tdRight"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></td>
             <td v-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="tdRight"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></td>
-            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="tdRight"><video :src="state.adminData.hrefs[idx]" class="avatar"></div></td>
+            <td v-if="state.adminData.fileTypes[idx].indexOf('video')!=-1" class="tdRight"><video :src="state.adminData.hrefs[idx]" class="avatar"></video></td>
             <td class="tdRight">
               <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
