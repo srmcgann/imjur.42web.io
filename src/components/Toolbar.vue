@@ -183,8 +183,9 @@ export default {
   .goButton{
     min-width: unset;
     width: 46px;
-    vertical-align: top;
-    height: 36px;
+    height: 26px;
+    margin-left: 10px;
+    padding: 0;
   }
   URLinput{
     font-size: 20px;
