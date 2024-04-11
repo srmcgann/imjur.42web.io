@@ -6,6 +6,24 @@
     v-if="state.showAdmin"
   >
     <div class="modalInner" v-if="state.adminData">
+      <div class="adminSection" v-if="state.adminData?.footprint">
+        <table>
+          <tr>
+            <th>footprint</th>
+            <th>number assets</th>
+            <th>orphaned assets</th>
+          </tr>
+          <tr>
+            <td class="rightTD" v-html="state.adminData.footprint"></td>
+          </td>
+          <tr>
+            <td class="rightTD" v-html="state.adminData.['number assets']"></td>
+          </td>
+          <tr>
+            <td class="rightTD" v-html="state.adminData.['number orphaned assets']"></td>
+          </td>
+        </table>
+      </div>
       <div class="adminSection" v-if="state.adminData?.fileSizes">
         Actual Assets, on drive<br>
         <table>
@@ -123,6 +141,7 @@ export default {
 }
 .modalInner{
   background: #420c;
+  overflow: auto;
 }
 .adminSection{
   box-sizing: border-box;
@@ -146,6 +165,7 @@ table{
 td{
   text-align: center;
   border: 1px solid #4f88;
+  min-width: 150px;
 }
 .avatar{
   width: 100px;
