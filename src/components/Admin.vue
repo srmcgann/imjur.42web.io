@@ -6,7 +6,6 @@
     v-if="state.showAdmin"
   >
     <div class="modalInner">
-
       <div class="adminSection">
         Actual Assets, on drive<br>
         <table>
@@ -75,7 +74,7 @@ export default {
     return {
     }
   },
-  computed{
+  computed: {
     sortedBySizes(){
       let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
         return {idx, size: this.state.adminData.fileSizes[idx]}
