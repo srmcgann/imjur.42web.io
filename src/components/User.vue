@@ -42,7 +42,7 @@
           class="userbutton"
         >explore</button>
       </div>
-      <div class="loggedIn">
+      <div class="loggedIn" style="display: inline-block;">
         <div
           @click="showSettings()"
           class="avatar"
