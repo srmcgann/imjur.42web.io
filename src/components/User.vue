@@ -21,7 +21,7 @@
         register
       </button>
     </div>
-    <div v-else>
+    <div v-else style="display: inline-block;">
       <div class="userButtonContainer">
         <button @click="logout()"
           title="log out"
