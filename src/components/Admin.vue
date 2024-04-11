@@ -6,7 +6,7 @@
     v-if="state.showAdmin"
   >
     <div class="modalInner" v-if="state.adminData">
-      <div class="adminSection">
+      <div class="adminSection" v-if="state.adminData?.fileSizes">
         Actual Assets, on drive<br>
         <table>
           <tr>
@@ -28,7 +28,7 @@
         </table>
       </div>
 
-      <div class="adminSection">
+      <div class="adminSection" v-if="state.adminData?.users">
         Users<br>
         <table>
           <tr>
