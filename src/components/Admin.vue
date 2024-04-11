@@ -31,6 +31,7 @@ export default {
   methods: {
   },
   mounted(){
+    this.state.getAdminData()
   }
 }
 </script>

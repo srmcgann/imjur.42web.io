@@ -113,6 +113,7 @@ export default {
         showUploadModal: false,
         loadingAssets: true,
         checkLogin: null,
+        adminData: {},
         search: {
           string: '',
           //audiocloudTracks: [],
@@ -141,6 +142,7 @@ export default {
         loggedIn: false,
         loginPromptVisible: false,
         getPages: null,
+        getAdminData: null,
         addLink: null,
         previewPosition: 0,
         keys: Array(128).fill(false),
@@ -326,6 +328,25 @@ export default {
     closePrompts(){
       this.state.showLoginPrompt = false
       this.state.userSettingsVisible = false
+    },
+    getAdminData(){
+      let sendData = {
+        userName: this.state.loggedinUserName, passhash: this.state.passhash,
+      }
+      fetch(`${this.URLbase}/` + 'getAdminData.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data[0]){
+          this.state.adminData = data[1]
+          console.log('adminData', this.state.adminData)
+        }
+      })
     },
     closeModal(){
       if(this.state.modalQueue.length){
@@ -928,6 +949,7 @@ export default {
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
     this.state.deleteSingle = this.deleteSingle
+    this.state.getAdminData = this.getAdminData
     this.state.closePrompts = this.closePrompts
     this.state.fullFileName = this.fullFileName
     this.state.downloadLink = this.downloadLink
