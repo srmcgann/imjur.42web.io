@@ -37,17 +37,4 @@ export default {
     height: 100vh;
     font-size: 14px;
   }
-  .modalInner{
-    text-align: center;
-    padding: 25px;
-    width: 100%;
-    height: 100%;
-    font-size: 25px;
-    box-sizing: border-box;
-    word-break: break-all;
-    color: #fff;
-    text-shadow: 2px 2px 2px #000;
-    background: #001b;
-    word-break: auto-phrase;
-  }
 </style>

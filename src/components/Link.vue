@@ -17,7 +17,9 @@ todo
   ✔ upload progress bars
   ✔ link tool buttons on preview modal
   ✔ URL uploads
+  ✔ log & display asset origin
   ✔ anonymous uploads are autodeleted after 24hrs
+  * admin panel (auto-available to logged in admins)
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
@@ -25,8 +27,6 @@ todo
         * comments
         * votes
         
-  * admin panel
-  * log & display asset origin
   * search
   * social media metadata
   * gallery / trending

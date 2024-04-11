@@ -6,6 +6,7 @@
     <Footer       :state="state" />
     <UserSettings :state="state" v-if="state.userSettingsVisible" />
     <LoginPrompt  :state="state" v-if="state.showLoginPrompt"/>
+    <Admin        :state="state" />
     <Modal
       :state="state"
       v-if="state.showModal"
@@ -27,6 +28,7 @@
 <script>
 import Main from './components/Main'
 import Modal from './components/Modal'
+import Admin from './components/Admin'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Preview from './components/Preview'
@@ -40,6 +42,7 @@ export default {
   components: {
     Main,
     Modal,
+    Admin,
     Footer,
     Header,
     Toolbar,
@@ -92,6 +95,7 @@ export default {
         register: null,
         URLbase: null,
         logout: null,
+        showAdmin: false,
         regusername: '',
         username: '',
         userView: false,
@@ -974,6 +978,19 @@ a:visited{
 }
 button:focus{
   outline: none;
+}
+.modalInner{
+  text-align: center;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  box-sizing: border-box;
+  word-break: break-all;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  background: #001b;
+  word-break: auto-phrase;
 }
 button{
   font-size: 18px;
