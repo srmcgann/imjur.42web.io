@@ -14,12 +14,8 @@
             <th>orphaned assets</th>
           </tr>
           <tr>
-            <td class="td" v-html="state.adminData.footprint"></td>
-          </tr>
-          <tr>
-            <td class="td" v-html="state.adminData['number assets']"></td>
-          </tr>
-          <tr>
+            <td class="td" v-html="state.size(state.adminData.footprint)"></td>
+            <td class="td" v-html="state.adminData['number assets'].toLocaleString()"></td>
             <td class="td" v-html="state.adminData['number orphaned assets']"></td>
           </tr>
         </table>
@@ -165,6 +161,7 @@ export default {
 }
 table{
   border-collapse: collapse;
+  display: inline-block;
 }
 .td{
   text-align: center;
