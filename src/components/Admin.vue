@@ -5,7 +5,7 @@
     tabindex="1000"
     v-if="state.showAdmin"
   >
-    <div class="modalInner">
+    <div class="modalInner" v-if="state.adminData">
       <div class="adminSection">
         Actual Assets, on drive<br>
         <table>
