@@ -37,13 +37,13 @@ error_reporting(E_ALL);
       $row = mysqli_fetch_assoc($res);
       $users[] = $row;
     }
-    $adminData = mysqli_real_escape_string($link, json_encode([
+    $adminData = json_encode([
       "slugs"           => $slugs,
       "fileSizes"       => $fileSizes,
       "users"           => $users,
       "number assets"   => $ct,
       "footprint"       => $footprint,
-    ]));
+    ]);
     $success = true;
     echo json_encode([$success, $adminData]);
   }else{
