@@ -17,8 +17,9 @@
   <button
     class="adminButton"
     @click="state.showAdmin=!state.showAdmin"
-    v-html="state.showAdmin ? 'exit admin view' : 'show admin view'">
-  <button>
+    v-html="state.showAdmin ? 'exit admin view' : 'show admin view'"
+  >
+  </button>
 </template>
 
 <script>
