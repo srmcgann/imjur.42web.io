@@ -1051,6 +1051,19 @@ a{
   top: 14px;
   min-width: 120px;
 }
+.tdLeft{
+  text-align: right;
+  color: #f80;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+  max-width: 65px;
+}
+.tdRight{
+  text-align: left;
+  color: #0f8;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+}
 .copyLinkButton, .openButton, .downloadButton, .deleteSingleButton{
   display: inline-block;
   background-position: center center;

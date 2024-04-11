@@ -55,19 +55,6 @@ export default {
     background: #0003;
     width: 100%;
   }
-  .tdLeft{
-    text-align: right;
-    color: #f80;
-    border-bottom: 1px solid #4fc2;
-    padding: 3px;
-    max-width: 65px;
-  }
-  .tdRight{
-    text-align: left;
-    color: #0f8;
-    border-bottom: 1px solid #4fc2;
-    padding: 3px;
-  }
   .assetDataSlug{
     background-color: #08f;
     text-shadow: 1px 1px 2px #000;

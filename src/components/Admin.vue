@@ -14,13 +14,13 @@
             <th>orphaned assets</th>
           </tr>
           <tr>
-            <td class="rightTD" v-html="state.adminData.footprint"></td>
+            <td class="tdRight" v-html="state.adminData.footprint"></td>
           </tr>
           <tr>
-            <td class="rightTD" v-html="state.adminData['number assets']"></td>
+            <td class="tdRight" v-html="state.adminData['number assets']"></td>
           </tr>
           <tr>
-            <td class="rightTD" v-html="state.adminData['number orphaned assets']"></td>
+            <td class="tdRight" v-html="state.adminData['number orphaned assets']"></td>
           </tr>
         </table>
       </div>
@@ -33,13 +33,13 @@
             <th>type</th>
           </tr>
           <tr v-for="idx in sortedBySizes">
-            <td class="rightTD">
+            <td class="tdRight">
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
-            <td class="rightTD">
+            <td class="tdRight">
               <div class="actualAsset" v-html="state.size(state.adminData.fileSizes[idx])"></div>
             </td>
-            <td class="rightTD">
+            <td class="tdRight">
               <div class="actualAsset" v-html="state.adminData.fileTypes[idx]"></div>
             </td>
           </tr>
@@ -60,14 +60,14 @@
             <th>seen</th>
           </tr>
           <tr v-for="(user, idx) in state.adminData.users">
-            <td class="rightTD"><div class="actualAsset" v-html="user.id"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.name"></div></td>
-            <td class="rightTD"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.admin"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.enabled"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.slugs.length"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.dateJoined"></div></td>
-            <td class="rightTD"><div class="actualAsset" v-html="user.dateSeen"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.id"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.name"></div></td>
+            <td class="tdRight"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.admin"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.enabled"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.slugs.length"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.dateJoined"></div></td>
+            <td class="tdRight"><div class="actualAsset" v-html="user.dateSeen"></div></td>
           </tr>
         </table>
       </div>
@@ -165,7 +165,6 @@ table{
 td{
   text-align: center;
   border: 1px solid #4f88;
-  min-width: 150px;
 }
 .avatar{
   width: 100px;
