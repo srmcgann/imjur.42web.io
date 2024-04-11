@@ -28,7 +28,6 @@ export default {
   name: 'Admin',
   props: [ 'state' ],
   components: {
-    Pages
   },
   data(){
     return {
