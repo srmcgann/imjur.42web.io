@@ -63,8 +63,8 @@ error_reporting(E_ALL);
       $row['fileTypes']     = [];
       $row['hrefs']         = [];
       for($j=0; $j<mysqli_num_rows($res2); ++$j){
-        $fs2 = getSuffix($row2['filetype']);
         $row2 = mysqli_fetch_assoc($res2);
+        $fs2 = getSuffix($row2['filetype']);
         $row['fileSizes'][]     = $fileSizes[array_search($row2['slug'], $slugs)];
         $row['hrefs'][]         = "$resourceDir/{$row2['slug']}.$fs2";
         $row['slugs'][]         = $row2['slug'];
