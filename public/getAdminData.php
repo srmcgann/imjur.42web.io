@@ -20,6 +20,7 @@ error_reporting(E_ALL);
     $ct            = 0;
     $fileSlugs     = [];
     $fileSizes     = [];
+    $fileTypes     = [];
     $users         = [];
     $orphans       = [];
     $footprint     = 0;
@@ -30,6 +31,7 @@ error_reporting(E_ALL);
         $fs =  filesize($file);
         $footprint += $fs;
         $fileSizes[] = $fs;
+        $fileTypes[] = mime_content_type($file);
         $ct++;
         $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$slug\"";
         $res = mysqli_query($link, $sql);
@@ -62,6 +64,7 @@ error_reporting(E_ALL);
     $adminData = json_encode([
       "slugs"           => $slugs,
       "fileSizes"       => $fileSizes,
+      "fileTypes"       => $fileTypes,
       "users"           => $users,
       "number assets"   => $ct,
       "footprint"       => $footprint,
