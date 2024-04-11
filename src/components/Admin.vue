@@ -16,7 +16,7 @@
           <tr>
             <td class="td" v-html="state.size(state.adminData.footprint)"></td>
             <td class="td" v-html="state.adminData['number assets'].toLocaleString()"></td>
-            <td class="td" v-html="sizeof(state.adminData['orphaned assets'])"></td>
+            <td class="td" v-html="state.adminData['orphaned assets'].length"></td>
           </tr>
         </table>
       </div>
