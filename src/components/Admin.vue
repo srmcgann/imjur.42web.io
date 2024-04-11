@@ -15,13 +15,13 @@
           </tr>
           <tr>
             <td class="rightTD" v-html="state.adminData.footprint"></td>
-          </td>
+          </tr>
           <tr>
             <td class="rightTD" v-html="state.adminData.['number assets']"></td>
-          </td>
+          </tr>
           <tr>
             <td class="rightTD" v-html="state.adminData.['number orphaned assets']"></td>
-          </td>
+          </tr>
         </table>
       </div>
       <div class="adminSection" v-if="state.adminData?.fileSizes">
