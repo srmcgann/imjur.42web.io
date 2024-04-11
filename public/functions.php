@@ -99,6 +99,7 @@
   }
   
   function getSuffix($fileType){
+    $suffixe = "";
     switch($fileType){
       case 'audio/wav': $suffix = 'wav';  break;
       case 'audio/x-wav': $suffix = 'wav';  break;
