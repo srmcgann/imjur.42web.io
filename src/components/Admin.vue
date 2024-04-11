@@ -34,7 +34,7 @@
               <div class="actualAsset" v-html="state.adminData.slugs[idx]"></div>
             </td>
             <td v-if="!state.showAssetPreview[idx]">
-              <button @click="state.showAvatarPreview[idx]=true">show preview</button>
+              <button @click="state.showAvatarPreview[idx]=true">show</button>
             </td>
             <td v-else-if="state.adminData.fileTypes[idx].indexOf('audio')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
             <td v-else-if="state.adminData.fileTypes[idx].indexOf('image')!=-1" class="td"><a :href="state.adminData.hrefs[idx]" target="_blank"><div :style="`background-image: url(${state.adminData.hrefs[idx]});`" class="avatar"></div></a></td>
@@ -66,7 +66,7 @@
             <td class="td"><div class="actualAsset" v-html="user.id"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.name"></div></td>
             <td v-if="!state.showAvatarPreview[idx]">
-              <button @click="state.showAssetPreview[idx]=true">show preview</button>
+              <button @click="state.showAssetPreview[idx]=true">show</button>
             </td>
             <td v-else class="td"><div :style="`background-image: url(${user.avatar});`" class="avatar"></div></td>
             <td class="td"><div class="actualAsset" v-html="user.admin"></div></td>
