@@ -11,7 +11,7 @@
   </div>
   <button
     class="adminButton"
-    @click="state.showAdmin=!state.showAdmin"
+    @click="toggleShowAdmin"
     v-html="state.showAdmin ? 'exit admin view' : 'show admin view'"
   >
   </button>
@@ -29,9 +29,15 @@ export default {
     }
   },
   methods: {
+    toggleShowAdmin(){
+      this.state.showAdmin = !this.state.showAdmin
+      if(this.state.showAdmin) this.launch()
+    },
+    launch(){
+      this.state.getAdminData()
+    }
   },
   mounted(){
-    this.state.getAdminData()
   }
 }
 </script>
