@@ -47,7 +47,7 @@ error_reporting(E_ALL);
       $res2 = mysqli_query($link, $sql);
       $row['slugs']         = [];
       $row['originalSlugs'] = [];
-      $row['sizes']         = [];
+      $row['fileSizes']     = [];
       for($j=0; $j<mysqli_num_rows($res2); ++$j){
         $row2 = mysqli_fetch_assoc($res2);
         $row['fileSizes'][]     = $fileSizes[array_search($row2['slug'], $slugs)];
