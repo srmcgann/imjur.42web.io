@@ -19,12 +19,12 @@ todo
   ✔ URL uploads
   ✔ log & display asset origin
   ✔ anonymous uploads are autodeleted after 24hrs
-  * admin panel (auto-available to logged in admins)
+  ✔ admin panel (auto-available to logged in admins)
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
-        * collections
         * comments
+        * collections
         * votes
         
   * search

@@ -1,5 +1,9 @@
 <template>
   <div class="user" :class="{'loggedInWidth':state.loggedIn, 'notLoggedInWidth': !state.loggedIn}">
+    <div class="username" v-if="state.loggedIn">
+      <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
+      {{state.username}}
+    </div>
     <div v-if="!state.loggedIn">
       <button
         @click="login()"
@@ -93,12 +97,19 @@ export default {
     right: 0;
     position: fixed;
     text-align: center;
+    display: inline-block;
   }
   .loggedInWidth{
     min-width: 350px;
   }
   .notLoggedInWidth{
     min-width: 105px;
+  }
+  .username{
+    display: inline-block;
+    text-align: right;
+    right: 5px;
+    line-height: .8em;
   }
   .loginButton{
     border-radius: 5px;

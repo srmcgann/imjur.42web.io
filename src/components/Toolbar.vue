@@ -4,10 +4,6 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
-    <div class="username" v-if="state.loggedIn">
-      <span style="font-size: .75em;">welcome,&nbsp;&nbsp;&nbsp;</span><br>
-      {{state.username}}
-    </div>
     <div v-if="state.loggedIn" class="toolbarSection">
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
@@ -173,13 +169,6 @@ export default {
     padding: 2px;
     padding-bottom: 0;
     border-radius: 5px;
-  }
-  .username{
-    display: inline-block;
-    position: absolute;
-    text-align: right;
-    right: 5px;
-    line-height: .8em;
   }
   .deleteButton{
     color: #f88;

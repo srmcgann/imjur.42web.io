@@ -169,7 +169,7 @@ table{
   border-collapse: collapse;
   display: inline-block;
 }
-.td{
+td{
   text-align: center;
   border: 1px solid #4f88;
   padding: 3px;
