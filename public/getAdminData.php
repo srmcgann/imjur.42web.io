@@ -33,7 +33,7 @@ error_reporting(E_ALL);
         $fs =  filesize($file);
         $footprint += $fs;
         $fileSizes[] = $fs;
-        $ft = mime_content_type($type);
+        $ft = mime_content_type($file);
         $fileTypes[] = $ft;
         $suffixes[] = getSuffix($ft);
         $ct++;
