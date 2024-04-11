@@ -25,7 +25,7 @@ error_reporting(E_ALL);
     forEach(glob("$resourceDir/*") as $file){
       if(strpos($file, 'index.php') === false){
         $slugs[] = explode('.', explode('/', $file)[1])[0];
-        $fs =  filesize();
+        $fs =  filesize($file);
         $footprint += $fs;
         $fileSizes[] = $fs;
         $ct++;
