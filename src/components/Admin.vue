@@ -169,7 +169,7 @@ table{
 .td{
   text-align: center;
   border: 1px solid #4f88;
-  padding-3px;
+  padding: 3px;
   padding-left: 5px;
   padding-right: 5px;
 }
