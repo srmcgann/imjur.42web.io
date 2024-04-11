@@ -45,7 +45,7 @@
         @keydown.stop
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
-        placeholder="OR, upload from a URL... it might work!" class="uploadFromURL"
+        placeholder="OR, upload from a URL... it might work!"
       >
       <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     </div>
@@ -180,9 +180,6 @@ export default {
     background-color: #333d;
     border-color: #0008;
   }
-  .uploadFromURL{
-    font-size: 20px;
-  }
   .goButton{
     min-width: unset;
     width: 46px;
@@ -190,6 +187,13 @@ export default {
     height: 36px;
   }
   URLinput{
-    width:365px;height: calc(100% - 2px);font-size: 14px; background: #000; color: #4f8; width: 310px;
+    font-size: 20px;
+    width:365px;
+    height: calc(100% - 2px);
+    font-size: 14px;
+    background: #000;
+    color: #4f8;
+    width: 310px;
+    display: inline-block;
   }
 </style>
