@@ -17,10 +17,10 @@
             <td class="rightTD" v-html="state.adminData.footprint"></td>
           </tr>
           <tr>
-            <td class="rightTD" v-html="state.adminData.['number assets']"></td>
+            <td class="rightTD" v-html="numAssets"></td>
           </tr>
           <tr>
-            <td class="rightTD" v-html="state.adminData.['number orphaned assets']"></td>
+            <td class="rightTD" v-html="orphans"></td>
           </tr>
         </table>
       </div>
@@ -93,6 +93,12 @@ export default {
     }
   },
   computed: {
+    numAssets(){
+      return state.adminData.['number assets']
+    },
+    orphpans(){
+      return state.adminData.['orphaned assets']
+    },
     sortedBySizes(){
       if(this.state.adminData){
         let ids = Array(this.state.adminData.fileSizes.length).fill().map((v, idx) => {
