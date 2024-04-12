@@ -1058,8 +1058,13 @@ a{
   background-color: #0000;
   background-size: 100% 100%;
 }
-.visibilityButton{
+.notPrivate{
   background-image: url(./assets/visible.png);
+  background-color: #0000;
+  background-size: 100% 100%;
+}
+.private{
+  background-image: url(./assets/nonvisible.png);
   background-color: #0000;
   background-size: 100% 100%;
 }

@@ -72,7 +72,7 @@ todo
       <div
         class="visibilityButton"
         @click.prevent.stop="state.togglePrivate(link)"
-        :style="`background-image: url(../assets/${link.private?'non':''}visible.png)`"
+        :class="{'private': link.private, 'notPrivate': !link.private}"
         :title="`toggle visibility. (currently: ${link.private?'NOT':''} featured in public galleries)`"
       ></div>
     </div>
