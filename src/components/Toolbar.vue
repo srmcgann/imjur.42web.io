@@ -189,7 +189,7 @@ export default {
     position: absolute;
     padding: 0;
   }
-  URLinput{
+  .URLinput{
     font-size: 16px;
     margin-top: 5px;
     margin-left: 3px;
