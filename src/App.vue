@@ -1083,26 +1083,32 @@ a{
   background-image: url(./assets/link.png);
   background-color: #f06;
 }
+.downloadButton, .deleteSingleButton, .notPrivate, .private, .notPrivateDisabled, .privateDisabled{
+  background-color: #0000;
+}
+.deleteSingleButton, .notPrivate, .private, .notPrivateDisabled, .privateDisabled{
+  background-color: #0000;
+  background-size: 100% 100%;
+}
 .downloadButton{
   background-size: contain;
   background-image: url(./assets/download.png);
-  background-color: #0000;
   background-size: 52px 37px;
 }
 .deleteSingleButton{
   background-image: url(./assets/trash.png);
-  background-color: #0000;
-  background-size: 100% 100%;
 }
 .notPrivate{
   background-image: url(./assets/visible.png);
-  background-color: #0000;
-  background-size: 100% 100%;
 }
 .private{
   background-image: url(./assets/nonvisible.png);
-  background-color: #0000;
-  background-size: 100% 100%;
+}
+.notPrivateDisabled{
+  background-image: url(./assets/visible_disabled.png);
+}
+.privateDisabled{
+  background-image: url(./assets/nonvisible_disabled.png);
 }
 .linkButtons{
   margin-top: 0px;

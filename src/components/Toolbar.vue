@@ -7,18 +7,24 @@
     <div v-if="state.loggedIn" class="toolbarSection">
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
-        class="toolbarButtons visibilityButton private"
+        class="toolbarButtons visibilityButton"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
-        :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
-        :title="`set visibility to HIDDEN (from public galleries)`"
+        :class="{'deleteButton' : someSelected,
+                 'disabledButton' : !someSelected,
+                 'private': someSelected,
+                 'privateDisabled': !someSelected}"
+        :title="`set visibility to HIDDEN (from public galleries), for all selected`"
       ></button>
       <button
-        class="toolbarButtons visibilityButton notPrivate"
+        class="toolbarButtons visibilityButton"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
-        :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
-        :title="`set visibility to VISIBLE (from public galleries)`"
+        :class="{'deleteButton' : someSelected,
+                 'disabledButton' : !someSelected,
+                 'notPrivate': someSelected,
+                 'notPrivateDisabled': !someSelected}"
+        :title="`set visibility to VISIBLE (from public galleries), for all selected`"
       ></button>
       <button
         @click="state.deleteSelected()"
@@ -183,9 +189,12 @@ export default {
   .toolbarButtons{
     margin: 5px;
     min-width: 100px;
+    height: 45px;
     padding: 2px;
     padding-bottom: 0;
     border-radius: 5px;
+    vertical-align: middle;
+    background-size: 45px;
   }
   .deleteButton{
     color: #f88;
