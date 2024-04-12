@@ -10,7 +10,7 @@
         <table>
           <tr>
             <th>footprint</th>
-            <th>res files</th>
+            <th>files</th>
             <th>orphans</th>
           </tr>
           <tr>
@@ -179,6 +179,8 @@ td{
 }
 th{
   font-size: .75em;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .avatar{
   width: 100px;
