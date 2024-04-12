@@ -8,6 +8,12 @@
       <div class="inputs fade" ref="inputs">
         <div class="linkButtons">
           <div
+            class="visibilityButton"
+            @click.prevent.stop="state.setLinkProperty(link, 'private', link.private?0:1)"
+            :class="{'private': link.private, 'notPrivate': !link.private}"
+            :title="`toggle visibility. (currently: ${link.private?'NOT':''} featured in public galleries)`"
+          ></div>
+          <div
             class="copyLinkButton"
             @click.prevent.stop="state.copyLink(link.href)"
             title="copy link to clipboard"
