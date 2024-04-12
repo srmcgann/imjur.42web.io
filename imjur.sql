@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `imjurUploads` (
   `slug` varchar(64) NOT NULL,
   `meta` text NOT NULL,
   `hash` varchar(32) NOT NULL,
+  `private` BOOLEAN NOT NULL DEFAULT FALSE,
   `filetype` tinytext NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `origin` mediumtext NOT NULL,
