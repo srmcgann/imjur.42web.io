@@ -14,7 +14,7 @@
         :title="`set visibility to HIDDEN (from public galleries)`"
       ></button>
       <button
-        class="visibilityButton notPrivate"
+        class="toolbarButtons visibilityButton notPrivate"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
         :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
