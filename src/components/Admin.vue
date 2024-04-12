@@ -80,6 +80,7 @@
     </div>
   </div>
   <button
+    v-if="!state.showPreview && !state.showModal"
     class="adminButton"
     @click="toggleShowAdmin"
     v-html="state.showAdmin ? 'exit admin view' : 'show admin view'"
