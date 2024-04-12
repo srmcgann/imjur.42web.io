@@ -97,6 +97,7 @@ export default {
         register: null,
         URLbase: null,
         logout: null,
+        onkeydown: null,
         showAdmin: false,
         regusername: '',
         username: '',
@@ -629,46 +630,14 @@ export default {
         }
       })
     },
+    isNumber(val){
+      return val>-1e50&&+val<1e50
+    },
     getMode(){
       let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
       console.log(vars)
       if(vars.length>0){
-        switch(vars[0]){
-          case 'd':
-            this.state.mode = 'single'
-            //this.state.curPage = (+vars[1])-1
-            //this.state.viewDemo = this.alphaToDec(vars[1])
-            //this.state.rawDemoID = vars[1]
-            //this.$nextTick(()=>this.loadDemo(this.alphaToDec(vars[1])))
-            //if(vars[2]){
-            //  this.state.search.string = decodeURIComponent(vars[2])
-           //}
-            break
-          case 'u':
-            /*if(!vars[1]) window.location.href = window.location.origin
-            this.state.viewAuthor = decodeURIComponent(vars[1]);
-            this.state.user = {name: decodeURIComponent(vars[1])}
-            this.state.mode = 'user'
-            if(vars[2]){
-              this.state.curUserPage = (+vars[2])-1
-              if(vars[3]){
-                this.state.search.string = decodeURIComponent(vars[3])
-                search = '/' + vars[3]
-                history.pushState(null,null,this.URLbase + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
-                this.beginSearch()
-              }else{
-                if(!this.state.curUserPage || this.state.curUserPage < 0 || this.state.curUserPage > 1e6) this.state.curUserPage = 0
-                history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
-                this.getPages()
-              }
-            } else {
-              this.state.curUserPage = 0
-              history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
-              this.getPages()
-            }*/
-          break
-          default:
-            this.state.mode = 'default'
+        if(typeof
             let search = ''
             let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
             if(vars[l]){
@@ -871,7 +840,7 @@ export default {
       this.state.keys[18] = false
     }
     
-    window.onkeydown = e =>{
+    this.state.onkeydown = window.onkeydown = e =>{
       this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
       if(this.state.keys[18]){
@@ -941,6 +910,7 @@ export default {
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
     this.state.firstSeen = this.firstSeen
+    this.state.onkeydown = this.onkeydown
     this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll

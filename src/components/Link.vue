@@ -1,8 +1,7 @@
 <!--
 todo
 
-  * upload targets @ not-logged-in
-
+  ✔ upload targets @ not-logged-in
   ✔ dropable files
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources
@@ -23,8 +22,8 @@ todo
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
+        * collections / share-ability
         * comments
-        * collections
         * votes
         
   * search

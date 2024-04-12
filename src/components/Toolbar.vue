@@ -36,13 +36,13 @@
         deselect all
       </button>
     </div>
-    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 44px;margin-top: -1px; width: 365px">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 44px;margin-top: -1px; width: 313px">
       <input
         type="text"
         autofocus
         ref="uploadURL"
         class="URLinput"
-        @keydown.stop
+        @keydown.stop="keydown($event)"
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
         placeholder="OR, upload from a URL... it might work!"
@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    keydown(e){
+      if(e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
+    },
     uploadByURL(){
       let URL = this.state.uploadFromURL
       if(!URL) {
@@ -198,7 +201,7 @@ export default {
     background: #021;
     border: 1px solid #0f8a;
     color: #4f8;
-    width: 310px;
+    width: 255px;
     display: inline-block;
   }
 </style>
