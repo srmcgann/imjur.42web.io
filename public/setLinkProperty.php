@@ -15,7 +15,7 @@
     if($row['enabled']){
       $sql = "SELECT * FROM imjurUploads WHERE id = $linkID AND userID = $userID";
       $res = mysqli_query($link, $sql);
-      if(mysqli_num_rows($link)){
+      if(mysqli_num_rows($res)){
         $success = true;
         $sql = "UPDATE imjurUploads SET `$property` = \"$value\" WHERE id = $linkID";
         mysqli_query($link, $sql);
