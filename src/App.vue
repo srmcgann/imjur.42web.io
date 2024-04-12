@@ -95,6 +95,7 @@ export default {
         fullFileName: null,
         login: null,
         register: null,
+        isNumber: null,
         togglePrivate: null,
         URLbase: null,
         logout: null,
@@ -643,12 +644,16 @@ export default {
           this.getPages()
           if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
         }else{
-        
+          this.state.mode = 'non-default'
         }
+      } else{
+        this.state.mode = 'default'
+        this.getPages()
       }
+      console.log('mode', this.state.mode)
     },
     togglePrivate(link){
-    
+      this.link.private = !this.link.private
     },
     logout(){
       history.pushState(null,null,this.URLbase)
@@ -893,6 +898,7 @@ export default {
     this.state.openLink = this.openLink
     this.state.register = this.register
     this.state.lastPage = this.lastPage
+    this.state.isNumber = this.isNumber
     this.state.getPages = this.getPages
     this.state.firstSeen = this.firstSeen
     this.state.firstPage = this.firstPage
@@ -1069,7 +1075,7 @@ a{
   background-size: 100% 100%;
 }
 .linkButtons{
-  margin-top: 26px;
+  margin-top: 10px;
   display: inline-block;
   width: 90px;
   text-align: center;
