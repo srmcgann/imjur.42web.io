@@ -18,6 +18,7 @@ error_reporting(E_ALL);
   $ids           = [];
   $origins       = [];
   $originalSlugs = [];
+  $visibilities  = [];
   $error         = '';
   $success       = false;
   $maxFileSize   = 100000000;
@@ -200,6 +201,7 @@ error_reporting(E_ALL);
             $types[]         = $type;
             $slugs[]         = $slug;
             $dates[]         = $date;
+            $$visibilities[] = 1;
             $originalDates[] = $originalDate;
             $ids[]           = $id;
             $views[]         = 0;
@@ -227,5 +229,5 @@ error_reporting(E_ALL);
     }
   }    
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates, $visibilities]);
 ?>

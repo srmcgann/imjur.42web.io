@@ -36,6 +36,7 @@ error_reporting(E_ALL);
       'userID' => $row['userID'],
       'origin' => $row['origin'],
       'upvotes' => $row['upvotes'],
+      'private' => $row['private'],
       'downvotes' => $row['downvotes'],
       'views' => $row['views'],
       'description' => $row['description'],

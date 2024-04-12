@@ -95,6 +95,7 @@ export default {
         fullFileName: null,
         login: null,
         register: null,
+        togglePrivate: null,
         URLbase: null,
         logout: null,
         onkeydown: null,
@@ -470,6 +471,7 @@ export default {
                 originalDate: data[2][i].originalDate,
                 origin: data[2][i].origin,
                 date: data[2][i].date,
+                private: !!(+data[2][i].private),
                 linkType: 'userLink',
                 serverTZO: data[2][i].serverTZO,
                 views: data[2][i].views
@@ -635,36 +637,18 @@ export default {
     },
     getMode(){
       let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
-      console.log(vars)
       if(vars.length>0){
-        if(typeof
-            let search = ''
-            let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
-            if(vars[l]){
-              this.state.curPage = (+vars[l])-1
-              if(''+this.state.curPage == 'NaN') this.state.curPage = 0
-              if(vars[l+1]){
-                this.state.search.string = decodeURIComponent(vars[l+1])
-                search = '/' + vars[l+1]
-                //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
-                //this.beginSearch()
-                this.state.curPage = 0
-                this.state.jumpToPage(0)
-              }else{
-                history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
-                if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
-                this.fetchUserLinks(this.state.loggedinUserID)
-              }
-            }else{
-              if(location.href !== this.URLbase + '/') location.href = this.URLbase
-            }
-          break
+        if(this.state.isNumber(vars)){
+          this.state.mode = 'default'
+          this.getPages()
+          if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
+        }else{
+        
         }
-      }else{
-        this.state.mode = 'default'
-        this.getPages()
-        if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
       }
+    },
+    togglePrivate(link){
+    
     },
     logout(){
       history.pushState(null,null,this.URLbase)
@@ -710,7 +694,7 @@ export default {
       }
       return ret
     },
-    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id, date, originalDate){
+    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id, date, originalDate, visibility){
       let obj = {
         size,
         type,
@@ -726,7 +710,8 @@ export default {
         serverTZO,
         views,
         date,
-        originalDate
+        originalDate,
+        visibility
       }
       this.state.links.push(obj)
     },
@@ -928,6 +913,7 @@ export default {
     this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
     this.state.multipleLinks = this.multipleLinks
+    this.state.togglePrivate = this.togglePrivate
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
     this.state.deleteSelected = this.deleteSelected
@@ -1039,7 +1025,7 @@ a{
   border-bottom: 1px solid #4fc2;
   padding: 3px;
 }
-.copyLinkButton, .openButton, .downloadButton, .deleteSingleButton{
+.copyLinkButton, .openButton, .downloadButton, .deleteSingleButton, .visibilityButton{
   display: inline-block;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1069,6 +1055,11 @@ a{
 }
 .deleteSingleButton{
   background-image: url(./assets/trash.png);
+  background-color: #0000;
+  background-size: 100% 100%;
+}
+.visibilityButton{
+  background-image: url(./assets/visibility.png);
   background-color: #0000;
   background-size: 100% 100%;
 }
