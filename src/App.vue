@@ -96,7 +96,7 @@ export default {
         login: null,
         register: null,
         isNumber: null,
-        togglePrivate: null,
+        setLinkProperty: null,
         URLbase: null,
         logout: null,
         onkeydown: null,
@@ -652,8 +652,28 @@ export default {
       }
       console.log('mode', this.state.mode)
     },
-    togglePrivate(link){
-      link.private = !link.private
+    setLinkProperty(link, property, value){
+      link[property] = value
+      let sendData = {
+        userName: this.state.loggedinUserName,
+        passhash: this.state.passhash,
+        linkId: link.id,
+        property,
+        value: link[property],
+      }
+      fetch(`${this.URLbase}/` + 'setLinkProperty.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      }).then(res => res.json()).then(data=>{
+        if(data[0]){
+          
+        }else{
+          alert('there was a problem setting the property! d\'oh!')
+        }
+      })
     },
     logout(){
       history.pushState(null,null,this.URLbase)
@@ -919,10 +939,10 @@ export default {
     this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
     this.state.multipleLinks = this.multipleLinks
-    this.state.togglePrivate = this.togglePrivate
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
     this.state.deleteSelected = this.deleteSelected
+    this.state.setLinkProperty = this.setLinkProperty
     this.state.showUserSettings = this.showUserSettings
     this.checkLogin()
   }
