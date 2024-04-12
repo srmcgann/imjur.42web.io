@@ -7,6 +7,20 @@
     <div v-if="state.loggedIn" class="toolbarSection">
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
+        class="toolbarButtons visibilityButton private"
+        :disabled="!someSelected"
+        @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
+        :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
+        :title="`set visibility to HIDDEN (from public galleries)`"
+      ></button>
+      <button
+        class="visibilityButton notPrivate"
+        :disabled="!someSelected"
+        @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
+        :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
+        :title="`set visibility to VISIBLE (from public galleries)`"
+      ></button>
+      <button
         @click="state.deleteSelected()"
         class="toolbarButtons"
         :disabled="!someSelected"

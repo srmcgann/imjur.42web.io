@@ -97,6 +97,7 @@ export default {
         register: null,
         isNumber: null,
         setLinkProperty: null,
+        setLinkPropertySelected: null,
         URLbase: null,
         logout: null,
         onkeydown: null,
@@ -652,6 +653,14 @@ export default {
       }
       console.log('mode', this.state.mode)
     },
+    setLinkPropertySelected(property, value){
+      this.state.links.map(link=>{
+        if(link.selected) this.setLinkProperty(link, property, value)
+      })
+      this.state.userLinks.map(link=>{
+        if(link.selected) this.setLinkProperty(link, property, value)
+      })
+    },
     setLinkProperty(link, property, value){
       link[property] = value
       let sendData = {
@@ -944,6 +953,7 @@ export default {
     this.state.deleteSelected = this.deleteSelected
     this.state.setLinkProperty = this.setLinkProperty
     this.state.showUserSettings = this.showUserSettings
+    this.state.setLinkPropertySelected = this.setLinkPropertySelected
     this.checkLogin()
   }
 }
