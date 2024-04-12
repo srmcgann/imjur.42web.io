@@ -184,7 +184,7 @@ export default {
     min-width: unset;
     width: 36px;
     height: 26px;
-    margin-left: 10px;
+    margin-left: 6px;
     margin-top: 6px;
     position: absolute;
     padding: 0;
@@ -193,11 +193,10 @@ export default {
     font-size: 16px;
     margin-top: 5px;
     margin-left: 3px;
-    width:365px;
-    height: calc(100% - 2px);
+    height: calc(100% - 9px);
     font-size: 14px;
     background: #021;
-    border: 1px solid #0f8;
+    border: 1px solid #0f8a;
     color: #4f8;
     width: 310px;
     display: inline-block;
