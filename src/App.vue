@@ -1095,7 +1095,7 @@ a{
   background-size: 100% 100%;
 }
 .linkButtons{
-  margin-top: 10px;
+  margin-top: 0px;
   display: inline-block;
   width: 90px;
   text-align: center;

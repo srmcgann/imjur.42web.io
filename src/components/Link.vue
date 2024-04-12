@@ -251,7 +251,8 @@ export default {
   }
   .visibilityButton{
     width: 64px;
-    height: 64px;
+    height: 45px;
+    background-size: 49px 49px;
   }
 </style>
 
