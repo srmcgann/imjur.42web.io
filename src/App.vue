@@ -1059,7 +1059,7 @@ a{
   background-size: 100% 100%;
 }
 .visibilityButton{
-  background-image: url(./assets/visibility.png);
+  background-image: url(./assets/visible.png);
   background-color: #0000;
   background-size: 100% 100%;
 }
