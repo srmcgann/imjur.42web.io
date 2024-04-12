@@ -662,27 +662,29 @@ export default {
       })
     },
     setLinkProperty(link, property, value){
-      link[property] = value
-      let sendData = {
-        userName: this.state.loggedinUserName,
-        passhash: this.state.passhash,
-        linkID: link.id,
-        property,
-        value: link[property],
-      }
-      fetch(`${this.URLbase}/` + 'setLinkProperty.php',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(sendData),
-      }).then(res => res.json()).then(data=>{
-        if(data[0]){
-          
-        }else{
-          alert('there was a problem setting the property! d\'oh!')
+      if(link[property] != value){
+        link[property] = value
+        let sendData = {
+          userName: this.state.loggedinUserName,
+          passhash: this.state.passhash,
+          linkID: link.id,
+          property,
+          value: link[property],
         }
-      })
+        fetch(`${this.URLbase}/` + 'setLinkProperty.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        }).then(res => res.json()).then(data=>{
+          if(data[0]){
+            
+          }else{
+            alert('there was a problem setting the property! d\'oh!')
+          }
+        })
+      }
     },
     logout(){
       history.pushState(null,null,this.URLbase)
