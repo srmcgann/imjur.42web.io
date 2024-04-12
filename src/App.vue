@@ -653,7 +653,7 @@ export default {
       console.log('mode', this.state.mode)
     },
     togglePrivate(link){
-      this.link.private = !this.link.private
+      link.private = !link.private
     },
     logout(){
       history.pushState(null,null,this.URLbase)
