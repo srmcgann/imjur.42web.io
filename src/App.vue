@@ -840,7 +840,7 @@ export default {
       this.state.keys[18] = false
     }
     
-    this.state.onkeydown = window.onkeydown = e =>{
+    this.state.onkeydown = window.onkeydown = e => {
       this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
       if(this.state.keys[18]){
@@ -910,7 +910,6 @@ export default {
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
     this.state.firstSeen = this.firstSeen
-    this.state.onkeydown = this.onkeydown
     this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
