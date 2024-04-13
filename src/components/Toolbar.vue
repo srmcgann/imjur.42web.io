@@ -9,7 +9,7 @@
     <div class="menu">
       <div class="parent" style="z-index: 2000">
         import tools &darr;
-        <div class="sub" style="z-index: 1600; width: 420px; height: 80px;" code="">
+        <div class="sub" style="z-index: 1600; width: 420px; height: 40px;" code="">
           <input
             type="text"
             autofocus
@@ -349,15 +349,12 @@ export default {
     top: -2px;
     border: none;
     left: 111px;
-    text-align: center;
     text-shadow: 2px 2px 4px #000;
     box-sizing: border-box;
-    border-radius: 10px;
     vertical-align: middle;
     padding-top: 9px;
   }
   .sub{
-    border: 2px solid #fff2;
     line-height: 1.125em;
     background: #000a;
     margin-left: 33px;
@@ -380,7 +377,10 @@ export default {
     min-width: 160px;
   }
   .parent{
+    border: 2px solid #fff2;
+    border-radius: 10px;
     position: relative;
+    vergical-align: middle;
     cursor: pointer;
     width: 160px;
     padding-left: 10px;
@@ -391,6 +391,7 @@ export default {
     margin: 0px;
     display: inline-block;
     z-index: 0;
+    background: #000e;
   }
   .parent:hover .sub {
     display: block;
