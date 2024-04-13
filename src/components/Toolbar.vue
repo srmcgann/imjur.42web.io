@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     keydown(e){
-      if(e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
+      if(e.keyCode == 17 || this.state.keys[17] || e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
     },
     uploadByURL(){
       let URL = this.state.uploadFromURL
