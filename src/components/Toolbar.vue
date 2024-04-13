@@ -5,7 +5,6 @@
       upload
     </button>
     
-    
     <div class="menu">
       <div class="parent" style="z-index: 2000">
         import tools &darr;
@@ -45,7 +44,7 @@
             deselect all
           </button>
         </div>
-        <div class="sub" style="z-index: 1700;width: 375px;height: 55px;" code="console.log('this menu item')">
+        <div class="sub" style="z-index: 1700;width: 375px;height: 62px;" code="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <button
             class="toolbarButtons visibilityButton"
@@ -374,10 +373,10 @@ export default {
     margin-top: 0px;
     min-height: 40px;
     min-width: 160px;
-    border: 4px solid #fff4;
+    border: 4px solid #fff2;
   }
   .parent{
-    border: 4px solid #fff4;
+    border: 4px solid #fff2;
     position: relative;
     vertical-align: middle;
     cursor: pointer;
@@ -392,7 +391,7 @@ export default {
     margin-right: 5px;
     display: inline-block;
     z-index: 0;
-    background: #000e;
+    background: #000d;
   }
   .parent:hover .sub {
     display: block;
@@ -401,16 +400,16 @@ export default {
     display: block;
   }
   .parent:hover{
-    background: #0448;
+    background: #044d;
     color: #fff;
   }
   .sub:hover {
-    background: #2088;
+    background: #208d;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
   .sub2:hover {
-    background: #8808;
+    background: #880d;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
