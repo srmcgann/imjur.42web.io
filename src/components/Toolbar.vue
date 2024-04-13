@@ -9,7 +9,7 @@
     <div class="menu">
       <div class="parent" style="z-index: 2000">
         import tools &darr;
-        <div class="sub" style="z-index: 1600; width: 420px; height: 40px;" code="">
+        <div class="sub" style="z-index: 1600; width: 320px; height: 40px;" code="">
           <input
             type="text"
             autofocus
@@ -25,7 +25,7 @@
       </div>
       <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
         asset tools &darr;
-        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height: 90px;">
+        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:55px;">
           <button
             @click="state.selectAll()"
             class="toolbarButtons"
@@ -45,7 +45,7 @@
             deselect all
           </button>
         </div>
-        <div class="sub" style="z-index: 1700;width: 375px;height: 90px;" code="console.log('this menu item')">
+        <div class="sub" style="z-index: 1700;width: 375px;height: 55px;" code="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <button
             class="toolbarButtons visibilityButton"
@@ -375,12 +375,14 @@ export default {
     margin-top: 0px;
     min-height: 40px;
     min-width: 160px;
+    border: 2px solid #fff2;
+    border-radius: 10px;
   }
   .parent{
     border: 2px solid #fff2;
     border-radius: 10px;
     position: relative;
-    vergical-align: middle;
+    vertical-align: middle;
     cursor: pointer;
     width: 160px;
     padding-left: 10px;
@@ -389,6 +391,8 @@ export default {
     height: 50px;
     font-size: 18px;
     margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
     display: inline-block;
     z-index: 0;
     background: #000e;
@@ -400,16 +404,16 @@ export default {
     display: block;
   }
   .parent:hover{
-    background: #084;
+    background: #0848;
     color: #fff;
   }
   .sub:hover {
-    background: #208;
+    background: #2088;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
   .sub2:hover {
-    background: #880;
+    background: #8808;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
