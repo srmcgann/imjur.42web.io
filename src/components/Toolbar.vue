@@ -10,7 +10,7 @@
         class="toolbarButtons visibilityButton"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
-        :class="{'deleteButton' : someSelected,
+        :class="{'actionButton' : someSelected,
                  'disabledButton' : !someSelected,
                  'private': someSelected,
                  'privateDisabled': !someSelected}"
@@ -20,7 +20,7 @@
         class="toolbarButtons visibilityButton"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
-        :class="{'deleteButton' : someSelected,
+        :class="{'action' : someSelected,
                  'disabledButton' : !someSelected,
                  'notPrivate': someSelected,
                  'notPrivateDisabled': !someSelected}"
@@ -200,6 +200,11 @@ export default {
     color: #f88;
     background-color: #400d;
     border-color: #8008;
+  }
+  .actionButton{
+    color: #f88;
+    background-color: #042d;
+    border-color: #0808;
   }
   .disabledButton{
     color: #888;
