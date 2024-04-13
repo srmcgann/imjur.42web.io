@@ -269,8 +269,12 @@ export default {
     this.state.loadFiles = this.loadFiles
     this.preload = [ ...this.preload,
       [document.createElement('video'), 'loading.mp4'],
+      [new Image(), '../assets/nonvisible.png'],
     ]
     this.preload.map(v => {
+      v[0].style.position='absolute'
+      v[0].style.opacity='0.001'
+      document.body.appendChild(v[0])
       v[0].src = this.state.URLbase + '/' + v[1]
     })
   }

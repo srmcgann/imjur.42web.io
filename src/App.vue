@@ -1090,7 +1090,7 @@ a{
   background-image: url(./assets/link.png);
   width: 32px;
   height: 32px;
-  border-radius: 0px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   margin: 4px;

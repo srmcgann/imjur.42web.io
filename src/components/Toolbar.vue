@@ -207,6 +207,7 @@ export default {
     color: #f88;
     background-color: #042d;
     border-color: #0808;
+    border-radius: 40%;
   }
   .disabledButton{
     color: #888;
@@ -232,5 +233,6 @@ export default {
     color: #4f8;
     width: 255px;
     display: inline-block;
+    border-radius: 10px;
   }
 </style>
