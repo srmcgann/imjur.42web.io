@@ -201,7 +201,7 @@ error_reporting(E_ALL);
             $types[]         = $type;
             $slugs[]         = $slug;
             $dates[]         = $date;
-            $$visibilities[] = 1;
+            $visibilities[]  = 1;
             $originalDates[] = $originalDate;
             $ids[]           = $id;
             $views[]         = 0;
