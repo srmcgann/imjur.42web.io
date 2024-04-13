@@ -6,8 +6,8 @@
     </button>
     
     <div class="menu">
-      <div class="parent" style="z-index: 2000">
-        import tools &darr;
+      <div class="parent" style="z-index: 2000; width:95px;">
+        import
         <div class="sub" style="z-index: 1600; width: 320px; height: 40px;" code="">
           <input
             type="text"
@@ -23,8 +23,8 @@
         </div>
       </div>
       <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
-        asset tools &darr;
-        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:55px;">
+        asset tools
+        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
           <button
             @click="state.selectAll()"
             class="toolbarButtons"
@@ -44,11 +44,11 @@
             deselect all
           </button>
         </div>
-        <div class="sub" style="z-index: 1700;width: 375px;height: 62px;" code="console.log('this menu item')">
+        <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" code="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <button
             class="toolbarButtons visibilityButton"
-            style="min-width: 50px;"
+            style="min-width: 50px;min-height: 50px;"
             :disabled="!someSelected"
             @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
             :class="{'actionButton' : someSelected,
@@ -59,7 +59,7 @@
           ></button>
           <button
             class="toolbarButtons visibilityButton"
-            style="min-width: 50px;"
+            style="min-width: 50px;min-height: 50px;"
             :disabled="!someSelected"
             @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
             :class="{'actionButton' : someSelected,
@@ -297,7 +297,7 @@ export default {
   .toolbarButtons{
     margin: 5px;
     min-width: 100px;
-    height: 45px;
+    height: 30px;
     padding: 2px;
     padding-bottom: 0;
     border-radius: 5px;
@@ -344,7 +344,7 @@ export default {
     background: #40f2;
     position: absolute;
     background: unset;
-    top: -2px;
+    top: -4px;
     border: none;
     left: 111px;
     text-shadow: 2px 2px 4px #000;
@@ -376,7 +376,7 @@ export default {
     border: 4px solid #fff2;
   }
   .parent{
-    border: 4px solid #fff2;
+    border: 3px solid #fff2;
     position: relative;
     vertical-align: middle;
     cursor: pointer;
@@ -387,8 +387,6 @@ export default {
     height: 30px;
     font-size: 18px;
     margin: 0px;
-    margin-left: 5px;
-    margin-right: 5px;
     display: inline-block;
     z-index: 0;
     background: #000d;
