@@ -8,6 +8,7 @@
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
         class="toolbarButtons visibilityButton"
+        style="min-width: 50px;"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
         :class="{'actionButton' : someSelected,
@@ -18,6 +19,7 @@
       ></button>
       <button
         class="toolbarButtons visibilityButton"
+        style="min-width: 50px;"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
         :class="{'actionButton' : someSelected,
@@ -205,7 +207,6 @@ export default {
     color: #f88;
     background-color: #042d;
     border-color: #0808;
-    min-width: 50px
   }
   .disabledButton{
     color: #888;
