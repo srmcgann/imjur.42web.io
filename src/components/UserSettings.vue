@@ -184,7 +184,7 @@ export default{
   height: 100vh;
   z-index: 10000;
   top: 0;
-  background: #012e;
+  background: #102e;
   text-align: center;
 }
 .mainContainer{
@@ -195,9 +195,9 @@ export default{
   min-width: 320px;
   min-height: 200px;
   border-radius: 10px;
-  background: #024;
+  background: #204;
   padding: 20px;
-  color: #ff0;
+  color: #08f;
   transform: translate(-50%, -50%);
 }
 .inputTitle{
