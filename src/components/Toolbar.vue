@@ -10,16 +10,74 @@
       <div class="parent" style="z-index: 2000">
         import tools &darr;
         <div class="sub" style="z-index: 1600; width: 420px; height: 80px;" code="">
-          <div data-v-3b963fb4="" class="toolbarSection" style="border-top: 4px solid rgba(68, 0, 255, 0.667); vertical-align: middle; height: 63px; margin-top: 0px; width: 400px;"><input data-v-3b963fb4="" type="text" autofocus="" class="URLinput" placeholder="OR, upload from a URL... it might work!"><button data-v-3b963fb4="" class="goButton" title="download asset by URL [enter]">go</button></div>
-        </div>        
+          <input
+            type="text"
+            autofocus
+            ref="uploadURL"
+            class="URLinput"
+            @keydown.stop="keydown($event)"
+            @keypress.enter="uploadByURL()"
+            v-model="state.uploadFromURL"
+            placeholder="OR, upload from a URL... it might work!"
+          >
+          <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
+        </div>
       </div>
-      <div class="parent" style="z-index: 1900">
+      <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
         asset tools &darr;
         <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height: 90px;">
-          <div data-v-3b963fb4="" class="toolbarSection"><button data-v-3b963fb4="" class="toolbarButtons buttons" title="select all [ctrl + a]"> select all </button><button data-v-3b963fb4="" class="toolbarButtons disabledButton" disabled="" title="de-select all [ctrl + shift + a]"> deselect all </button></div>
+          <button
+            @click="state.selectAll()"
+            class="toolbarButtons"
+            :disabled="allSelected"
+            title="select all [ctrl + a]"
+            :class="{'buttons' : !allSelected, 'disabledButton' : allSelected}"
+          >
+            select all
+          </button>
+          <button
+            @click="state.deSelectAll()"
+            class="toolbarButtons"
+            :disabled="!someSelected"
+            title="de-select all [ctrl + shift + a]"
+            :class="{'buttons' : someSelected, 'disabledButton' : !someSelected}"
+          >
+            deselect all
+          </button>
         </div>
         <div class="sub" style="z-index: 1700;width: 375px;height: 90px;" code="console.log('this menu item')">
-          <div data-v-3b963fb4="" class="toolbarSection"><span data-v-3b963fb4="" style="margin-left: 5px; font-size: 0.8em;">[w/selected→]</span><button data-v-3b963fb4="" class="toolbarButtons visibilityButton disabledButton privateDisabled" disabled="" title="set visibility to HIDDEN (from public galleries), for all selected" style="min-width: 50px;"></button><button data-v-3b963fb4="" class="toolbarButtons visibilityButton disabledButton notPrivateDisabled" disabled="" title="set visibility to VISIBLE (from public galleries), for all selected" style="min-width: 50px;"></button><button data-v-3b963fb4="" class="toolbarButtons disabledButton" disabled="" title="delete selected [del]"> delete </button></div>
+          <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
+          <button
+            class="toolbarButtons visibilityButton"
+            style="min-width: 50px;"
+            :disabled="!someSelected"
+            @click.prevent.stop="state.setLinkPropertySelected('private', 1)"
+            :class="{'actionButton' : someSelected,
+                     'disabledButton' : !someSelected,
+                     'private': someSelected,
+                     'privateDisabled': !someSelected}"
+            :title="`set visibility to HIDDEN (from public galleries), for all selected`"
+          ></button>
+          <button
+            class="toolbarButtons visibilityButton"
+            style="min-width: 50px;"
+            :disabled="!someSelected"
+            @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
+            :class="{'actionButton' : someSelected,
+                     'disabledButton' : !someSelected,
+                     'notPrivate': someSelected,
+                     'notPrivateDisabled': !someSelected}"
+            :title="`set visibility to VISIBLE (from public galleries), for all selected`"
+          ></button>
+          <button
+            @click="state.deleteSelected()"
+            class="toolbarButtons"
+            :disabled="!someSelected"
+            title="delete selected [del]"
+            :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
+          >
+            delete
+          </button>
 
         </div>
         <div class="sub" code="open('https://www.google.com', '_blank')">open google</div>
