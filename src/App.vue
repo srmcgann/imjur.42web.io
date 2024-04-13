@@ -642,14 +642,33 @@ export default {
       if(vars.length>0){
         if(this.state.isNumber(vars)){
           this.state.mode = 'default'
-          this.getPages()
-          if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
+          let search = ''
+          let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
+          if(vars[l]){
+            this.state.curPage = (+vars[l])-1
+            if(''+this.state.curPage == 'NaN') this.state.curPage = 0
+            if(vars[l+1]){
+              this.state.search.string = decodeURIComponent(vars[l+1])
+              search = '/' + vars[l+1]
+              //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
+              //this.beginSearch()
+              this.state.curPage = 0
+              this.state.jumpToPage(0)
+            }else{
+              history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
+              if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
+              this.fetchUserLinks(this.state.loggedinUserID)
+            }
+          }else{
+            if(location.href !== this.URLbase + '/') location.href = this.URLbase
+          }
         }else{
           this.state.mode = 'non-default'
         }
       } else{
         this.state.mode = 'default'
         this.getPages()
+        if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
       }
       console.log('mode', this.state.mode)
     },

@@ -56,7 +56,7 @@
         deselect all
       </button>
     </div>
-    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 44px;margin-top: -1px; width: 313px">
+    <div class="toolbarSection" style="border-top: 4px solid #40fa;vertical-align: middle; height: 63px;margin-top: 0px; width: 313px">
       <input
         type="text"
         autofocus
@@ -211,9 +211,8 @@ export default {
     width: 36px;
     height: 26px;
     margin-left: 6px;
-    margin-top: 6px;
-    position: absolute;
     padding: 0;
+    vertical-align: middle;
   }
   .URLinput{
     font-size: 16px;

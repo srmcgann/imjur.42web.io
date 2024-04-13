@@ -61,7 +61,7 @@
         this website is a work-in-progress.<br>
         your files will likely be deleted anyway :D</div>
       </div>
-      <div v-if="!state.showPreview && !state.showAdmin && (state.links.length || state.userLinks.length)" class="links">
+      <div v-if="state.mode=='default' && !state.showPreview && !state.showAdmin && (state.links.length || state.userLinks.length)" class="links">
         <Link
           :state="state"
           v-for="link in state.links"
@@ -78,6 +78,9 @@
           :key="link.id"
           v-if="state.userLinks.length"
         />
+      </div>
+      <div v-if="state.mode!='default'">
+        <br><br><br>mode: {{state.mode}}<br><br><br>
       </div>
     </div>
   </div>
@@ -285,7 +288,7 @@ export default {
     box-sizing: border-box;
     text-align: center;
     position: absolute;
-    padding-top: 120px;
+    padding-top: 170px;
     z-index: 0;
     padding-bottom: 200px;
     width: 100vw;
