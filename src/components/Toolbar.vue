@@ -285,27 +285,23 @@ export default {
     border-radius: 10px;
   }
   .menu{
-    padding: 10px;
-    height: 500px;
     background: #40f2;
     position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translate(-50%);
+    background: unset;
+    top: -2px;
+    border: none;
+    left: 111px;
     text-align: center;
-    font-size: 0;
     text-shadow: 2px 2px 4px #000;
-  }
-  div{
     box-sizing: border-box;
-    border-radius: 0px;
-    border: 2px solid #fff2;
-    background: #000a;
+    border-radius: 10px;
     vertical-align: middle;
     padding-top: 9px;
-    line-height: 1.125em;
   }
   .sub{
+    border: 2px solid #fff2;
+    line-height: 1.125em;
+    background: #000a;
     margin-left: 33px;
     background: #084;
     text-align: left;
