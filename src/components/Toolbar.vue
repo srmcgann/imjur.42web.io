@@ -332,7 +332,6 @@ export default {
   .URLinput{
     font-size: 16px;
     margin-top: 5px;
-    margin-left: 3px;
     height: calc(100% - 9px);
     font-size: 14px;
     background: #021;
@@ -375,20 +374,18 @@ export default {
     margin-top: 0px;
     min-height: 40px;
     min-width: 160px;
-    border: 2px solid #fff2;
-    border-radius: 10px;
+    border: 4px solid #fff4;
   }
   .parent{
-    border: 2px solid #fff2;
-    border-radius: 10px;
+    border: 4px solid #fff4;
     position: relative;
     vertical-align: middle;
     cursor: pointer;
-    width: 160px;
+    width: 175px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
-    height: 50px;
+    height: 30px;
     font-size: 18px;
     margin: 0px;
     margin-left: 5px;
@@ -404,7 +401,7 @@ export default {
     display: block;
   }
   .parent:hover{
-    background: #0848;
+    background: #0448;
     color: #fff;
   }
   .sub:hover {
