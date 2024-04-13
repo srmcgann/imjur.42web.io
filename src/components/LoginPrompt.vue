@@ -268,6 +268,7 @@ hr{
   padding: 20px;
   color: #08f;
   transform: translate(-50%, -50%);
+  border: 6px solid #60f3;
 }
 .inputTitle{
   text-align: left;
