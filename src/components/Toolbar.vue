@@ -4,6 +4,42 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
+    
+    
+    <div class="menu">
+      <div class="parent" style="z-index: 2000">
+        import tools &darr;
+        <div class="sub" style="z-index: 1600; width: 420px; height: 80px;" code="">
+          <div data-v-3b963fb4="" class="toolbarSection" style="border-top: 4px solid rgba(68, 0, 255, 0.667); vertical-align: middle; height: 63px; margin-top: 0px; width: 400px;"><input data-v-3b963fb4="" type="text" autofocus="" class="URLinput" placeholder="OR, upload from a URL... it might work!"><button data-v-3b963fb4="" class="goButton" title="download asset by URL [enter]">go</button></div>
+        </div>        
+      </div>
+      <div class="parent" style="z-index: 1900">
+        asset tools &darr;
+        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height: 90px;">
+          <div data-v-3b963fb4="" class="toolbarSection"><button data-v-3b963fb4="" class="toolbarButtons buttons" title="select all [ctrl + a]"> select all </button><button data-v-3b963fb4="" class="toolbarButtons disabledButton" disabled="" title="de-select all [ctrl + shift + a]"> deselect all </button></div>
+        </div>
+        <div class="sub" style="z-index: 1700;width: 375px;height: 90px;" code="console.log('this menu item')">
+          <div data-v-3b963fb4="" class="toolbarSection"><span data-v-3b963fb4="" style="margin-left: 5px; font-size: 0.8em;">[w/selected→]</span><button data-v-3b963fb4="" class="toolbarButtons visibilityButton disabledButton privateDisabled" disabled="" title="set visibility to HIDDEN (from public galleries), for all selected" style="min-width: 50px;"></button><button data-v-3b963fb4="" class="toolbarButtons visibilityButton disabledButton notPrivateDisabled" disabled="" title="set visibility to VISIBLE (from public galleries), for all selected" style="min-width: 50px;"></button><button data-v-3b963fb4="" class="toolbarButtons disabledButton" disabled="" title="delete selected [del]"> delete </button></div>
+
+        </div>
+        <div class="sub" code="open('https://www.google.com', '_blank')">open google</div>
+      </div>
+      <div class="parent" style="z-index: 1800">
+        [unused]
+        <div class="sub" code="">sub a</div>
+        <div class="sub" code="">sub b</div>
+        <div class="sub" code="">sub c</div>
+        <div class="sub" code="">
+          submenus [unused]
+          <div class="sub2" code="open('https://gifs.twilightparadox.com/df0898b287292aab8cf29efb75cb1783.gif', '_blank')">easter egg 1!</div>
+          <div class="sub2" code="open('https://whr.rf.gd/a/full/2whT', '_blank')">easter egg 2!</div>
+          <div class="sub2" code="open('https://emphasis.bizuit.com/?c=the%20super%20secret','_blank')">easter egg 3!</div>
+          <div class="sub2" code="open('https://srmcgann.github.io/spaceflex','_blank')">easter egg 4!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
     <div v-if="state.loggedIn" class="toolbarSection">
       <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
@@ -71,6 +107,7 @@
       >
       <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     </div>
+    -->
   </div>
 </template>
 
@@ -96,6 +133,17 @@ export default {
     }
   },
   methods: {
+    recurseMenus(el){
+      if(el){
+        if(el.nodeName == 'DIV'){
+          let val=el.getAttribute('code')
+          if(val) el.onclick = () => eval(val)
+          el.childNodes.forEach(el2 => this.recurseMenus(el2))
+        }
+      }else{
+        document.querySelectorAll('.menu').forEach( menu => this.recurseMenus(menu))
+      }
+    }
     keydown(e){
       if(e.keyCode == 46 || e.keyCode == 17 || this.state.keys[17] || e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
     },
@@ -169,6 +217,7 @@ export default {
     }
   },
   mounted(){
+    this.recurseMenus()
   }
 }
 </script>
@@ -235,4 +284,79 @@ export default {
     display: inline-block;
     border-radius: 10px;
   }
+  .menu{
+    padding: 10px;
+    height: 500px;
+    background: #40f2;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    font-size: 0;
+    text-shadow: 2px 2px 4px #000;
+  }
+  div{
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: 2px solid #fff2;
+    background: #000a;
+    vertical-align: middle;
+    padding-top: 9px;
+    line-height: 1.125em;
+  }
+  .sub{
+    margin-left: 33px;
+    background: #084;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .sub2 {
+    margin-left: 66px;
+    background: #208;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .sub, .sub2{
+    position: relative;
+    display: none;
+    z-index: 10;
+    margin-top: 0px;
+    min-height: 40px;
+    min-width: 160px;
+  }
+  .parent{
+    position: relative;
+    cursor: pointer;
+    width: 160px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    height: 50px;
+    font-size: 18px;
+    margin: 0px;
+    display: inline-block;
+    z-index: 0;
+  }
+  .parent:hover .sub {
+    display: block;
+  }
+  .sub:hover .sub2 {
+    display: block;
+  }
+  .parent:hover{
+    background: #084;
+    color: #fff;
+  }
+  .sub:hover {
+    background: #208;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+  }
+  .sub2:hover {
+    background: #880;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+  }
+
 </style>
