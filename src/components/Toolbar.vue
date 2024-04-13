@@ -143,7 +143,7 @@ export default {
       }else{
         document.querySelectorAll('.menu').forEach( menu => this.recurseMenus(menu))
       }
-    }
+    },
     keydown(e){
       if(e.keyCode == 46 || e.keyCode == 17 || this.state.keys[17] || e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
     },
