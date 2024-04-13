@@ -20,7 +20,7 @@
         class="toolbarButtons visibilityButton"
         :disabled="!someSelected"
         @click.prevent.stop="state.setLinkPropertySelected('private', 0)"
-        :class="{'action' : someSelected,
+        :class="{'actionButton' : someSelected,
                  'disabledButton' : !someSelected,
                  'notPrivate': someSelected,
                  'notPrivateDisabled': !someSelected}"
@@ -205,6 +205,7 @@ export default {
     color: #f88;
     background-color: #042d;
     border-color: #0808;
+    min-width: 50px
   }
   .disabledButton{
     color: #888;
