@@ -121,7 +121,9 @@ export default {
             this.memo = [...this.memo, val]
             if(val) {
               console.log('detected code. should werk')
-              el.onclick = () => {eval(val);console.log('clicky')}
+              this.$nextTick(()=>{
+                el.onclick = () => {eval(val);console.log('clicky')}
+              })
             }
             el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
           }
