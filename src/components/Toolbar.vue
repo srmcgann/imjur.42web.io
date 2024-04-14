@@ -118,13 +118,13 @@ export default {
         if(el.nodeName == 'DIV'){
           let val=el.getAttribute('code')
           //if(!val || this.memo.indexOf(val) == -1){
-            this.memo = [...this.memo, val]
-            if(val) el.onclick = () => eval(val)
+            //this.memo = [...this.memo, val]
+            if(val) el.onclick = () => {eval(val)}
             el.childNodes.forEach(el2 => this.recurseMenus(el2))
           //}
         }
       }else{
-        this.memo = []
+        //this.memo = []
         document.querySelectorAll('.menu').forEach( menu => this.recurseMenus(menu))
       }
     },
