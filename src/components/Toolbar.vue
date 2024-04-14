@@ -4,19 +4,17 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
-    <div class="sub" style="z-index: 1600; width: 320px; height: 40px;" code="">
-      <input
-        type="text"
-        autofocus
-        ref="uploadURL"
-        class="URLinput"
-        @keydown.stop="keydown($event)"
-        @keypress.enter="uploadByURL()"
-        v-model="state.uploadFromURL"
-        placeholder="upload from a URL... it might work!"
-      >
-      <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
-    </div>
+    <input
+      type="text"
+      autofocus
+      ref="uploadURL"
+      class="URLinput"
+      @keydown.stop="keydown($event)"
+      @keypress.enter="uploadByURL()"
+      v-model="state.uploadFromURL"
+      placeholder="upload from a URL... it might work!"
+    >
+    <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     
     <div class="menu">
       <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
