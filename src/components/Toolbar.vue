@@ -273,7 +273,7 @@ export default {
     background: unset;
     top: -4px;
     border: none;
-    left: 111px;
+    left: 417px;
     text-shadow: 2px 2px 4px #000;
     box-sizing: border-box;
     vertical-align: middle;
