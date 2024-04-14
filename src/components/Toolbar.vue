@@ -378,6 +378,7 @@ export default {
   .parent{
     border: 3px solid #fff2;
     position: relative;
+    max-width: 200px;
     vertical-align: middle;
     cursor: pointer;
     padding-left: 10px;
