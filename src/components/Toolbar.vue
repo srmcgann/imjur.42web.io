@@ -83,7 +83,7 @@
       </div>
       <div class="parent" style="z-index: 1800; width: ">
         [unused]
-        <div class="sub" code="">sub a</div>
+        <div class="sub" code="console.log(1)">sub a</div>
         <div class="sub" code="">sub b</div>
         <div class="sub" code="">sub c</div>
         <div class="sub" code="">
@@ -333,8 +333,7 @@ export default {
     margin-top: 5px;
     height: calc(100% - 9px);
     font-size: 14px;
-    background: #021;
-    border: 1px solid #0f8a;
+    background: #001;
     color: #4f8;
     width: 255px;
     display: inline-block;
@@ -357,6 +356,7 @@ export default {
     margin-left: 33px;
     background: #036d;
     text-align: left;
+    min-height: 40px;
     padding-left: 10px;
   }
   .sub2 {
@@ -364,13 +364,13 @@ export default {
     background: #330d;
     text-align: left;
     padding-left: 10px;
+    min-height: 30px;
   }
   .sub, .sub2{
     position: relative;
     display: none;
     z-index: 10;
     margin-top: 0px;
-    min-height: 40px;
     min-width: 160px;
     border: 4px solid #fff2;
   }
