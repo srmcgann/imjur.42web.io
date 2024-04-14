@@ -354,7 +354,6 @@ export default {
   }
   .sub{
     line-height: 1.125em;
-    background: #000a;
     margin-left: 33px;
     background: #036d;
     text-align: left;
@@ -362,7 +361,7 @@ export default {
   }
   .sub2 {
     margin-left: 66px;
-    background: #208e;
+    background: #330d;
     text-align: left;
     padding-left: 10px;
   }
@@ -389,7 +388,7 @@ export default {
     margin: 0px;
     display: inline-block;
     z-index: 0;
-    background: #000d;
+    background: #022d;
   }
   .parent:hover .sub {
     display: block;
@@ -402,12 +401,12 @@ export default {
     color: #fff;
   }
   .sub:hover {
-    background: #208d;
+    background: #068d;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
   .sub2:hover {
-    background: #880d;
+    background: #660d;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
   }
