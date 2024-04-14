@@ -4,24 +4,21 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
+    <div class="sub" style="z-index: 1600; width: 320px; height: 40px;" code="">
+      <input
+        type="text"
+        autofocus
+        ref="uploadURL"
+        class="URLinput"
+        @keydown.stop="keydown($event)"
+        @keypress.enter="uploadByURL()"
+        v-model="state.uploadFromURL"
+        placeholder="upload from a URL... it might work!"
+      >
+      <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
+    </div>
     
     <div class="menu">
-      <div class="parent" style="z-index: 2000; width:95px;">
-        import
-        <div class="sub" style="z-index: 1600; width: 320px; height: 40px;" code="">
-          <input
-            type="text"
-            autofocus
-            ref="uploadURL"
-            class="URLinput"
-            @keydown.stop="keydown($event)"
-            @keypress.enter="uploadByURL()"
-            v-model="state.uploadFromURL"
-            placeholder="upload from a URL... it might work!"
-          >
-          <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
-        </div>
-      </div>
       <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
         asset tools
         <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
@@ -79,9 +76,6 @@
           </button>
 
         </div>
-        <div key="key1" class="sub"  style="z-index: 1800;" code="open('https://www.google.com', '_blank')">open google</div>
-      </div>
-      <div class="parent" style="z-index: 1800;">
         [unused]
         <div class="sub" code="console.log(1)">sub a</div>
         <div class="sub" code="">sub b</div>
