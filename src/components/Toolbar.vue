@@ -194,7 +194,7 @@ export default {
       if(el){
         if(el.nodeName == 'DIV'){
           let val=el.getAttribute('code')
-          if(val) el.onclick = () => eval(val)
+          if(val) el.onclick = () => {eval(val);console.log(val)}
           el.childNodes.forEach(el2 => this.recurseMenus(el2))
         }
       }else{
