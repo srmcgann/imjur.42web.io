@@ -16,8 +16,8 @@
     >
     <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     
-    <div class="menu">
-      <div v-if="state.loggedIn" class="parent" style="z-index: 1900">
+    <div class="menu" ref="menu" v-if="state.loggedIn">
+      <div class="parent" style="z-index: 1900">
         asset tools
         <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
           <button
@@ -115,17 +115,17 @@ export default {
     recurseMenus(el){
       if(typeof el != 'undefined'){
         console.log(el, el.nodeName)
-        //if(el.nodeName == 'DIV'){
+        if(el.nodeName == 'DIV'){
           let val=el.getAttribute('code')
           //if(!val || this.memo.indexOf(val) == -1){
             //this.memo = [...this.memo, val]
             if(val) el.onclick = () => {eval(val)}
             el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
-          //}
-        //}
+          }
+        }
       }else{
         //this.memo = []
-        document.querySelectorAll('.menu').forEach( menu => this.recurseMenus(menu))
+        this.recurseMenus(this.$refs.menu)
       }
     },
     keydown(e){
