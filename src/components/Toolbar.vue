@@ -81,7 +81,7 @@
         </div>
         <div class="sub" code="open('https://www.google.com', '_blank')">open google</div>
       </div>
-      <div class="parent" style="z-index: 1800">
+      <div class="parent" style="z-index: 1800; width: ">
         [unused]
         <div class="sub" code="">sub a</div>
         <div class="sub" code="">sub b</div>
@@ -356,13 +356,13 @@ export default {
     line-height: 1.125em;
     background: #000a;
     margin-left: 33px;
-    background: #084;
+    background: #036d;
     text-align: left;
     padding-left: 10px;
   }
   .sub2 {
     margin-left: 66px;
-    background: #208;
+    background: #208e;
     text-align: left;
     padding-left: 10px;
   }
@@ -380,7 +380,6 @@ export default {
     position: relative;
     vertical-align: middle;
     cursor: pointer;
-    width: 175px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;

@@ -294,7 +294,7 @@ export default {
     position: absolute;
     padding-top: 170px;
     z-index: 0;
-    padding-bottom: 200px;
+    padding-bottom: 122px;
     width: 100vw;
   }
   /*.dropTarget:hover{
