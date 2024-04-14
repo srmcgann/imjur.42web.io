@@ -121,7 +121,7 @@ export default {
             //this.memo = [...this.memo, val]
             if(val) el.onclick = () => {eval(val)}
             el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
-          }
+          //}
         }
       }else{
         //this.memo = []
