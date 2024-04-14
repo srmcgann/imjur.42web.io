@@ -19,7 +19,7 @@
     <div class="menu" ref="menu" v-if="!memo.length || state.loggedIn">
       <div class="parent" style="z-index: 1900">
         asset tools
-        <div class="sub" code="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
+        <div class="sub" @click="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
           <button
             @click="state.selectAll()"
             class="toolbarButtons"
@@ -39,7 +39,7 @@
             deselect all
           </button>
         </div>
-        <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" code="console.log('this menu item')">
+        <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" @click="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <button
             class="toolbarButtons visibilityButton"
@@ -74,15 +74,15 @@
           </button>
 
         </div>
-        <div class="sub" code="console.log(1)">sub a</div>
-        <div class="sub" code="">sub b</div>
-        <div class="sub" code="">sub c</div>
-        <div class="sub" code="">
+        <div class="sub" @click="console.log(1)">sub a</div>
+        <div class="sub" @click="">sub b</div>
+        <div class="sub" @click="">sub c</div>
+        <div class="sub" @click="">
           submenus [unused]
-          <div class="sub2" code="open('https://gifs.twilightparadox.com/df0898b287292aab8cf29efb75cb1783.gif', '_blank')">easter egg 1!</div>
-          <div class="sub2" code="open('https://whr.rf.gd/a/full/2whT', '_blank')">easter egg 2!</div>
-          <div class="sub2" code="open('https://emphasis.bizuit.com/?c=the%20super%20secret','_blank')">easter egg 3!</div>
-          <div class="sub2" code="open('https://srmcgann.github.io/spaceflex','_blank')">easter egg 4!</div>
+          <div class="sub2" @click="open('https://gifs.twilightparadox.com/df0898b287292aab8cf29efb75cb1783.gif', '_blank')">easter egg 1!</div>
+          <div class="sub2" @click="open('https://whr.rf.gd/a/full/2whT', '_blank')">easter egg 2!</div>
+          <div class="sub2" @click="open('https://emphasis.bizuit.com/?c=the%20super%20secret','_blank')">easter egg 3!</div>
+          <div class="sub2" @click="open('https://srmcgann.github.io/spaceflex','_blank')">easter egg 4!</div>
         </div>
       </div>
     </div>
@@ -112,25 +112,6 @@ export default {
     }
   },
   methods: {
-    recurseMenus(el){
-      if(typeof el != 'undefined'){
-        console.log(el, el.nodeName)
-        if(el.nodeName == 'DIV'){
-          let val=el.getAttribute('code')
-          if(!val || this.memo.indexOf(val) == -1){
-            this.memo = [...this.memo, val]
-            if(val) {
-              el.onclick = () => {eval(val);console.log('clicky')}
-              console.log('detected code. should werk', el, el.id, el.onclick)
-            }
-            el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
-          }
-        }
-      }else{
-        this.memo = []
-        this.$refs.menu.childNodes.forEach(node => {this.recurseMenus(node)})
-      }
-    },
     keydown(e){
       if(e.keyCode == 46 || e.keyCode == 17 || this.state.keys[17] || e.keyCode == 18 || this.state.keys[18]) this.state.onkeydown(e)
     },
@@ -204,7 +185,6 @@ export default {
     }
   },
   mounted(){
-    this.recurseMenus()
   }
 }
 </script>
@@ -299,8 +279,7 @@ export default {
   }
   .sub, .sub2{
     position: relative;
-    /*display: none;*/
-    visibility: hidden;
+    display: none;
     z-index: 10;
     margin-top: 0px;
     min-width: 160px;
@@ -324,12 +303,10 @@ export default {
     background: #022d;
   }
   .parent:hover .sub {
-    /*display: block;*/
-    visibility: visible;
+    display: block;
   }
   .sub:hover .sub2 {
-    /*display: block;*/
-    visibility: visible;
+    display: block;
   }
   .parent:hover{
     background: #044d;
