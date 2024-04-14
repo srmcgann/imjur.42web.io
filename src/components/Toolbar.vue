@@ -301,7 +301,8 @@ export default {
   }
   .sub, .sub2{
     position: relative;
-    display: none;
+    /*display: none;*/
+    visibility: hidden;
     z-index: 10;
     margin-top: 0px;
     min-width: 160px;
@@ -325,10 +326,12 @@ export default {
     background: #022d;
   }
   .parent:hover .sub {
-    display: block;
+    /*display: block;*/
+    visibility: visible;
   }
   .sub:hover .sub2 {
-    display: block;
+    /*display: block;*/
+    visibility: visible;
   }
   .parent:hover{
     background: #044d;
