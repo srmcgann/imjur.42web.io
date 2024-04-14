@@ -100,7 +100,8 @@ export default {
   },
   data(){
     return {
-      memo: []
+      memo: [],
+      window
     }
   },
   computed: {
