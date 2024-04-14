@@ -120,8 +120,8 @@ export default {
           if(!val || this.memo.indexOf(val) == -1){
             this.memo = [...this.memo, val]
             if(val) {
-              console.log('detected code. should werk')
-              el.onmousedown = () => {eval(val);console.log('clicky')}
+              el.onclick = () => {eval(val);console.log('clicky')}
+              console.log('detected code. should werk', el, el.id, el.onclick)
             }
             el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
           }
