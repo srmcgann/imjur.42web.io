@@ -12,7 +12,7 @@
       @keydown.stop="keydown($event)"
       @keypress.enter="uploadByURL()"
       v-model="state.uploadFromURL"
-      placeholder="upload from a URL... it might work!"
+      placeholder="or, upload from a URL... it might work!"
     >
     <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
     
@@ -74,7 +74,6 @@
           </button>
 
         </div>
-        [unused]
         <div class="sub" code="console.log(1)">sub a</div>
         <div class="sub" code="">sub b</div>
         <div class="sub" code="">sub c</div>
@@ -259,13 +258,14 @@ export default {
   .URLinput{
     font-size: 16px;
     margin-top: 5px;
-    height: calc(100% - 9px);
     font-size: 14px;
     background: #001;
     color: #4f8;
     width: 255px;
     display: inline-block;
     border-radius: 5px;
+    height: 30px;
+    border: 3px solid #40f8;
   }
   .menu{
     background: #40f2;
