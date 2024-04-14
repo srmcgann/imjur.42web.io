@@ -17,7 +17,7 @@
             @keydown.stop="keydown($event)"
             @keypress.enter="uploadByURL()"
             v-model="state.uploadFromURL"
-            placeholder="OR, upload from a URL... it might work!"
+            placeholder="upload from a URL... it might work!"
           >
           <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
         </div>
@@ -338,7 +338,7 @@ export default {
     color: #4f8;
     width: 255px;
     display: inline-block;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   .menu{
     background: #40f2;
@@ -382,6 +382,7 @@ export default {
     cursor: pointer;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 2px;
     text-align: center;
     height: 30px;
     font-size: 18px;
