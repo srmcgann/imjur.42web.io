@@ -79,9 +79,9 @@
           </button>
 
         </div>
-        <div key="key1" class="sub" code="open('https://www.google.com', '_blank')">open google</div>
+        <div key="key1" class="sub"  style="z-index: 1800;" code="open('https://www.google.com', '_blank')">open google</div>
       </div>
-      <div class="parent" style="z-index: 1800; width: ">
+      <div class="parent" style="z-index: 1800;">
         [unused]
         <div class="sub" code="console.log(1)">sub a</div>
         <div class="sub" code="">sub b</div>
