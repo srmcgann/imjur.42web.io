@@ -119,7 +119,10 @@ export default {
           let val=el.getAttribute('code')
           if(!val || this.memo.indexOf(val) == -1){
             this.memo = [...this.memo, val]
-            if(val) el.onclick = () => {eval(val)}
+            if(val) {
+              console.log('detected code. should werk')
+              el.onclick = () => {eval(val)}
+            }
             el.childNodes.forEach(el2 => {this.recurseMenus(el2)})
           }
         }
