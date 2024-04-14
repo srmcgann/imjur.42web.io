@@ -109,6 +109,7 @@ export default {
   },
   data(){
     return {
+      memo: []
     }
   },
   computed: {
@@ -125,10 +126,14 @@ export default {
         console.log(el, el.nodeName)
         if(el.nodeName == 'DIV'){
           let val=el.getAttribute('code')
-          if(val) el.addEventListener('click', () => {eval(val)})
-          el.childNodes.forEach(el2 => this.recurseMenus(el2))
+          if(this.memo.indexOf(val) == -1){
+            memo = [...memo, val]
+            if(val) el.onclick = () => eval(val)
+            el.childNodes.forEach(el2 => this.recurseMenus(el2))
+          }
         }
       }else{
+        this.memo = []
         document.querySelectorAll('.menu').forEach( menu => this.recurseMenus(menu))
       }
     },
