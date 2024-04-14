@@ -191,7 +191,7 @@ export default {
   },
   methods: {
     recurseMenus(el){
-      if(typeof el == 'undefined'){
+      if(typeof el != 'undefined'){
         console.log(el, el.nodeName)
         if(el.nodeName == 'DIV'){
           let val=el.getAttribute('code')
