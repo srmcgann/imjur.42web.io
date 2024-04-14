@@ -125,7 +125,7 @@ export default {
         }
       }else{
         this.memo = []
-        this.recurseMenus(this.$refs.menu)
+        this.$refs.menu.childNodes.forEach(node => {this.recurseMenus(node)})
       }
     },
     keydown(e){
