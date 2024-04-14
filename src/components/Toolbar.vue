@@ -79,9 +79,9 @@
         <div class="sub" code="">sub c</div>
         <div class="sub" code="">
           submenus [unused]
-          <div key="key2" class="sub2" code="open('https://gifs.twilightparadox.com/df0898b287292aab8cf29efb75cb1783.gif', '_blank')">easter egg 1!</div>
-          <div key="key3" class="sub2" code="open('https://whr.rf.gd/a/full/2whT', '_blank')">easter egg 2!</div>
-          <div key="key4" class="sub2" code="open('https://emphasis.bizuit.com/?c=the%20super%20secret','_blank')">easter egg 3!</div>
+          <div class="sub2" code="open('https://gifs.twilightparadox.com/df0898b287292aab8cf29efb75cb1783.gif', '_blank')">easter egg 1!</div>
+          <div class="sub2" code="open('https://whr.rf.gd/a/full/2whT', '_blank')">easter egg 2!</div>
+          <div class="sub2" code="open('https://emphasis.bizuit.com/?c=the%20super%20secret','_blank')">easter egg 3!</div>
           <div class="sub2" code="open('https://srmcgann.github.io/spaceflex','_blank')">easter egg 4!</div>
         </div>
       </div>
