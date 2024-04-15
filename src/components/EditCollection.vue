@@ -22,7 +22,7 @@
         ><br>
         <input
           class="collectionFormInput"
-          v-model="description"
+          v-model="collection.description"
           placeholder="description/hashtags"
           @keydown.enter.stop.prevent="save()"
         ><br>
@@ -30,12 +30,11 @@
         set visibility<br>
         <div
           class="visibilityButton"
-          @click.prevent.stop="setProperty('private', private?0:1)"
-          :class="{'private': private, 'notPrivate': !private}"
-          :title="`toggle visibility. (currently: ${private?'NOT':''} featured in public galleries)`"
+          @click.prevent.stop="setProperty('private', collection.private?0:1)"
+          :class="{'private': collection.private, 'notPrivate': !collection.private}"
+          :title="`toggle visibility. (currently: ${collection.private?'NOT':''} featured in public galleries)`"
         ></div><br>
         <div v-if="collection.meta.slugs.length" v-for="slug in collection.meta.slugs">
-          
         </div>
         <div v-else>
           nothing added
