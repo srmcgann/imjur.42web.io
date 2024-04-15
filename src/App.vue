@@ -832,6 +832,7 @@ export default {
       }
     },
     showEditCollection(collection){
+      console.log('collection', collection)
       this.state.editCollection = [collection]
     },
     setCollectionProperty(collection, property, value){
