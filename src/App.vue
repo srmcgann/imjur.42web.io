@@ -606,6 +606,7 @@ export default {
         passhash: this.state.passhash,
         colData
       }
+      console.log(sendData)
       fetch(`${this.URLbase}/` + 'createCollection.php', {
         method: 'POST',
         headers: {

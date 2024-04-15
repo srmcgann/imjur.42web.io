@@ -17,8 +17,8 @@ error_reporting(E_ALL);
   $colData = $data->{'colData'};
 
   $success = false;
-  if($userName && $passhash){
-    $sql = "SELECT * FROM imjurUsers WHERE name LIKE \"$userName\" AND passhash LIKE BINARY \"$passhash\";";
+  if($userID && $passhash){
+    $sql = "SELECT * FROM imjurUsers WHERE id = $userID AND passhash LIKE BINARY \"$passhash\";";
     $res = mysqli_query($link, $sql);
   }
   if(mysqli_num_rows($res)){
