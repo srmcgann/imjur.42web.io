@@ -53,11 +53,11 @@ error_reporting(E_ALL);
     $sql = "INSERT INTO imjurCollections (
       userID,
       name,
-      meta,
+      meta
     ) VALUES(
       $userID,
       \"$name\",
-      \"$meta\",
+      \"$meta\"
     )";
     if(mysqli_query($link, $sql)){
       $ret = [];
