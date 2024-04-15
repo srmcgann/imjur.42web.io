@@ -1,6 +1,6 @@
 <?php 
-  $db_user  = 'if0_36324953';
-  $db_pass  = 'p7bQZRnvTdjuCtK';
+  $db_user  = 'if0_35882111';
+  $db_pass  = 'GNS1oMHbsX';
   $db_host  = 'sql212.infinityfree.com';
   $db       = "if0_36324953_imjur";
   $port     = '3306';

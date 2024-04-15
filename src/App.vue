@@ -7,6 +7,7 @@
     <UserSettings :state="state" v-if="state.userSettingsVisible" />
     <LoginPrompt  :state="state" v-if="state.showLoginPrompt"/>
     <Admin        :state="state" v-if="state.loggedIn && state.isAdmin"/>
+    <Collections  :state="state" v-if="state.showCollections" />
     <Modal
       :state="state"
       v-if="state.showModal"
@@ -34,6 +35,7 @@ import Footer from './components/Footer'
 import Preview from './components/Preview'
 import Toolbar from './components/Toolbar'
 import Loading from './components/Loading'
+import Collections from './components/Collections'
 import LoginPrompt from './components/LoginPrompt'
 import UserSettings from './components/UserSettings'
 
@@ -49,6 +51,7 @@ export default {
     Loading,
     Preview,
     LoginPrompt,
+    Collections,
     UserSettings,
   },
   data(){
@@ -99,6 +102,7 @@ export default {
         setLinkProperty: null,
         setLinkPropertySelected: null,
         URLbase: null,
+        showCollections: null,
         logout: null,
         onkeydown: null,
         showAdmin: false,
@@ -334,6 +338,9 @@ export default {
     closePrompts(){
       this.state.showLoginPrompt = false
       this.state.userSettingsVisible = false
+      this.state.showModal = false
+      this.state.showPreview = false
+      this.state.showCollections = false
     },
     getAdminData(){
       let sendData = {
