@@ -15,16 +15,16 @@
       then browse your assets and add<br>
       them to this collection if desired
       <div class="newCollectionForm">
-        <input class="collectionFormInput" v-model="name" placeholder="collection name"><br>
-        <input class="collectionFormInput" v-model="description" placeholder="collection name"><br>
+        <input class="collectionFormInput" ref="name" v-model="name" placeholder="collection name"><br>
+        <input class="collectionFormInput" v-model="description" placeholder="description"><br>
       </div><br>
       <div
         class="visibilityButton"
         @click.prevent.stop="setProperty('private', private?0:1)"
         :class="{'private': private, 'notPrivate': !private}"
         :title="`toggle visibility. (currently: ${private?'NOT':''} featured in public galleries)`"
-      ></div>
-      <button @click="submit()"></button>
+      ></div><br>
+      <button @click="submit()">create</button>
     </div>
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
     }
   },
   mounted(){
-    this.$refs.collectionTemplate.focus()
+    this.$refs.name.focus()
   }
 }
 </script>
@@ -92,6 +92,7 @@ export default {
   }
   .newCollectionForm{
     border-radius: 6px;
+    margin-top: 50px;
     background: #40fa;
     color: #fff;
     font-size: 16px;
@@ -103,6 +104,7 @@ export default {
     border: 1px solid red;
     font-size: 14px;
     text-align: left;
-    width: calc(100% - 20px);
+    margin: 20px;
+    width: calc(100% - 100px);
   }
 </style>
