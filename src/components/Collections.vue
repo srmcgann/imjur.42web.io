@@ -27,7 +27,6 @@
           <td v-html="collection.meta.date"></td>
           <td v-html="collection.meta.items.length"></td>
           <td>
-          
             <div class="linkButtons">
               <div
                 class="visibilityButton"
@@ -57,8 +56,7 @@
                 title="delete this collection"
               ></div>
             </div>
-    
-          /td>
+          </td>
         </tr>
       </table>
     </div>
