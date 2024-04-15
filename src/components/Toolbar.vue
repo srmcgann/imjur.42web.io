@@ -74,7 +74,7 @@
           </button>
 
         </div>
-        <div class="sub" @click="console.log(1)">sub a</div>
+        <div class="sub" @click="state.showCollections=true">My Collections</div>
         <div class="sub" @click="">sub b</div>
         <div class="sub" @click="">sub c</div>
         <div class="sub" @click="">
