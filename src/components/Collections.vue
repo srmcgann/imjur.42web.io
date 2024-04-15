@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import CollectionTemplate from 'CollectionTemplate.vue'
+import CollectionTemplate from './CollectionTemplate.vue'
 
 export default {
   name: 'Collections',
