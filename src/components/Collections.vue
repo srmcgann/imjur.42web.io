@@ -13,7 +13,6 @@
         v-if="state.collections.length"
         @click="state.showCollectionTemplate=true"
         title="create new collection"
-        style="font-size: 32px;"
         class="addButton"
       >
       +
@@ -118,16 +117,15 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #f003;
-    border-top: 4px solid #f008;
-    border-bottom: 4px solid #f008;
+    border-bottom: 4px solid #f003;
   }
   td{
     font-size: 14px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #f003;
-    border-top: 4px solid #f008;
-    border-bottom: 4px solid #f008;
+    border-bottom: 4px solid #f004;
+    max-width: 200px;
   }
   .collectionsTable{
     position: relative;
