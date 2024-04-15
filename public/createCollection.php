@@ -24,18 +24,10 @@ error_reporting(E_ALL);
   if(mysqli_num_rows($res)){
     
     $name = mysqli_real_escape_string($link, $colData->{'name'});
-    $description = mysqli_real_escape_string($link, $colData->{'description'});
-    $ar = $colData->{'slugs'};
-    $slugs = [];
-    forEach($ar as $slug){
-      $slugs[] = mysqli_real_escape_string($link, $slug);
-    }
-    $ar = $colData->{'originalSlugs'};
-    $originalSlugs = [];
-    forEach($ar as $slug){
-      $originalSlugs[] = mysqli_real_escape_string($link, $slug);
-    }
-    $private = mysqli_real_escape_string($link, $colData->{'private'});
+    $description = $colData->{'description'}; //escaped later
+    $slugs = $colData->{'slugs'};
+    $originalSlugs = $colData->{'originalSlugs'};
+    $private = $colData->{'private'};
     $serverTZO = getServerTZOffset();
     $meta = [];
     $meta['date'] = date("Y/m/d H:i:s", strtotime('now'));
@@ -48,7 +40,7 @@ error_reporting(E_ALL);
     $meta['originalSlugs'] = $originalSlugs;
     $meta['serverTZO'] = $serverTZO;
     
-    $meta = json_encode($meta);
+    $meta = mysqli_real_escape_string($link, json_encode($meta));
     
     $sql = "INSERT INTO imjurCollections (
       userID,
