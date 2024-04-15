@@ -60,9 +60,9 @@ error_reporting(E_ALL);
       $success = true;
       echo json_encode([$succes, $ret]);
     }else{
-      echo json_encode([$success]);
+      echo json_encode([$success, 1, $sql]);
     }
   }else{
-    echo json_encode([$success]);
+    echo json_encode([$success, 2, $sql]);
   }
 ?>

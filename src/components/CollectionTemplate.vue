@@ -15,8 +15,19 @@
       then browse your assets and add<br>
       them to this collection if desired<br>
       <div class="newCollectionForm">
-        <input class="collectionFormInput" ref="name" v-model="name" placeholder="collection name"><br>
-        <input class="collectionFormInput" v-model="description" placeholder="description/hashtags"><br>
+        <input
+          class="collectionFormInput"
+          ref="name"
+          v-model="name"
+          placeholder="collection name"
+          @keydown.enter.stop.prevent="submit()"
+        ><br>
+        <input
+          class="collectionFormInput"
+          v-model="description"
+          placeholder="description/hashtags"
+          @keydown.enter.stop.prevent="submit()"
+        ><br>
         <br>
         set visibility<br>
         <div
@@ -49,6 +60,7 @@ export default {
       this[property] = value
     },
     submit(){
+      if(!this.name) return
       let obj = {
         name: this.name,
         description: this.description,
@@ -64,7 +76,9 @@ export default {
     }
   },
   mounted(){
-    this.$refs.name.focus()
+    this.$nextTick(()==>{
+      this.$refs.name.focus()
+    })
   }
 }
 </script>
@@ -114,8 +128,8 @@ export default {
     width: calc(100% - 60px);
   }
   .visibilityButton{
-    width: 200px;
-    height: 200px;
-    background-size: 200px 200px;
+    width: 120px;
+    height: 120px;
+    background-size: 120px 120px;
   }
 </style>
