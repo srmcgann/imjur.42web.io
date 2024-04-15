@@ -40,6 +40,7 @@ error_reporting(E_ALL);
     $meta['originalSlugs'] = $originalSlugs;
     $meta['serverTZO'] = $serverTZO;
     
+    $meta_ = $meta;
     $meta = mysqli_real_escape_string($link, json_encode($meta));
     
     $sql = "INSERT INTO imjurCollections (
@@ -56,9 +57,9 @@ error_reporting(E_ALL);
       $ret['id'] = mysqli_insert_id($link);
       $ret['name'] = $name;
       $ret['userID'] = $userID;
-      $ret['meta'] = $meta;
+      $ret['meta'] = $meta_;
       $success = true;
-      echo json_encode([$succes, $ret]);
+      echo json_encode([$success, $ret]);
     }else{
       echo json_encode([$success, 1, $sql]);
     }

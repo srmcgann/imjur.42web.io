@@ -481,6 +481,7 @@ export default {
         this.state.loadingCollections = false
         if(!!(+data[0])){
           this.state.collections = data[1]
+          this.state.showCollectionTemplate = false
         }
       })
     },
