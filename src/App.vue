@@ -8,6 +8,9 @@
     <LoginPrompt         :state="state" v-if="state.showLoginPrompt"/>
     <Admin               :state="state" v-if="showAdminButton"/>
     <Collections         :state="state" v-if="state.showCollections" />
+    <EditCollection      :state="state"
+                         :collection="state.editCollection"
+                         v-if="state.editCollection.length" />
     <CollectionTemplate  :state="state" v-if="state.showCollectionTemplate" />
     <Modal
       :state="state"
@@ -39,6 +42,7 @@ import Loading from './components/Loading'
 import Collections from './components/Collections'
 import LoginPrompt from './components/LoginPrompt'
 import UserSettings from './components/UserSettings'
+import EditCollection from './components/EditCollection'
 import CollectionTemplate from './components/CollectionTemplate'
 
 export default {
@@ -55,6 +59,7 @@ export default {
     LoginPrompt,
     Collections,
     UserSettings,
+    EditCollection,
     CollectionTemplate,
   },
   data(){
@@ -72,6 +77,8 @@ export default {
         views: null,
         size: null,
         deleteSelected: null,
+        showEditCollection: null,
+        editCollection: [],
         multipleLinks: null,
         getAvatar: null,
         showLoading: false,
@@ -101,6 +108,7 @@ export default {
         next: null,
         prev: null,
         fileName: null,
+        updateCollection: null,
         fullFileName: null,
         login: null,
         showCollectionTemplate: false,
@@ -358,6 +366,7 @@ export default {
       this.state.showPreview = false
       this.state.showCollections = false
       this.state.showCollectionTemplate = false
+      this.state.editCollection = []
     },
     getAdminData(){
       let sendData = {
@@ -531,6 +540,28 @@ export default {
           }
         })
       }
+    },
+    updateCollection(colData){
+      let sendData = {
+        userID: this.state.loggedinUserID,
+        passhash: this.state.passhash,
+        colData
+      }
+      console.log(sendData)
+      fetch(`${this.URLbase}/` + 'updateCollection.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      }).then(res => res.json()).then(data => {
+        console.log(data)
+        if(data[0]){
+          this.state.editCollection = []
+        }else{
+          console.log('there was an error updating the collection')
+        }
+      })
     },
     selectAll(){
       this.state.links.map(v=>{
@@ -799,6 +830,9 @@ export default {
           }
         })
       }
+    },
+    showEditCollection(collection){
+      this.state.editCollection = [collection]
     },
     setCollectionProperty(collection, property, value){
       if(collection.meta[property] != value){
@@ -1104,8 +1138,10 @@ export default {
     this.state.setLinkProperty = this.setLinkProperty
     this.state.showUserSettings = this.showUserSettings
     this.state.fetchCollections = this.fetchCollections
+    this.state.updateCollection = this.updateCollection
     this.state.deleteCollection = this.deleteCollection
     this.state.createCollection = this.createCollection
+    this.state.showEditCollection = this.showEditCollection
     this.state.setCollectionProperty = this.setCollectionProperty
     this.state.setLinkPropertySelected = this.setLinkPropertySelected
     this.checkLogin()
@@ -1181,6 +1217,27 @@ button{
   color: #000;
   text-shadow: 1px 1px 3px #40f;
 }
+.newCollectionForm{
+  border-radius: 6px;
+  margin-top: 50px;
+  background: #40f4;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  width: 500px;
+  display: inline-block;
+  padding: 20px;
+}
+.collectionFormInput{
+  font-family: Courier Prime;
+  color: #fff;
+  background: #000;
+  border: 5px solid #f004;
+  font-size: 24px;
+  text-align: center;
+  margin: 5px;
+  width: calc(100% - 60px);
+}
 a{
   text-decoration: none;
   color: #08f;
@@ -1198,7 +1255,7 @@ a{
   padding: 5px;
   position: absolute;
   z-index: 1100;
-  right: 20px;
+  right: 35px;
   top: 14px;
   min-width: 120px;
 }

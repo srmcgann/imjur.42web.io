@@ -55,7 +55,7 @@ error_reporting(E_ALL);
     if(mysqli_query($link, $sql)){
       $ret = [];
       $ret['id'] = mysqli_insert_id($link);
-      $ret['name'] = $name;
+      $ret['name'] = $colData->{'name'};
       $ret['userID'] = $userID;
       $ret['meta'] = $meta_;
       $success = true;

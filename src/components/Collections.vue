@@ -20,14 +20,21 @@
       <table class="collectionsTable" v-if="state.collections.length">
         <tr>
           <th>name</th>
+          <th>description</th>
+          <th>age</th>
           <th>date</th>
           <th>items</th>
           <th>tools</th>
         </tr>
         <tr v-for="collection in state.collections">
           <td v-html="collection.name"></td>
-          <td v-html="collection.meta.date"></td>
-          <td v-html="collection.meta.slugs.length"></td>
+          <td v-html="collection.meta.description"></td>
+          <td v-html="state.age(collection.meta)"></td>
+          <td v-html="state.prettyDate(collection.meta)"></td>
+          <td>
+            #items {{collection.meta.slugs.length}}<br>
+            <button @click="state.showEditCollection(collection)">edit ✎</button>
+          </td>
           <td>
             <div class="linkButtons">
               <div
@@ -109,6 +116,7 @@ export default {
     text-shadow: 2px 2px 2px #000;
     background: #102d ;
     word-break: auto-phrase;
+    overflow: auto;
   }
   tr{
     background: #123d;
@@ -116,22 +124,23 @@ export default {
   th{
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px solid #f003;
-    border-bottom: 4px solid #f003;
+    border: 1px solid #0ff1;
+    border-bottom: 20px solid #0ff1;
+    color: #fac;
   }
   td{
     font-size: 14px;
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px solid #f003;
-    border-bottom: 4px solid #f004;
-    max-width: 200px;
+    border: 1px solid #0ff1;
+    border-bottom: 4px solid #0ff1;
   }
   .collectionsTable{
     position: relative;
     left: 50%;
     transform: translate(-50%);
     border-collapse: collapse;
+    width: 100%;
   }
   .addButton{
     background: #0f8;
