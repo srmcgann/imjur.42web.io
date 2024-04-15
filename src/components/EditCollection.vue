@@ -75,7 +75,7 @@ export default {
         private: this.collection.meta.private,
       }
       this.state.updateCollection(obj)
-      this.state.editCollection = []
+      //this.state.editCollection = []
     },
     close(){
       this.state.editCollection = []

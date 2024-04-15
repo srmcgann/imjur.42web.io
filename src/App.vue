@@ -556,7 +556,7 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          this.state.editCollection = []
+          //this.state.editCollection = []
         }else{
           console.log('there was an error updating the collection')
         }
