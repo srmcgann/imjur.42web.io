@@ -1,13 +1,14 @@
 <template>
   <div>
-    <Header       :state="state" />
-    <Toolbar      :state="state" />
-    <Main         :state="state" />
-    <Footer       :state="state" />
-    <UserSettings :state="state" v-if="state.userSettingsVisible" />
-    <LoginPrompt  :state="state" v-if="state.showLoginPrompt"/>
-    <Admin        :state="state" v-if="state.loggedIn && state.isAdmin"/>
-    <Collections  :state="state" v-if="state.showCollections" />
+    <Header              :state="state" />
+    <Toolbar             :state="state" />
+    <Main                :state="state" />
+    <Footer              :state="state" />
+    <UserSettings        :state="state" v-if="state.userSettingsVisible" />
+    <LoginPrompt         :state="state" v-if="state.showLoginPrompt"/>
+    <Admin               :state="state" v-if="state.loggedIn && state.isAdmin"/>
+    <Collections         :state="state" v-if="state.showCollections" />
+    <CollectionTemplate  :state="state" v-if="state.showCollectionTemplate" />
     <Modal
       :state="state"
       v-if="state.showModal"
@@ -38,6 +39,7 @@ import Loading from './components/Loading'
 import Collections from './components/Collections'
 import LoginPrompt from './components/LoginPrompt'
 import UserSettings from './components/UserSettings'
+import CollectionTemplate from './components/CollectionTemplate'
 
 export default {
   name: 'App',
@@ -53,6 +55,7 @@ export default {
     LoginPrompt,
     Collections,
     UserSettings,
+    CollectionTemplate,
   },
   data(){
     return {
@@ -79,6 +82,7 @@ export default {
         previewLink: null,
         passhash: '',
         loggedinUserID: null,
+        fetchCollections: null,
         closeModal: null,
         closePreview: null,
         showAssetPreview: [],
@@ -91,15 +95,21 @@ export default {
         loggedinUserName: '',
         copyLink: null,
         deleteSingle: null,
+        deleteCollection: null,
+        createCollection: null,
         downloadLink: null,
         next: null,
         prev: null,
         fileName: null,
         fullFileName: null,
         login: null,
+        showCollectionTemplate: false,
         register: null,
         isNumber: null,
+        openCollection: null,
         setLinkProperty: null,
+        setCollectionProperty: null,
+        collections: [],
         setLinkPropertySelected: null,
         URLbase: null,
         showCollections: null,
@@ -112,7 +122,6 @@ export default {
         prettyDate: null,
         firstSeen: null,
         password: '',
-        maxResultsPerPage: 8,
         showUserSettings: null,
         uploadFromURL: '',
         invalidLoginAttempt: false,
@@ -122,6 +131,7 @@ export default {
         regpassword: '',
         showUploadModal: false,
         loadingAssets: true,
+        loadingCollections: true,
         checkLogin: null,
         adminData: null,
         search: {
@@ -140,6 +150,9 @@ export default {
         setLinksOwner: null,
         curPage: 0,
         curUserPage: 0,
+        maxResultsPerPage: 10,
+        collectionsPage: 0,
+        maxCollectionResultsPerPage: 10,
         regressPage: null,
         advancePage: null,
         lastPage: null,
@@ -301,6 +314,9 @@ export default {
       a.click()
       a.remove()
     },
+    openCollection(collection){
+      open(`${this.URLbase}/` + collection.meta.href, '_blank')
+    },
     openLink(link){
       open(`${this.URLbase}/` + link.href, '_blank')
     },
@@ -341,6 +357,7 @@ export default {
       this.state.showModal = false
       this.state.showPreview = false
       this.state.showCollections = false
+      this.state.showCollectionTemplate = false
     },
     getAdminData(){
       let sendData = {
@@ -444,6 +461,27 @@ export default {
       }).then(res => res.json()).then(data=>{
         console.log('res from setOwner.php: ', data)
         if(!data[0]) alert('error setting link owner')
+      })
+    },
+    fetchCollections(userID){
+      this.state.loadingCollections = true
+      let sendData = {
+        userID,
+        passhash: this.state.passhash,
+        page: this.state.collectionsPage,
+        maxResultsPerPage: this.state.maxCollectionResultsPerPage
+      }
+      fetch(`${this.URLbase}/` + 'fetchCollections.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      }).then(res => res.json()).then(data => {
+        this.state.loadingCollections = false
+        if(!!(+data[0])){
+          this.state.collections = data[1]
+        }
       })
     },
     fetchUserLinks(userID){
@@ -561,6 +599,54 @@ export default {
         })
       }
       return confirmed
+    },
+    createCollection(colData){
+      let sendData = {
+        userID: this.state.loggedinUserID,
+        passhash: this.state.passhash,
+        colData
+      }
+      fetch(`${this.URLbase}/` + 'createCollection.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      })
+      .then(res => res.json()).then(data => {
+        console.log(data)
+        if(data[0]){
+          this.state.collections = [...this.state.collections, data[1]]
+        }else{
+          console.log('there was an error creating the collectdion')
+        }
+    },
+    deleteCollection(collection){
+      let prmpt = prompt(`\n\nARE YOU SURE YOU WANT TO DELETE THIS COLLECTION?\n\n\n   it contains ${collection.meta.items.length} items\n\n\n>>> THIS ACTION CANNOT BE UNDONE! <<<\n\n\n  type 'yes' to continue"`)
+      if(prmpt && prmpt.toLowerCase().indexOf('yes') != -1){
+        let sendData = {
+          userName: this.state.username,
+          passhash: this.state.passhash,
+          collectionID: collection.id
+        }
+        console.log('sendData', sendData)
+        fetch(`${this.URLbase}/` + 'deleteCollection.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        })
+        .then(res => res.json()).then(data => {
+          console.log(data)
+          if(data[0]){
+            console.log(`deleted collection id: ${collection.id}`)
+            this.state.collections = this.state.collections.filter(v => +v.id !== +collection.id)
+          }else{
+            alert(`there was a problem!`)
+          }
+        })
+      }
     },
     deleteSingle(link){
       let lsel = []
@@ -699,6 +785,31 @@ export default {
           value: link[property],
         }
         fetch(`${this.URLbase}/` + 'setLinkProperty.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        }).then(res => res.json()).then(data=>{
+          if(data[0]){
+            
+          }else{
+            alert('there was a problem setting the property! d\'oh!')
+          }
+        })
+      }
+    },
+    setCollectionProperty(collection, property, value){
+      if(collection.meta[property] != value){
+        collection.meta[property] = value
+        let sendData = {
+          userName: this.state.loggedinUserName,
+          passhash: this.state.passhash,
+          collectionID: collection.id,
+          property,
+          value: collection.meta[property],
+        }
+        fetch(`${this.URLbase}/` + 'setCollectionProperty.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -980,8 +1091,13 @@ export default {
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
     this.state.deleteSelected = this.deleteSelected
+    this.state.openCollection = this.openCollection
     this.state.setLinkProperty = this.setLinkProperty
     this.state.showUserSettings = this.showUserSettings
+    this.state.fetchCollections = this.fetchCollections
+    this.state.deleteCollection = this.deleteCollection
+    this.state.createCollection = this.createCollection
+    this.state.setCollectionProperty = this.setCollectionProperty
     this.state.setLinkPropertySelected = this.setLinkPropertySelected
     this.checkLogin()
   }

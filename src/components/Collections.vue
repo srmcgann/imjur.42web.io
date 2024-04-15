@@ -8,7 +8,59 @@
       close/cancel
     </button>
     <div class="collectionsInner">
-      &lt;&lt;&lt;  COLLECTIONS  >>>
+      &lt;&lt;&lt;  COLLECTIONS  >>><br><br>
+      <button
+        @click="state.showCollectionTemplate=true"
+        title="create new collection"
+      >
+      +
+      </button>
+      <table>
+        <tr>
+          <th>name</th>
+          <th>date</th>
+          <th>items</th>
+          <th>tools</th>
+        </tr>
+        <tr v-for="collection in state.collections">
+          <td v-html="collection.name"></td>
+          <td v-html="collection.meta.date"></td>
+          <td v-html="collection.meta.items.length"></td>
+          <td>
+          
+            <div class="linkButtons">
+              <div
+                class="visibilityButton"
+                @click.prevent.stop="state.setCollectionProperty(collection, 'private', collection.meta.private?0:1)"
+                :class="{'private': collection.meta.private, 'notPrivate': !collection.meta.private}"
+                :title="`toggle visibility. (currently: ${collection.meta.private?'NOT':''} featured in public galleries)`"
+              ></div>
+              <div
+                class="copyLinkButton"
+                @click.prevent.stop="state.copyLink(collection.meta.href)"
+                title="copy link to clipboard"
+              ></div>
+              <a
+                :href="state.URLbase + '/' + collection.meta.href"
+                class="openButton"
+                @click.prevent.stop="state.openCollection(collection)"
+                title="open link in new tab"
+              ></a>
+              <!-- <div
+                class="downloadButton"
+                @click.prevent.stop="state.downloadLink(link, state.fullFileName(link))"
+                title="download asset"
+              ></div> -->
+              <div
+                class="deleteSingleButton"
+                @click.prevent.stop="state.deleteCollection(collection)"
+                title="delete this collection"
+              ></div>
+            </div>
+    
+          /td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -24,6 +76,7 @@ export default {
   },
   mounted(){
     this.$refs.collections.focus()
+    this.state.fetchCollections(this.state.loggedinUserID)
   }
 }
 </script>
@@ -48,7 +101,7 @@ export default {
     word-break: break-all;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
-    background: #001b;
+    background: #102d ;
     word-break: auto-phrase;
   }
 </style>
