@@ -16,8 +16,9 @@
       them to this collection if desired
       <div class="newCollectionForm">
         <input class="collectionFormInput" ref="name" v-model="name" placeholder="collection name"><br>
-        <input class="collectionFormInput" v-model="description" placeholder="description"><br>
+        <input class="collectionFormInput" v-model="description" placeholder="description/hashtags"><br>
       </div><br>
+      set visibility
       <div
         class="visibilityButton"
         @click.prevent.stop="setProperty('private', private?0:1)"
@@ -93,18 +94,27 @@ export default {
   .newCollectionForm{
     border-radius: 6px;
     margin-top: 50px;
-    background: #40fa;
+    background: #40f4;
     color: #fff;
     font-size: 16px;
     text-align: center;
+    width: 500px;
+    display: inline-block;
+    padding: 20px;
   }
   .collectionFormInput{
     font-family: Courier Prime;
+    color: #fff;
     background: #000;
-    border: 1px solid red;
-    font-size: 14px;
-    text-align: left;
-    margin: 20px;
-    width: calc(100% - 100px);
+    border: 5px solid #f004;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px;
+    width: calc(100% - 60px);
+  }
+  .visibilityButton{
+    width: 200px;
+    height: 200px;
+    background-size: 200px 200px;
   }
 </style>
