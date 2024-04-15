@@ -11,20 +11,23 @@
       <br><br>
       EDIT COLLECTION
       <br><br>
-      update details below, click save<br>
+      update details below<br>
+      changes are effective instantly, universe-wide
       <div class="editCollectionForm">
+        name<br>
         <input
           class="collectionFormInput"
           ref="name"
           v-model="collection.name"
           placeholder="collection name"
-          @keydown.enter.stop.prevent="save()"
-        ><br>
+          @keyup.stop.prevent="save()"
+        ><br><br>
+        description<br>
         <input
           class="collectionFormInput"
           v-model="collection.meta.description"
           placeholder="description/hashtags"
-          @keydown.enter.stop.prevent="save()"
+          @keyup.stop.prevent="save()"
         ><br>
         <br>
         set visibility<br>
@@ -37,9 +40,10 @@
         <div v-if="collection.meta.slugs.length" v-for="slug in collection.meta.slugs">
         </div>
         <div v-else>
-          nothing added
+          <br><br>
+          [nothing added yet - go browse!]
         </div>
-        <button @click="save()">save</button>
+        <!-- <button @click="save()">save</button> -->
       </div>
     </div>
   </div>
@@ -56,12 +60,13 @@ export default {
   methods: {
     setProperty(property, value){
       this.collection.meta[property] = value
+      this.save()
     },
     save(){
-      if(!this.collection.name) {
-        alert('you must provide a name')
-        return
-      }
+      //if(!this.collection.name) {
+      //  alert('you must provide a name')
+      //  return
+      //}
       let obj = {
         name: this.collection.name,
         id: this.collection.id,
