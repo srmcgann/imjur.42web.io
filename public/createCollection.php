@@ -25,9 +25,17 @@ error_reporting(E_ALL);
     
     $name = mysqli_real_escape_string($link, $colData->{'name'});
     $description = mysqli_real_escape_string($link, $colData->{'descriptioin'});
-    $slugs = mysqli_real_escape_string($link, $colData->{'slugs'});
+    $ar = $colData->{'slugs'};
+    $slugs = [];
+    forEach($ar as $slug){
+      $slugs[] = mysqli_real_escape_string($link, $slug);
+    }
+    $ar = $colData->{'originalSlugs'};
+    $originalSlugs = [];
+    forEach($ar as $slug){
+      $originalSlugs[] = mysqli_real_escape_string($link, $slug);
+    }
     $private = mysqli_real_escape_string($link, $colData->{'private'});
-    $originalSlugs = mysqli_real_escape_string($link, $colData->{'originalSlugs'});
     $serverTZO = getServerTZOffset();
     $meta = [];
     $meta['date'] = date("Y/m/d H:i:s", strtotime('now'));
