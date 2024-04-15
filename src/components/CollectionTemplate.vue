@@ -17,15 +17,16 @@
       <div class="newCollectionForm">
         <input class="collectionFormInput" ref="name" v-model="name" placeholder="collection name"><br>
         <input class="collectionFormInput" v-model="description" placeholder="description/hashtags"><br>
-      </div><br>
-      set visibility
-      <div
-        class="visibilityButton"
-        @click.prevent.stop="setProperty('private', private?0:1)"
-        :class="{'private': private, 'notPrivate': !private}"
-        :title="`toggle visibility. (currently: ${private?'NOT':''} featured in public galleries)`"
-      ></div><br>
-      <button @click="submit()">create</button>
+        <br>
+        set visibility<br>
+        <div
+          class="visibilityButton"
+          @click.prevent.stop="setProperty('private', private?0:1)"
+          :class="{'private': private, 'notPrivate': !private}"
+          :title="`toggle visibility. (currently: ${private?'NOT':''} featured in public galleries)`"
+        ></div><br>
+        <button @click="submit()">create</button>
+      </div>
     </div>
   </div>
 </template>
