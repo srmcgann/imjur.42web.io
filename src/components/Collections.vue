@@ -110,19 +110,31 @@ export default {
     background: #102d ;
     word-break: auto-phrase;
   }
+  tr{
+    background: #123d;
+  }
   th{
     padding-left: 10px;
     padding-right: 10px
+    border-top: 4px solid #f008;
+    border: 1px solid #f003;
+    border-bottom: 4px solid #f008;
   }
   td{
     font-size: 14px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #f003;
+    border-top: 4px solid #f008;
+    border-bottom: 4px solid #f008;
   }
   .collectionsTable{
     position: relative;
     left: 50%;
     transform: translate(-50%);
-    
-  }  
+  }
+  button{
+    background: #0f8;
+    padding: 0
+  }
 </style>

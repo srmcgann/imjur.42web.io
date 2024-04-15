@@ -6,7 +6,7 @@
     <Footer              :state="state" />
     <UserSettings        :state="state" v-if="state.userSettingsVisible" />
     <LoginPrompt         :state="state" v-if="state.showLoginPrompt"/>
-    <Admin               :state="state" v-if="state.loggedIn && state.isAdmin"/>
+    <Admin               :state="state" v-if="showAdminButton"/>
     <Collections         :state="state" v-if="state.showCollections" />
     <CollectionTemplate  :state="state" v-if="state.showCollectionTemplate" />
     <Modal
@@ -979,6 +979,14 @@ export default {
     }
   },
   computed:{
+    showAdminButton(){
+      return this.state.loggedIn && 
+             this.state.isAdmin && 
+             !this.state.showModal &&
+             !this.state.showPreview &&
+             !this.state.showLogin &&
+             !this.state.showCollections
+    },
     URLbase(){
       let ret = window.location.origin
       if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
