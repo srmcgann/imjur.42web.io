@@ -25,6 +25,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `imjurCollections`
+--
+
+CREATE TABLE `imjurCollections` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `name` varchar(1024) NOT NULL,
+  `meta` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `imjurCollections`
+--
+ALTER TABLE `imjurCollections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `imjurCollections`
+--
+ALTER TABLE `imjurCollections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+  --
 -- Table structure for table `imjurComments`
 --
 
