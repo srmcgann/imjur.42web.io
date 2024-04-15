@@ -27,7 +27,7 @@
         <tr v-for="collection in state.collections">
           <td v-html="collection.name"></td>
           <td v-html="collection.meta.date"></td>
-          <td v-html="collection.meta.items.length"></td>
+          <td v-html="collection.meta.slugs.length"></td>
           <td>
             <div class="linkButtons">
               <div
