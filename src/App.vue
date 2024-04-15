@@ -612,14 +612,14 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(sendData),
-      })
-      .then(res => res.json()).then(data => {
+      }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
           this.state.collections = [...this.state.collections, data[1]]
         }else{
           console.log('there was an error creating the collectdion')
         }
+      })
     },
     deleteCollection(collection){
       let prmpt = prompt(`\n\nARE YOU SURE YOU WANT TO DELETE THIS COLLECTION?\n\n\n   it contains ${collection.meta.items.length} items\n\n\n>>> THIS ACTION CANNOT BE UNDONE! <<<\n\n\n  type 'yes' to continue"`)
@@ -636,8 +636,7 @@ export default {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(sendData),
-        })
-        .then(res => res.json()).then(data => {
+        }).then(res => res.json()).then(data => {
           console.log(data)
           if(data[0]){
             console.log(`deleted collection id: ${collection.id}`)
