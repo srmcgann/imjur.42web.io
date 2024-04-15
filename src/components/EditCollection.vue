@@ -22,7 +22,7 @@
         ><br>
         <input
           class="collectionFormInput"
-          v-model="collection.description"
+          v-model="collection.meta.description"
           placeholder="description/hashtags"
           @keydown.enter.stop.prevent="save()"
         ><br>
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     setProperty(property, value){
-      this.collection[property] = value
+      this.collection.meta[property] = value
     },
     save(){
       if(!this.collection.name) {
@@ -65,9 +65,9 @@ export default {
       let obj = {
         name: this.collection.name,
         id: this.collection.id,
-        description: this.collection.description,
-        slugs: this.collection.slugs,
-        private: this.collection.private,
+        description: this.collection.meta.description,
+        slugs: this.collection.meta.slugs,
+        private: this.collection.meta.private,
       }
       this.state.updateCollection(obj)
       this.state.editCollection = []

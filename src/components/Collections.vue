@@ -133,7 +133,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #0ff1;
-    border-bottom: 4px solid #0ff1;
+    border-bottom: 20px solid #0ff1;
   }
   .collectionsTable{
     position: relative;
