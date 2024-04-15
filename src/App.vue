@@ -837,26 +837,14 @@ export default {
     setCollectionProperty(collection, property, value){
       if(collection.meta[property] != value){
         collection.meta[property] = value
-        let sendData = {
-          userName: this.state.loggedinUserName,
-          passhash: this.state.passhash,
-          collectionID: collection.id,
-          property,
-          value: collection.meta[property],
+        let obj = {
+          name: collection.name,
+          id: collection.id,
+          description: collection.meta.description,
+          slugs: collection.meta.slugs,
+          private: collection.meta.private,
         }
-        fetch(`${this.URLbase}/` + 'setCollectionProperty.php',{
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(sendData),
-        }).then(res => res.json()).then(data=>{
-          if(data[0]){
-            
-          }else{
-            alert('there was a problem setting the property! d\'oh!')
-          }
-        })
+        this.updateCollection(obj)
       }
     },
     logout(){
