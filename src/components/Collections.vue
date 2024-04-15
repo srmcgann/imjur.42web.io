@@ -8,12 +8,13 @@
       close/cancel
     </button>
     <div class="collectionsInner">
-      &lt;&lt;&lt;  COLLECTIONS  >>><br><br>
+      &lt;&lt;&lt;  COLLECTIONS  >>><br>
       <button
         v-if="state.collections.length"
         @click="state.showCollectionTemplate=true"
         title="create new collection"
         style="font-size: 32px;"
+        class="addButton"
       >
       +
       </button>
@@ -116,8 +117,8 @@ export default {
   th{
     padding-left: 10px;
     padding-right: 10px;
-    border-top: 4px solid #f008;
     border: 1px solid #f003;
+    border-top: 4px solid #f008;
     border-bottom: 4px solid #f008;
   }
   td{
@@ -132,9 +133,16 @@ export default {
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    border-collapse: collapse;
   }
-  button{
+  .addButton{
     background: #0f8;
-    padding: 0
+    padding: 0;
+    font-size: 100px;
+    padding-top: 14px;
+    line-height: 70px;
+    border-radius: 50px;
+    margin: 20px;
   }
+  
 </style>
