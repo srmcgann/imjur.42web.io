@@ -8,9 +8,8 @@
     <LoginPrompt         :state="state" v-if="state.showLoginPrompt"/>
     <Admin               :state="state" v-if="showAdminButton"/>
     <Collections         :state="state" v-if="state.showCollections" />
-    <EditCollection      :state="state"
-                         :collection="state.editCollection"
-                         v-if="state.editCollection.length" />
+    <EditCollection      :state="state" v-if="state.editCollection.length"
+                         :collection="state.editCollection[0]"/>
     <CollectionTemplate  :state="state" v-if="state.showCollectionTemplate" />
     <Modal
       :state="state"
