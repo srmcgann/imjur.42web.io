@@ -115,7 +115,7 @@ export default {
   }
   th{
     padding-left: 10px;
-    padding-right: 10px
+    padding-right: 10px;
     border-top: 4px solid #f008;
     border: 1px solid #f003;
     border-bottom: 4px solid #f008;
