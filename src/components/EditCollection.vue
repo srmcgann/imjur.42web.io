@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     setProperty(property, value){
-      this.collection.[property] = value
+      this.collection[property] = value
     },
     save(){
       if(!this.collection.name) {
