@@ -12,7 +12,7 @@
       EDIT COLLECTION
       <br><br>
       update details below<br>
-      changes are effective instantly, universe-wide
+      changes are effective instantly, universe-wide<br>
       <div class="editCollectionForm">
         name<br>
         <input
