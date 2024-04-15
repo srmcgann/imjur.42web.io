@@ -12,7 +12,7 @@
       EDIT COLLECTION
       <br><br>
       update details below, click save<br>
-      <div class="newCollectionForm">
+      <div class="editCollectionForm">
         <input
           class="collectionFormInput"
           ref="name"
@@ -30,9 +30,9 @@
         set visibility<br>
         <div
           class="visibilityButton"
-          @click.prevent.stop="setProperty('private', collection.private?0:1)"
-          :class="{'private': collection.private, 'notPrivate': !collection.private}"
-          :title="`toggle visibility. (currently: ${collection.private?'NOT':''} featured in public galleries)`"
+          @click.prevent.stop="setProperty('private', collection.meta.private?0:1)"
+          :class="{'private': collection.meta.private, 'notPrivate': !collection.meta.private}"
+          :title="`toggle visibility. (currently: ${collection.meta.private?'NOT':''} featured in public galleries)`"
         ></div><br>
         <div v-if="collection.meta.slugs.length" v-for="slug in collection.meta.slugs">
         </div>
@@ -106,5 +106,31 @@ export default {
     text-shadow: 2px 2px 2px #000;
     background: #201d ;
     word-break: auto-phrase;
+  }
+  .editCollectionForm{
+    border-radius: 6px;
+    margin-top: 50px;
+    background: #40f4;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 500px;
+    display: inline-block;
+    padding: 20px;
+  }
+  .collectionFormInput{
+    font-family: Courier Prime;
+    color: #fff;
+    background: #000;
+    border: 5px solid #f004;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px;
+    width: calc(100% - 60px);
+  }
+  .visibilityButton{
+    width: 120px;
+    height: 120px;
+    background-size: 120px 120px;
   }
 </style>
