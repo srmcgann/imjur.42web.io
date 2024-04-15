@@ -114,6 +114,11 @@ export default {
     padding-left: 10px;
     padding-right: 10px
   }
+  td{
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   .collectionsTable{
     position: relative;
     left: 50%;
