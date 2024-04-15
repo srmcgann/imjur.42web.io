@@ -10,12 +10,14 @@
     <div class="collectionsInner">
       &lt;&lt;&lt;  COLLECTIONS  >>><br><br>
       <button
+        v-if="state.collections.length"
         @click="state.showCollectionTemplate=true"
         title="create new collection"
+        style="font-size: 32px;"
       >
       +
       </button>
-      <table>
+      <table class="collectionsTable" v-if="state.collections.length">
         <tr>
           <th>name</th>
           <th>date</th>
@@ -59,14 +61,20 @@
           </td>
         </tr>
       </table>
+      <CollectionTemplate  v-else :state="state" />
     </div>
   </div>
 </template>
 
 <script>
+import CollectionTemplate from 'CollectionTemplate.vue'
+
 export default {
   name: 'Collections',
   props: [ 'state' ],
+  components:{
+    CollectionTemplate,
+  },
   methods: {
     close(){
       this.state.closePrompts()
@@ -102,4 +110,14 @@ export default {
     background: #102d ;
     word-break: auto-phrase;
   }
+  th{
+    padding-left: 10px;
+    padding-right: 10px
+  }
+  .collectionsTable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    
+  }  
 </style>

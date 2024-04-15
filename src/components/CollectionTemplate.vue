@@ -13,7 +13,7 @@
       <br><br>
       enter details below, click create,<br>
       then browse your assets and add<br>
-      them to this collection if desired
+      them to this collection if desired<br>
       <div class="newCollectionForm">
         <input class="collectionFormInput" ref="name" v-model="name" placeholder="collection name"><br>
         <input class="collectionFormInput" v-model="description" placeholder="description/hashtags"><br>
