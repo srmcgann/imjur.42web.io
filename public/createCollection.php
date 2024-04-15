@@ -24,7 +24,7 @@ error_reporting(E_ALL);
   if(mysqli_num_rows($res)){
     
     $name = mysqli_real_escape_string($link, $colData->{'name'});
-    $description = mysqli_real_escape_string($link, $colData->{'descriptioin'});
+    $description = mysqli_real_escape_string($link, $colData->{'description'});
     $ar = $colData->{'slugs'};
     $slugs = [];
     forEach($ar as $slug){
