@@ -617,7 +617,7 @@ export default {
         if(data[0]){
           this.state.collections = [...this.state.collections, data[1]]
         }else{
-          console.log('there was an error creating the collectdion')
+          console.log('there was an error creating the collection')
         }
       })
     },
