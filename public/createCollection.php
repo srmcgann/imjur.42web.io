@@ -23,11 +23,11 @@ error_reporting(E_ALL);
   }
   if(mysqli_num_rows($res)){
     
-    $name = mysqli_real_escape_string($link, $colData['name']);
-    $description = mysqli_real_escape_string($link, $colData['descriptioin']);
-    $slugs = mysqli_real_escape_string($link, $colData['slugs']);
-    $private = mysqli_real_escape_string($link, $colData['private']);
-    $originalSlugs = mysqli_real_escape_string($link, $colData['originalSlugs']);
+    $name = mysqli_real_escape_string($link, $colData->{'name'});
+    $description = mysqli_real_escape_string($link, $colData->{'descriptioin'});
+    $slugs = mysqli_real_escape_string($link, $colData->{'slugs'});
+    $private = mysqli_real_escape_string($link, $colData->{'private'});
+    $originalSlugs = mysqli_real_escape_string($link, $colData->{'originalSlugs'});
     $serverTZO = getServerTZOffset();
     $meta = [];
     $meta['date'] = date("Y/m/d H:i:s", strtotime('now'));
