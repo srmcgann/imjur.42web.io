@@ -44,12 +44,11 @@ error_reporting(E_ALL);
       $meta['slugs'] = $slugs;
       $meta['private'] = $private;
       $meta['originalSlugs'] = $originalSlugs;
-
-      $meta['date'] = $oMeta['date'];
-      $meta['upvotes'] = $oMeta['upvotes'];
-      $meta['downvotes'] = $oMeta['downvotes'];
-      $meta['views'] = $oMeta['views'];
-      $meta['serverTZO'] = $oMeta['serverTZO'];
+      $meta['date'] = $oMeta->{'date'};
+      $meta['upvotes'] = $oMeta->{'upvotes'};
+      $meta['downvotes'] = $oMeta->{'downvotes'};
+      $meta['views'] = $oMeta->{'views'};
+      $meta['serverTZO'] = $oMeta->{'serverTZO'};
 
       $meta_ = $meta;
       $meta = mysqli_real_escape_string($link, json_encode($meta));
