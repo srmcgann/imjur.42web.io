@@ -4,18 +4,6 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload
     </button>
-    <input
-      type="text"
-      autofocus
-      ref="uploadURL"
-      class="URLinput"
-      @keydown.stop="keydown($event)"
-      @keypress.enter="uploadByURL()"
-      v-model="state.uploadFromURL"
-      placeholder="or, upload from a URL... it might work!"
-    >
-    <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
-    
     <div class="menu" ref="menu" v-if="!memo.length && state.loggedIn">
       <div class="parent" style="z-index: 1900">
         asset tools
@@ -72,7 +60,6 @@
           >
             delete
           </button>
-
         </div>
         <div class="sub" style="min-width: 180px;" @click="state.showCollections=true">My Collections</div>
         <div class="sub" @click="">sub b</div>
@@ -86,6 +73,17 @@
         </div>
       </div>
     </div>
+    <input
+      type="text"
+      autofocus
+      ref="uploadURL"
+      class="URLinput"
+      @keydown.stop="keydown($event)"
+      @keypress.enter="uploadByURL()"
+      v-model="state.uploadFromURL"
+      placeholder="or, upload from a URL... it might work!"
+    >
+    <button @click="uploadByURL()" class="goButton" title="download asset by URL [enter]">go</button>
   </div>
 </template>
 
