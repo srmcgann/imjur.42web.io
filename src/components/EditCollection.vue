@@ -20,14 +20,14 @@
           ref="name"
           v-model="collection.name"
           placeholder="collection name"
-          @keyup.stop.prevent="save()"
+          @input.stop.prevent="save()"
         ><br><br>
         description<br>
         <input
           class="collectionFormInput"
           v-model="collection.meta.description"
           placeholder="description/hashtags"
-          @keyup.stop.prevent="save()"
+          @input.stop.prevent="save()"
         ><br>
         <br>
         set visibility<br>

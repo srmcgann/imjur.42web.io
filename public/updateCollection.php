@@ -33,17 +33,18 @@ error_reporting(E_ALL);
       $slugs = $colData->{'slugs'};
       $originalSlugs = $colData->{'originalSlugs'};
       $private = $colData->{'private'};
+      $oMeta = json_decode($row['meta']);
       $meta = [];
       $meta['description'] = $description;
       $meta['slugs'] = $slugs;
       $meta['private'] = $private;
       $meta['originalSlugs'] = [];
 
-      $meta['date'] = $row['date'];
-      $meta['upvotes'] = $row['upvotes'];
-      $meta['downvotes'] = $row['downvotes'];
-      $meta['views'] = $row['views'];
-      $meta['serverTZO'] = $row['serverTZO'];
+      $meta['date'] = $oMeta['date'];
+      $meta['upvotes'] = $oMeta['upvotes'];
+      $meta['downvotes'] = $oMeta['downvotes'];
+      $meta['views'] = $oMeta['views'];
+      $meta['serverTZO'] = $oMeta['serverTZO'];
 
       $skip = false;
       forEach($slugs as $slug){
