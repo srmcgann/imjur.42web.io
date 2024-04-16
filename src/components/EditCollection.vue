@@ -11,8 +11,7 @@
       <br><br>
       EDIT COLLECTION
       <br><br>
-      update details below<br>
-      changes are effective instantly, universe-wide<br>
+      changes are effective instantly,<br>universe-wide
       <div class="editCollectionForm">
         name<br>
         <input
@@ -21,6 +20,7 @@
           v-model="collection.name"
           placeholder="collection name"
           @input.stop.prevent="save()"
+          @keyup.enter.prevent="close()"
         ><br><br>
         description<br>
         <input
@@ -28,6 +28,7 @@
           v-model="collection.meta.description"
           placeholder="description/hashtags"
           @input.stop.prevent="save()"
+          @keyup.enter.prevent="close()"
         ><br>
         <br>
         set visibility<br>
