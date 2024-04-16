@@ -22,7 +22,7 @@
           <th>name</th>
           <th>description</th>
           <th>age</th>
-          <th>date</th>
+          <th>created</th>
           <th>items</th>
           <th>tools</th>
         </tr>
@@ -30,9 +30,9 @@
           <td v-html="collection.name"></td>
           <td v-html="collection.meta.description"></td>
           <td v-html="state.age(collection.meta)"></td>
-          <td v-html="state.prettyDate(collection.meta)"></td>
+          <td v-html="state.prettyDate(collection.meta).split(',')[0]"></td>
           <td>
-            #items {{collection.meta.slugs.length}}<br>
+            <font style="font-size:2em;">#items {{collection.meta.slugs.length}}</font><br>
             <button @click="state.showEditCollection(collection)">edit ✎</button>
           </td>
           <td>
