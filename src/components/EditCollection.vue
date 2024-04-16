@@ -11,7 +11,7 @@
       <br><br>
       EDIT COLLECTION
       <br><br>
-      changes are effective instantly,<br>universe-wide
+      changes are effective instantly,<br>universe-wide<br>
       <div class="editCollectionForm">
         name<br>
         <input
