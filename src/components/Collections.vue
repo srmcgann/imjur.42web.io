@@ -32,7 +32,7 @@
           <td v-html="state.age(collection.meta)"></td>
           <td v-html="state.prettyDate(collection.meta).split(',')[0]"></td>
           <td>
-            <font style="font-size:2em;">#items {{collection.meta.slugs.length}}</font><br>
+            <font style="font-size:1.5em;">#items {{collection.meta.slugs.length}}</font><br>
             <button @click="state.showEditCollection(collection)">edit ✎</button>
           </td>
           <td>
