@@ -26,7 +26,12 @@ error_reporting(E_ALL);
     $name = mysqli_real_escape_string($link, $colData->{'name'});
     $description = $colData->{'description'}; //escaped later
     $slugs = $colData->{'slugs'};
-    $originalSlugs = $colData->{'originalSlugs'};
+    $originalSlugs = [];
+    forEach($slugs as $slug){
+      $sql = "SELECT originalSlug FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
+      $res = mysqli_query($link, $sql);
+      $originalSlugs[] = $row['originalSlug'];
+    }
     $private = $colData->{'private'};
     $serverTZO = getServerTZOffset();
     $meta = [];

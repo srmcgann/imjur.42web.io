@@ -31,14 +31,19 @@ error_reporting(E_ALL);
       $row = mysqli_fetch_assoc($res);
       $description = $colData->{'description'}; //escaped later
       $slugs = $colData->{'slugs'};
-      $originalSlugs = $colData->{'originalSlugs'};
+      $originalSlugs = [];
+      forEach($slugs as $slug){
+        $sql = "SELECT originalSlug FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
+        $res = mysqli_query($link, $sql);
+        $originalSlugs[] = $row['originalSlug'];
+      }
       $private = $colData->{'private'};
       $oMeta = json_decode($row['meta']);
       $meta = [];
       $meta['description'] = $description;
       $meta['slugs'] = $slugs;
       $meta['private'] = $private;
-      $meta['originalSlugs'] = [];
+      $meta['originalSlugs'] = $originalSlugs;
 
       $meta['date'] = $oMeta['date'];
       $meta['upvotes'] = $oMeta['upvotes'];
@@ -46,33 +51,19 @@ error_reporting(E_ALL);
       $meta['views'] = $oMeta['views'];
       $meta['serverTZO'] = $oMeta['serverTZO'];
 
-      $skip = false;
-      forEach($slugs as $slug){
-        $sql = "SELECT originalSlug FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
-        $res = mysqli_query($link, $sql);
-        if(mysqli_num_rows($res)){
-          $meta['originalSlugs'][] = mysqli_fetch_assoc($res)['originalSlug'];
-        }else{
-          $skip = true;
-        }
-      }
-      if(!$skip){
-        $meta_ = $meta;
-        $meta = mysqli_real_escape_string($link, json_encode($meta));
-        $sql = "UPDATE imjurCollections SET name = \"$name\", meta = \"$meta\" WHERE userID = $userID AND id = $id";
-        if(mysqli_query($link, $sql)){
-          $success = true;
-          echo json_encode([$success]);
-        }else{
-          echo json_encode([$success, 1, $sql]);
-        }
+      $meta_ = $meta;
+      $meta = mysqli_real_escape_string($link, json_encode($meta));
+      $sql = "UPDATE imjurCollections SET name = \"$name\", meta = \"$meta\" WHERE userID = $userID AND id = $id";
+      if(mysqli_query($link, $sql)){
+        $success = true;
+        echo json_encode([$success]);
       }else{
-        echo json_encode([$success, 2, $sql]);
+        echo json_encode([$success, 1, $sql]);
       }
     }else{
-      echo json_encode([$success, 3, $sql]);
+      echo json_encode([$success, 2, $sql]);
     }
   }else{
-    echo json_encode([$success, 4, $sql]);
+    echo json_encode([$success, 3, $sql]);
   }
 ?>

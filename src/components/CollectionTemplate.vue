@@ -12,8 +12,8 @@
       CREATE A NEW COLLECTION
       <br><br>
       enter details below, click create,<br>
-      then browse your assets and add<br>
-      them to this collection if desired<br>
+      then browse your assets and add items<br>
+      you may edit this stuff later<br>
       <div class="newCollectionForm">
         <input
           class="collectionFormInput"
