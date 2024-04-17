@@ -1,6 +1,6 @@
 <template>
   <div class="collectionSelection">
-    <button onclick="toggleShowCollection()" v-html="`${showCollection?'hide':'show'} collections`">
+    <button @click.stop.prevent="toggleShowCollection()" v-html="`${showCollection?'hide':'show'} collections`">
     </button><br>
     <div
       ref="collectionList"
