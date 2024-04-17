@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted(){
-    this.$refs.collectionList.style.height = Math.min(200, this.state.collections.length*21) + 'px'
+    this.$refs.collectionList.style.height = Math.min(300, this.state.collections.length*32) + 'px'
   }
 }
 </script>
