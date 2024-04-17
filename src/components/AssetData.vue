@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import CollectionSelection from './CollectionoSelection.vue'
+import CollectionSelection from './CollectionSelection.vue'
 
 export default {
   name: 'AssetData',
