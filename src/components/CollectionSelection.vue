@@ -42,8 +42,8 @@ export default {
     }
   },
   mounted(){
-    el = this.$refs.
-    el.style.height = Math.min(200,(Array.from(document.querySelectorAll('input[type=checkbox]')).length*21)) + 'px'
+    el = this.$refs.collectionList
+    el.style.height = Math.min(200, this.state.collections.length*21) + 'px'
   }
 }
 </script>
