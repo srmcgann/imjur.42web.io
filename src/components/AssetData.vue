@@ -77,5 +77,6 @@ export default {
   }
   .tdLeft{
     width: 100px;
+    max-width: unset;
   }
 </style>

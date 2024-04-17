@@ -1,6 +1,9 @@
 <template>
   <div class="collectionSelection">
-    <button @click.stop.prevent="toggleShowCollection()" v-html="`${showCollection?'hide':'show'} collections`">
+    <button
+      @click.stop.prevent="toggleShowCollection()"
+      class="collectionsButton"
+      v-html="`${showCollection?'hide':'show'} collections`">
     </button><br>
     <div
       ref="collectionList"
@@ -69,5 +72,11 @@ export default {
   .collectionLabel{
     border: 1px solid #0f44;
     width: 100%;
+  }
+  collectionsButton{
+    line-height: 16px;
+    font-size: 16px;
+    height: 24px;
+    margin-left: 10px;
   }
 </style>
