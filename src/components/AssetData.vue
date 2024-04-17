@@ -75,7 +75,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
   }
-  tdLeft{
+  .tdLeft{
     width: 100px;
   }
 </style>
