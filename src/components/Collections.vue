@@ -21,7 +21,7 @@
         <tr>
           <th>name</th>
           <th>description</th>
-          <th style="min-width: 150px;">age</th>
+          <th>age</th>
           <th>created</th>
           <th>items</th>
           <th>tools</th>

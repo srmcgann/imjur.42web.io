@@ -3,7 +3,7 @@
     <button
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
-      v-html="`${showCollection?'hide':'show'}`">
+      v-html="state.collections ? (showCollection?'hide':'show') : 'create'">
     </button><br>
     <div
       ref="collectionList"
@@ -46,7 +46,11 @@ export default {
       return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
     },
     toggleShowCollection(){
-      this.showCollection = !this.showCollection
+      if(!this.state.collections.length){
+        this.state.showCollectionTemplate = true
+      }else{
+        this.showCollection = !this.showCollection
+      }
     },
     updateSelection(e, collection){
       let val = e.target.checked
@@ -67,6 +71,11 @@ export default {
     }
   },
   mounted(){
+  },
+  watch:{
+    'state.click'(val){
+      if(val) this.showCollection = false
+    }
   }
 }
 </script>

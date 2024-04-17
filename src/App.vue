@@ -67,6 +67,7 @@ export default {
         footerMsg: '<b><span style="transform: scaleX(4.1);display: inline-block; margin-left: 86px; ">IMJUR</span></b><br>A FREE DIGITAL ASSET<br><span style="transform: scaleX(.87);display: inline-block; margin-left: -18px;">HOSTING SERVICE - ©'+(new Date()).getFullYear() + `</span><br><a href="mailto:whitehotrobot@gmail.com"><span style="transform: scaleX(.87);display: inline-block; margin-left: -18px;">whitehotrobot@gmail.com</span></a>`,
         links: [],
         userLinks: [],
+        miscLinks: [],
         uploadInProgress: false,
         showModal: false,
         fetchUserLinks: null,
@@ -89,6 +90,8 @@ export default {
         passhash: '',
         loggedinUserID: null,
         fetchCollections: null,
+        click: false,
+        loadLinks: null,
         closeModal: null,
         closePreview: null,
         showAssetPreview: [],
@@ -831,6 +834,26 @@ export default {
         })
       }
     },
+    loadLinks(slugs){
+      if(this.state.links.filter(link=>link.slug == slug).length ||
+         this.state.userLinks.filter(link=>link.slug == slug).length ||
+         this.state.miscLinks.filter(link=>link.slug == slug).length) return
+      let sendData = { slugs }
+      fetch(`${this.URLbase}/` + 'loadLinks.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      }).then(res => res.json()).then(data=>{
+        if(data[0]){
+          this.state.miscLinks=[...this.state.miscLinks, data[1]]
+        }else{
+          console.log('there was a problem loading the link', data)
+        }
+      })
+      
+    },
     showEditCollection(collection){
       console.log('collection', collection)
       this.state.editCollection = [collection]
@@ -1022,6 +1045,10 @@ export default {
   
     window.onmousedown = e => {
       this.state.keys[18] = false
+      this.state.click = true
+      this.$nextTick(() => {
+        this.state.click = false
+      })
     }
   
     window.onkeyup = e =>{
@@ -1101,6 +1128,7 @@ export default {
     this.state.lastPage = this.lastPage
     this.state.isNumber = this.isNumber
     this.state.getPages = this.getPages
+    this.state.loadLinks = this.loadLinks
     this.state.firstSeen = this.firstSeen
     this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar

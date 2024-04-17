@@ -19,6 +19,13 @@ todo
   ✔ log & display asset origin
   ✔ anonymous uploads are autodeleted after 24hrs
   ✔ admin panel (auto-available to logged in admins)
+  * random Link loading function (for general purposes, including viewing of collections)
+  * clicking anywhere hides collection selection lists
+  * scrollable edit-collection view
+  * add menu item: w/selected -> add to collection
+  * no collections -> membership button becomes 'create collection'
+  * URLs for all "screens", including collections, with back-button functionality
+  * adding/deleting items refactors pagination, where appropriate
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
