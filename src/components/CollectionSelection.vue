@@ -5,16 +5,17 @@
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
       style="background: #84fd"
-      v-html="showCollection?'close':'assign'">
+      v-html="showCollection?'close':'assign'"
       v-if="!!state.collections.length"
+    >
     </button>
     <button
       @mousedown.stop.prevent
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
       style="background: #4f8d"
-      v-html="'manage collections'">
-    </button><br>
+      v-html="'manage collections'"
+    ></button><br>
     <div
       @mousedown.stop.prevent
       ref="collectionList"
