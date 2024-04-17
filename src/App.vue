@@ -536,6 +536,7 @@ export default {
             })
             this.state.totalPages = +data[3]
             if(this.state.curPage+1 > this.state.totalPages) this.lastPage()
+            this.fetchCollections(userID)
           }
         })
       }
