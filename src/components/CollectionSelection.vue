@@ -59,7 +59,6 @@ export default {
   .collectionList{
     width: 200px;
     background: #123;
-    display: none;
     line-height: 1em;
     overflow-y: auto;
     overflow-x: hidden;
