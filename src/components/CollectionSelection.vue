@@ -39,6 +39,9 @@ export default {
   methods: {
     toggleShowCollection(){
       this.showCollection = !this.showCollection
+      this.$nextTick(()=>{
+        this.$refs.collectionList.style.height = Math.min(200, this.state.collections.length*21) + 'px'
+      })
     },
     updateSelection(e, collection){
       console.log('e', e)
@@ -71,7 +74,7 @@ export default {
   }
   .collectionLabel{
     border: 1px solid #0f44;
-    width: 100%;
+    display: block;
   }
   collectionsButton{
     line-height: 16px;
