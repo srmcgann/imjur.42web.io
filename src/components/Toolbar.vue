@@ -253,6 +253,7 @@ export default {
     background: #40f2;
     background: unset;
     top: -4px;
+    display: inline-block;
     border: none;
     left: 417px;
     text-shadow: 2px 2px 4px #000;
