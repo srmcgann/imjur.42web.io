@@ -67,6 +67,7 @@ export default {
     width: 215px;
     background: #123;
     line-height: 1em;
+    margin-top: 5px;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -78,7 +79,7 @@ export default {
     display: block;
   }
   .collectionsButton{
-    line-height: 16px;
+    line-height: 13px;
     font-size: 16px;
     height: 24px;
     margin-left: 53px;
