@@ -60,7 +60,10 @@ export default {
       if(!this.state.collections.length){
         this.state.showCollectionTemplate = true
       }else{
-        this.showCollection = !this.showCollection
+        this.state.click = true
+        this.$nextTick(()=>{
+          this.showCollection = !this.showCollection
+        })
       }
     },
     updateSelection(e, collection){
