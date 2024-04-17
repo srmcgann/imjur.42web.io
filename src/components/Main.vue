@@ -273,6 +273,7 @@ export default {
     ]
     this.preload.map(v => {
       v[0].style.position='absolute'
+      v[0].style.zIndex='-1'
       v[0].style.opacity='0.001'
       document.body.appendChild(v[0])
       v[0].src = this.state.URLbase + '/' + v[1]

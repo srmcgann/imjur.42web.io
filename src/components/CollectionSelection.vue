@@ -79,7 +79,7 @@ export default {
       return ret
     },
     colHeight(){
-      return Math.min(300, this.state.collections.length*30) + 'px'
+      return Math.min(300, this.state.collections.length*28) + 'px'
     }
   },
   methods: {
