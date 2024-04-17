@@ -43,8 +43,8 @@ todo
 
 <template>
   <div class="link" ref="anchor">
-    <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
-      <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
+    <label v-if="state.loggedIn" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
+      <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()">
       <span class="checkmark" style="margin-left: -30px;"></span>
       <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">select</span><br>
     </label>

@@ -23,7 +23,27 @@
       :style="`height: ${colHeight}`"
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
+
+
       <label
+        class="checkboxLabel"
+        v-for="collection in state.collections"
+        class="collectionLabel"
+        @mousedown.stop.prevent
+      >
+        <input
+          :checked="checked(collection)"
+          type="checkbox"
+          @mousedown.stop.prevent
+          @change="updateSelection($event, collection)"
+        >
+        <span class="checkmark" style="margin-left: -30px;"></span>
+        <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">{{state.shortText(collection.name, 18)}}</span>
+      </label>
+
+
+
+      <!-- <label
         v-for="collection in state.collections"
         class="collectionLabel"
         @mousedown.stop.prevent
@@ -36,6 +56,7 @@
         >
         {{state.shortText(collection.name, 18)}}
       </label>
+      -->
     </div>
   </div>
 </template>
@@ -140,5 +161,9 @@ export default {
     margin-right: 10px;
     min-width: unset;
     width: 
+  }
+  input[type=checkbox]{
+    margin: 4px;
+    margin-right: 0;
   }
 </style>
