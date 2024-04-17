@@ -77,10 +77,10 @@ export default {
     border: 1px solid #0f44;
     display: block;
   }
-  collectionsButton{
+  .collectionsButton{
     line-height: 16px;
     font-size: 16px;
     height: 24px;
-    margin-left: 10px;
+    margin-left: 53px;
   }
 </style>
