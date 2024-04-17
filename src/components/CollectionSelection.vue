@@ -46,7 +46,21 @@ export default {
       this.showCollection = !this.showCollection
     },
     updateSelection(e, collection){
-      console.log('e', e)
+      let val = e.target.checked
+      collection.meta.slugs = collection.meta.slugs.filter(slug=>{
+        return slug !== this.link.slug
+      })
+      if(val){
+        collection.meta.slugs.push(this.link.slug)
+      }
+      let obj = {
+        name: collection.name,
+        id: collection.id,
+        description: collection.meta.description,
+        slugs: collection.meta.slugs,
+        private: collection.meta.private,
+      }
+      this.state.updateCollection(obj)
     }
   },
   mounted(){
