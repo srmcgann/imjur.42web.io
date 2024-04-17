@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import Link from './Links.vue'
+import Link from './Link'
 
 export default {
   name: 'EditCollection',
