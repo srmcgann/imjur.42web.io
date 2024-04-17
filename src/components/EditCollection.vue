@@ -39,6 +39,7 @@
           :title="`toggle visibility. (currently: ${collection.meta.private?'NOT':''} featured in public galleries)`"
         ></div><br>
         <div v-if="collection.meta.slugs.length" v-for="slug in collection.meta.slugs">
+          <Link :state="state" :link="link(slug)" />
         </div>
         <div v-else>
           <br><br>
@@ -51,14 +52,24 @@
 </template>
 
 <script>
+import Link from './Links'
+
 export default {
   name: 'EditCollection',
   props: [ 'state', 'collection'],
+  components:{
+    Link
+  },
   data(){
     return {
     }
   },
   methods: {
+    link(slug){
+      return this.state.userLinks.filter(link => {
+        return link.slug === slug
+      })[0]
+    },
     setProperty(property, value){
       this.collection.meta[property] = value
       this.save()
