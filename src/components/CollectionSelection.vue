@@ -37,7 +37,7 @@
           @change="updateSelection($event, collection)"
         >
         <span class="checkmark" style="margin-left: -30px;"></span>
-        <span class="collectionName">{{state.shortText(collection.name, 18)}}</span>
+        <span class="collectionName">{{state.shortText(collection.name, 18)}}</span><br>
       </label>
 
 
