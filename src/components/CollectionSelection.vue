@@ -12,7 +12,12 @@
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
       <label v-for="collection in state.collections" class="collectionLabel">
-        <input :checked="checked(collection)" type="checkbox" @change="updateSelection($event, collection)">
+        <input
+          :checked="checked(collection)"
+          type="checkbox"
+          @mousedown.stop.prevent
+          @change="updateSelection($event, collection)"
+        >
         {{collection.name}}
       </label>
     </div>
@@ -96,6 +101,7 @@ export default {
     margin-top: 5px;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 4px solid #ff08;
   }
   .collectionLabel:hover{
     background: #0f44;
