@@ -251,15 +251,13 @@ export default {
   }
   .menu{
     background: #40f2;
-    position: absolute;
     background: unset;
     top: -4px;
     border: none;
     left: 417px;
     text-shadow: 2px 2px 4px #000;
     box-sizing: border-box;
-    vertical-align: middle;
-    padding-top: 9px;
+    margin-right: 5px;
   }
   .sub{
     line-height: 1.125em;
