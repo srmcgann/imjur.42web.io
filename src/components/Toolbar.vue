@@ -261,7 +261,7 @@ export default {
     margin-right: 5px;
   }
   .sub{
-    line-height: 1.125em;
+    line-height: 36px;
     margin-left: 33px;
     background: #036d;
     text-align: left;

@@ -87,6 +87,7 @@ export default {
       return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
     },
     manageCollections(){
+      this.state.closePrompts()
       this.state.showCollections = true
     },
     toggleShowCollection(){
