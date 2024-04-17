@@ -1,11 +1,13 @@
 <template>
   <div class="collectionSelection">
     <button
+      @mousedown.stop.prevent
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
       v-html="state.collections ? (showCollection?'hide':'show') : 'create'">
     </button><br>
     <div
+      @mousedown.stop.prevent
       ref="collectionList"
       class="collectionList"
       :style="`height: ${colHeight}`"
