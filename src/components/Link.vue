@@ -212,7 +212,6 @@ export default {
     color: #acd;
     background-color: #002a;
     font-size: 20px;
-    min-width: 268px;
     box-sizing: border-box;
     text-align: left;
     margin: 5px;
@@ -221,7 +220,7 @@ export default {
     vertical-align: top;
     border: 3px solid #4086;
     padding: 5px;
-    width: 324px
+    min-width: 324px
   }
   .href{
     font-size: .6em;
