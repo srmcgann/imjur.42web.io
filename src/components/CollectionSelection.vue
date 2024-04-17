@@ -11,7 +11,11 @@
       :style="`height: ${colHeight}`"
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
-      <label v-for="collection in state.collections" class="collectionLabel">
+      <label
+        v-for="collection in state.collections"
+        class="collectionLabel"
+        @mousedown.stop.prevent
+      >
         <input
           :checked="checked(collection)"
           type="checkbox"
