@@ -37,7 +37,7 @@
           @change="updateSelection($event, collection)"
         >
         <span class="checkmark" style="margin-left: -30px;"></span>
-        <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">{{state.shortText(collection.name, 18)}}</span>
+        <span class="collectionName">{{state.shortText(collection.name, 18)}}</span>
       </label>
 
 
@@ -139,7 +139,7 @@ export default {
   .collectionList{
     width: 215px;
     background: #123;
-    line-height: 1em;
+    line-height: 28px;
     margin-top: 5px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -151,6 +151,14 @@ export default {
   .collectionLabel{
     border: 1px solid #0f44;
     display: block;
+  }
+  .collectionName{
+    font-size:16px;
+    margin-top:5px;
+    display:block;
+    color:#4f88;
+    padding:0;
+    margin-left:-34px;
   }
   .collectionsButton{
     line-height: 13px;
