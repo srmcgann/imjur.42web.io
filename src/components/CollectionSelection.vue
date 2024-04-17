@@ -4,7 +4,16 @@
       @mousedown.stop.prevent
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
-      v-html="state.collections ? (showCollection?'hide':'show') : 'create'">
+      style="background: #84fd"
+      v-html="state.collections ? (showCollection?'close':'assign')">
+      v-if="!!state.collections.length"
+    </button>
+    <button
+      @mousedown.stop.prevent
+      @click.stop.prevent="toggleShowCollection()"
+      class="collectionsButton"
+      style="background: #4f8d"
+      v-html="manage collections">
     </button><br>
     <div
       @mousedown.stop.prevent
@@ -56,18 +65,17 @@ export default {
     checked(collection){
       return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
     },
+    manageCollections(){
+      this.state.showCollectionTemplate = true
+    },
     toggleShowCollection(){
-      if(!this.state.collections.length){
-        this.state.showCollectionTemplate = true
-      }else{
-        this.state.doMouseDown()
-        if(!this.showCollection){
+      this.state.doMouseDown()
+      if(!this.showCollection){
+        this.$nextTick(()=>{
           this.$nextTick(()=>{
-            this.$nextTick(()=>{
-              this.showCollection = !this.showCollection
-            })
+            this.showCollection = !this.showCollection
           })
-        }
+        })
       }
     },
     updateSelection(e, collection){
@@ -127,6 +135,9 @@ export default {
     line-height: 13px;
     font-size: 16px;
     height: 24px;
-    margin-left: 53px;
+    margin: 0;
+    margin-right: 10px;
+    min-width: unset;
+    width: 
   }
 </style>
