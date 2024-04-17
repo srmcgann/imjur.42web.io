@@ -5,7 +5,7 @@
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
       style="background: #84fd"
-      v-html="state.collections ? (showCollection?'close':'assign')">
+      v-html="showCollection?'close':'assign'">
       v-if="!!state.collections.length"
     </button>
     <button
