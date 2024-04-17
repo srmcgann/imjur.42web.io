@@ -25,21 +25,21 @@
     >
 
 
-      <label
-        class="checkboxLabel collectionLabel"
-        v-for="collection in state.collections"
-        @mousedown.stop.prevent
-      >
-        <input
-          :checked="checked(collection)"
-          type="checkbox"
+      <div v-for="collection in state.collections">
+        <label
+          class="checkboxLabel collectionLabel"
           @mousedown.stop.prevent
-          @change="updateSelection($event, collection)"
         >
-        <span class="checkmark" style="margin-left: -30px;"></span>
-        <span class="collectionName">{{state.shortText(collection.name, 18)}}</span><br>
-      </label>
-
+          <input
+            :checked="checked(collection)"
+            type="checkbox"
+            @mousedown.stop.prevent
+            @change="updateSelection($event, collection)"
+          >
+          <span class="checkmark" style="margin-left: -30px;"></span>
+          <span class="collectionName">{{state.shortText(collection.name, 18)}}</span>
+        </label><br>
+      </div>
 
 
       <!-- <label
