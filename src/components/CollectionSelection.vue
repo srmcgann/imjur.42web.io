@@ -67,7 +67,7 @@ export default {
       return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
     },
     manageCollections(){
-      this.state.showCollectionTemplate = true
+      this.state.showCollections = true
     },
     toggleShowCollection(){
       this.state.doMouseDown()
