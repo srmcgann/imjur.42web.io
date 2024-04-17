@@ -112,7 +112,10 @@ export default {
     left: 0;
     z-index: 1000;
     width: 100vw;
-    height: 100vh;
+    background: #201d ;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     font-size: 14px;
   }
   .editCollectionInner{
@@ -122,10 +125,8 @@ export default {
     height: 100%;
     font-size: 25px;
     box-sizing: border-box;
-    word-break: break-all;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
-    background: #201d ;
     word-break: auto-phrase;
   }
   .editCollectionForm{
