@@ -38,7 +38,9 @@
           :class="{'private': collection.meta.private, 'notPrivate': !collection.meta.private}"
           :title="`toggle visibility. (currently: ${collection.meta.private?'NOT':''} featured in public galleries)`"
         ></div><br>
-        <div style="display: flex; width: 100%;" v-if="collection.meta.slugs.length">
+        <div
+          style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-evenly;"
+          v-if="collection.meta.slugs.length">
           <Link
             v-for="slug in collection.meta.slugs"
             :state="state" :link="link(slug)" />
