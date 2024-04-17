@@ -12,6 +12,7 @@
     >
       <label v-for="collection in state.collections" class="collectionLabel">
         <input type="checkbox" @change="updateSelection($event, collection)">
+        {{collection.name}}
       </label>
     </div>
   </div>
