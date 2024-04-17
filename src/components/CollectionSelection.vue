@@ -60,9 +60,11 @@ export default {
       if(!this.state.collections.length){
         this.state.showCollectionTemplate = true
       }else{
-        document.body.click()
+        this.state.doMouseDown()
         this.$nextTick(()=>{
-          this.showCollection = !this.showCollection
+          this.$nextTick(()=>{
+            this.showCollection = !this.showCollection
+          })
         })
       }
     },

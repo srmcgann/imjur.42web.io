@@ -155,6 +155,7 @@ export default {
           allWords: true
         },
         confirmpassword: '',
+        doMouseDown: null,
         totalPages: 0,
         totalUserPages: 0,
         setLinksOwner: null,
@@ -1043,7 +1044,7 @@ export default {
   },
   mounted(){
   
-    window.onmousedown = e => {
+    this.state.doMouseDown = window.onmousedown = e => {
       this.state.keys[18] = false
       this.state.click = true
       this.$nextTick(() => {
