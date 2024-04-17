@@ -14,7 +14,7 @@
       @click.stop.prevent="manageCollections()"
       class="collectionsButton"
       style="background: #4f8d"
-      v-html="'manage'"
+      v-html="state.collections.length ? 'manage' : 'create a collection'"
     ></button><br>
     <div
       @mousedown.stop.prevent
@@ -161,7 +161,8 @@ export default {
     text-wrap: nowrap;
     color:#4f88;
     padding:0;
-    margin-left:-34px;
+    margin-left: -10px;
+    padding-left: 10px;
   }
   .collectionsButton{
     line-height: 13px;
@@ -171,6 +172,9 @@ export default {
     margin-right: 10px;
     min-width: unset;
     width: 
+  }
+  .checkboxLabel{
+    padding-left: unset;
   }
   input[type=checkbox]{
     margin: 4px;
