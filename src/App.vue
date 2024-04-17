@@ -160,6 +160,7 @@ export default {
         totalUserPages: 0,
         setLinksOwner: null,
         curPage: 0,
+        shortText: null,
         curUserPage: 0,
         maxResultsPerPage: 10,
         collectionsPage: 0,
@@ -975,6 +976,10 @@ export default {
       if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
       return ret
     },    
+    shortText(text, maxlen){
+      if(text.length > maxlen) text = text.substring(0, (maxlen-3)/2|0) + '...' + text.substring(text.length-(maxlen-3)/2|0)
+      return text
+    },    
     fullFileName(link){
       return link.origin.split(': ')[1]
     },    
@@ -1134,6 +1139,7 @@ export default {
     this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
+    this.state.shortText = this.shortText
     this.state.setCookie = this.setCookie
     this.state.jumpToPage = this.jumpToPage
     this.state.checkLogin = this.checkLogin

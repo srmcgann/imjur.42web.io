@@ -34,7 +34,7 @@
           @mousedown.stop.prevent
           @change="updateSelection($event, collection)"
         >
-        {{collection.name}}
+        {{state.shortText(collection.name, 18)}}
       </label>
     </div>
   </div>

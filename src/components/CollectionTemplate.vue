@@ -13,7 +13,7 @@
       <br><br>
       enter details below, click create,<br>
       then browse your assets and add items<br>
-      you may edit this stuff later<br>
+      you may also edit this stuff later<br>
       <div class="newCollectionForm">
         <input
           class="collectionFormInput"
