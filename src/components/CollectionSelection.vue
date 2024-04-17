@@ -11,10 +11,10 @@
     </button>
     <button
       @mousedown.stop.prevent
-      @click.stop.prevent="toggleShowCollection()"
+      @click.stop.prevent="manageCollections()"
       class="collectionsButton"
       style="background: #4f8d"
-      v-html="'manage collections'"
+      v-html="'manage'"
     ></button><br>
     <div
       @mousedown.stop.prevent
