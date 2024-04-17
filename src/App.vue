@@ -1410,7 +1410,7 @@ a{
   font-size: 24px;
   background: #0004;
   border: none;
-  border-bottom: 2px solid #2fa;
+  border-bottom: 2px solid #2fa4;
   width: 300px;
   color: #ffa;
 }

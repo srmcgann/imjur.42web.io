@@ -216,8 +216,6 @@ export default{
 .input{
   text-align: center;
   background: #0004;
-  border: none;
-  border-bottom: 2px solid #2fa;
   width: calc(100% - 5px);
   font-size: 16px;
   color: #ffa;
@@ -253,7 +251,6 @@ export default{
   text-align: center;
   background: #0004;
   border: none;
-  border-bottom: 2px solid #2fa;
   width: calc(100% - 5px);
   color: #ffa;
   font-size: 22px;
