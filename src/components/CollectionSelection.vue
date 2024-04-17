@@ -13,7 +13,7 @@
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
       style="background: #4f8d"
-      v-html="manage collections">
+      v-html="'manage collections'">
     </button><br>
     <div
       @mousedown.stop.prevent
