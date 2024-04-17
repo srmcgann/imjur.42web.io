@@ -20,6 +20,11 @@
     <tr><td class="tdLeft">uploaded</td><td class="tdRight" v-html="state.prettyDate(link)"></td></tr>
     <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
     <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link.size)"></td></tr>
+    <tr>
+      <td class="tdLeft">collection</td><td class="tdRight">
+        <CollectionSelection :state="state" :link="link" />
+      </td>
+    </tr>
     <tr><td class="tdLeft">id</td><td class="tdRight" v-html="link.id"></td></tr>
     <tr><td class="tdLeft">origin</td><td class="tdRight" v-html="link.origin.split(':')[0]"></td></tr>
     <!-- <tr><td class="tdLeft">first seen</td><td class="tdRight"v-html="state.firstSeen(link)"></td></tr> --> 
@@ -27,12 +32,13 @@
 </template>
 
 <script>
-import Pages from './Pages'
+import CollectionSelection from './CollectionoSelection.vue'
 
 export default {
   name: 'AssetData',
   props: [ 'state', 'link' ],
   components: {
+    CollectionSelection
   },
   data(){
     return {
