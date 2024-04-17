@@ -25,7 +25,7 @@
     >
 
 
-      <div v-for="collection in state.collections">
+      <div v-for="collection in state.collections" style="position: relative;">
         <label
           class="checkboxLabel collectionLabel"
           @mousedown.stop.prevent
@@ -154,9 +154,9 @@ export default {
     display: block;
   }
   .collectionName{
-    font-size:16px;
+    font-size:14px;
     display:block;
-    width: 175px;
+    width: 161px;
     overflow: hidden;
     text-wrap: nowrap;
     color:#4f88;
