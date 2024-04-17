@@ -20,7 +20,6 @@ export default {
   name: 'CollectionSelection',
   props: [ 'state', 'link' ],
   components: {
-    Pages
   },
   data(){
     return {
