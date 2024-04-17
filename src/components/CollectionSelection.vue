@@ -3,11 +3,12 @@
     <button
       @click.stop.prevent="toggleShowCollection()"
       class="collectionsButton"
-      v-html="`${showCollection?'hide':'show'} collections`">
+      v-html="`${showCollection?'hide':'show'}`">
     </button><br>
     <div
       ref="collectionList"
       class="collectionList"
+      :style="`height: ${colHeight}`"
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
       <label v-for="collection in state.collections" class="collectionLabel">
@@ -35,21 +36,20 @@ export default {
       let ret = ['none']
       ret = [...ret, ...this.state.collections]
       return ret
+    },
+    colHeight(){
+      return Math.min(300, this.state.collections.length*32) + 'px'
     }
   },
   methods: {
     toggleShowCollection(){
       this.showCollection = !this.showCollection
-      this.$nextTick(()=>{
-        this.$refs.collectionList.style.height = Math.min(200, this.state.collections.length*21) + 'px'
-      })
     },
     updateSelection(e, collection){
       console.log('e', e)
     }
   },
   mounted(){
-    this.$refs.collectionList.style.height = Math.min(300, this.state.collections.length*32) + 'px'
   }
 }
 </script>
@@ -64,7 +64,7 @@ export default {
     display: none;
   }
   .collectionList{
-    width: 200px;
+    width: 215px;
     background: #123;
     line-height: 1em;
     overflow-y: auto;
