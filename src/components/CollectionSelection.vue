@@ -79,7 +79,7 @@ export default {
       return ret
     },
     colHeight(){
-      return Math.min(300, this.state.collections.length*32) + 'px'
+      return Math.min(300, this.state.collections.length*30) + 'px'
     }
   },
   methods: {
@@ -141,21 +141,24 @@ export default {
     background: #123;
     line-height: 28px;
     margin-top: 5px;
+    padding-left: 2px;
+    padding-top: 2px;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 4px solid #ff08;
+    border: 1px solid #0ff4;
   }
   .collectionLabel:hover{
     background: #0f44;
   }
   .collectionLabel{
-    border: 1px solid #0f44;
     display: block;
   }
   .collectionName{
     font-size:16px;
-    margin-top:5px;
     display:block;
+    width: 175px;
+    overflow: hidden;
+    text-wrap: nowrap;
     color:#4f88;
     padding:0;
     margin-left:-34px;

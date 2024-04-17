@@ -126,7 +126,8 @@ export default {
     padding-right: 10px;
     border: 1px solid #0ff1;
     border-bottom: 20px solid #0ff1;
-    color: #fac;
+    color: #4fc;
+    font-size: 16px;
   }
   td{
     font-size: 14px;
@@ -145,11 +146,11 @@ export default {
   .addButton{
     background: #0f8;
     padding: 0;
-    font-size: 100px;
-    padding-top: 14px;
-    line-height: 70px;
-    border-radius: 50px;
-    margin: 20px;
+    font-size: 50px;
+    padding-top: 6px;
+    line-height: 30px;
+    border-radius: 5px;
+    margin: 6px;
   }
   
 </style>
