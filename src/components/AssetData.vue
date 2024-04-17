@@ -21,7 +21,7 @@
     <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
     <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link.size)"></td></tr>
     <tr>
-      <td class="tdLeft">collection</td><td class="tdRight">
+      <td class="tdLeft">collection membership</td><td class="tdRight">
         <CollectionSelection :state="state" :link="link" />
       </td>
     </tr>
@@ -74,5 +74,8 @@ export default {
     background-size: 10px 10px;
     padding-left: 10px;
     padding-right: 10px;
+  }
+  tdLeft{
+    width: 100px;
   }
 </style>
