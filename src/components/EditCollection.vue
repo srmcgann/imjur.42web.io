@@ -38,7 +38,11 @@
           :class="{'private': collection.meta.private, 'notPrivate': !collection.meta.private}"
           :title="`toggle visibility. (currently: ${collection.meta.private?'NOT':''} featured in public galleries)`"
         ></div><br>
-        <div v-if="collection.meta.slugs.length" v-for="slug in collection.meta.slugs">
+        <div
+          v-if="collection.meta.slugs.length"
+          v-for="slug in collection.meta.slugs"
+          style="display: flex; width: 100%;"
+        >
           <Link :state="state" :link="link(slug)" />
         </div>
         <div v-else>
@@ -131,7 +135,7 @@ export default {
     color: #fff;
     font-size: 16px;
     text-align: center;
-    width: 500px;
+    width: 100%;
     display: inline-block;
     padding: 20px;
   }
