@@ -141,7 +141,7 @@ export default {
     left: 50%;
     transform: translate(-50%);
     border-collapse: collapse;
-    width: 100%;
+    width: calc(100% - 100px);
   }
   .addButton{
     background: #0f8;

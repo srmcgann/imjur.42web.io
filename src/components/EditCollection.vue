@@ -8,10 +8,10 @@
       close/cancel
     </button>
     <div class="editCollectionInner">
-      <br><br>
+      <br>
       EDIT COLLECTION
       <br><br>
-      changes are effective instantly,<br>universe-wide<br>
+      changes are effective instantly, universe-wide<br>
       <div class="editCollectionForm">
         name<br>
         <input
@@ -132,6 +132,7 @@ export default {
   .editCollectionForm{
     border-radius: 6px;
     margin-top: 50px;
+    margin-bottom: 50px;
     background: #40f4;
     color: #fff;
     font-size: 16px;
