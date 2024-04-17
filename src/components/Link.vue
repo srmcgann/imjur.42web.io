@@ -26,6 +26,8 @@ todo
   * no collections -> membership button becomes 'create collection'
   * URLs for all "screens", including collections, with back-button functionality
   * adding/deleting items refactors pagination, where appropriate
+  * add 'last seen' update to login
+  * admin data -> add 'owner' & 'number of owners' for disk assets
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page

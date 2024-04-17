@@ -190,7 +190,7 @@ export default{
 .mainContainer{
   position: absolute;
   left: 50%;
-  top: 45%;
+  top: 50%;
   font-size: 24px;
   min-width: 320px;
   min-height: 200px;
