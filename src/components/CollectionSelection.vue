@@ -12,7 +12,7 @@
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
       <label v-for="collection in state.collections" class="collectionLabel">
-        <input type="checkbox" @change="updateSelection($event, collection)">
+        <input :checked="checked(collection)" type="checkbox" @change="updateSelection($event, collection)">
         {{collection.name}}
       </label>
     </div>
@@ -42,6 +42,9 @@ export default {
     }
   },
   methods: {
+    checked(collection){
+      return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
+    },
     toggleShowCollection(){
       this.showCollection = !this.showCollection
     },
