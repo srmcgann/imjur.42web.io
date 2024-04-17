@@ -149,6 +149,7 @@ export default {
     text-align: center;
     margin: 5px;
     width: calc(100% - 60px);
+    max-width: 600px;
   }
   .visibilityButton{
     width: 120px;

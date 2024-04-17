@@ -61,11 +61,13 @@ export default {
         this.state.showCollectionTemplate = true
       }else{
         this.state.doMouseDown()
-        this.$nextTick(()=>{
+        if(!this.showCollection){
           this.$nextTick(()=>{
-            this.showCollection = !this.showCollection
+            this.$nextTick(()=>{
+              this.showCollection = !this.showCollection
+            })
           })
-        })
+        }
       }
     },
     updateSelection(e, collection){
