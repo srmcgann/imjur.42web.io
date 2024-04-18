@@ -837,9 +837,9 @@ export default {
               search = '/' + vars[l+1]
               //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
               //this.beginSearch()
-              this.state.curPage = 1
-              this.state.jumpToPage(1)
-              //if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
+              //this.state.curPage = 1
+              //this.state.jumpToPage(1)
+              if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
             }else{
               history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
               if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
