@@ -1133,6 +1133,14 @@ export default {
             collection.meta.slugs = collection.meta.slugs.filter(slug => {
               return slug !== val.link.slug
             })
+            let obj = {
+              name: collection.name,
+              id: collection.id,
+              description: collection.meta.description,
+              slugs: collection.meta.slugs,
+              private: collection.meta.private,
+            }
+            this.updateCollection(obj)
             return collection
           })
           this.deleteSingle(val.link, false)
