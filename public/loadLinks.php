@@ -49,6 +49,6 @@ error_reporting(E_ALL);
   if(sizeof($links)){
     echo json_encode([true, $links, $meta]);
   }else{
-    echo json_encode([false]);
+    echo json_encode([false, $sql]);
   }
 ?>

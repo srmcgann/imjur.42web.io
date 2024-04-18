@@ -876,6 +876,7 @@ export default {
         },
         body: JSON.stringify(sendData),
       }).then(res => res.json()).then(data=>{
+        console.log(data)
         if(data[0]){
           this.state.miscLinks=[...this.state.miscLinks, ...data[1]]
           array = [...array, ...data[1]]
