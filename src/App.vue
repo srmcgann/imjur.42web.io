@@ -734,7 +734,8 @@ export default {
             slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
             private: collection.meta.private,
           }
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', link: ${link}})">from collection</button><br><button onclick="window.choose({name: 'account', obj: ${obj}})">from account</button></div>`
+          obj = JSON.stringify(obj)
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', link: ${link}})">from collection</button><br><button onclick="window.choose({name: 'account', obj })">from account</button></div>`
           this.state.showModal = true
         }
       }else{
@@ -1118,6 +1119,7 @@ export default {
     'state.choice'(val){
       switch(val.name){
         case 'collection':  // delete asset from
+          val.obj = JSON.parse(val.obj)
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.editCollection[0].meta.slugs = val.obj.slugs
