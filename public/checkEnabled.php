@@ -14,6 +14,8 @@
       $row['admin']
       //$row['demoPostsPerPage']
     ]);
+    $sql = "UPDATE imjurUsers SET dateSeen = NOW() WHERE id = {$row['id']}";
+    mysqli_query($link, $sql);
   } else {
     echo json_encode([false,'']);
   }

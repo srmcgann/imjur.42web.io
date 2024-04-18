@@ -9,6 +9,8 @@
     $row = mysqli_fetch_assoc($res);
     if($row['enabled'] && password_verify($password, $row['passhash'])){
       echo json_encode([true, $row['passhash'], $row['id'], $row['avatar'], $row['admin']]);
+      $sql = "UPDATE imjurUsers SET dateSeen = NOW() WHERE id = {$row['id']}";
+      mysqli_query($link, $sql);
     } else {
       echo json_encode([false, '', '']);
     }
