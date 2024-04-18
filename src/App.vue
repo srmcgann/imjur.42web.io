@@ -837,13 +837,15 @@ export default {
               search = '/' + vars[l+1]
               //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
               //this.beginSearch()
-              //this.state.curPage = 1
-              //this.state.jumpToPage(1)
-              if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
+              this.state.curPage = 0
+              this.state.jumpToPage(0)
+              console.log('flow ',1)
+              //if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
             }else{
               history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
               if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
               this.fetchUserLinks(this.state.loggedinUserID)
+              console.log('flow ',2)
             }
           }else{
             if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
@@ -852,6 +854,7 @@ export default {
           this.state.mode = 'non-default'
         }
       } else{
+        console.log('flow ',3)
         this.state.mode = 'default'
         this.getPages()
         if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
