@@ -851,7 +851,7 @@ export default {
         this.state.links.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            array = [...array, link]
+            this.state.miscLinks=[...this.state.miscLinks, link]
           }
         })
       })
@@ -860,7 +860,7 @@ export default {
         this.state.userLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            array = [...array, link]
+            this.state.miscLinks=[...this.state.miscLinks, link]
           }
         })
       })
