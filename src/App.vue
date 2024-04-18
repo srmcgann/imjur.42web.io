@@ -836,13 +836,14 @@ export default {
         })
       }
     },
-    loadLinks(slugs){
+    loadLinks(slugs, array){
+    
       let cullSlgs = []
       let tgtSlugs = JSON.parse(JSON.stringify(slugs))
       
       this.state.miscLinks = this.state.miscLinks.filter(link => {
-        let keep = !!tgtSlugs.filter(tgtSlg => tgtSlg == link.slug).length
-        if(keep) cullSlgs = [..cullSlgs, link.slug]
+        let keep = !!tgtSlugs.filter(tgtSlg=>tgtSlg==link.slug).length
+        if(keep) cullSlgs = [...cullSlgs, link.slug]
         return keep
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
@@ -850,7 +851,7 @@ export default {
         this.state.links.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            this.state.miscLinks = [...this.state.miscLinks, link]
+            array = [...array, link]
           }
         })
       })
@@ -859,13 +860,12 @@ export default {
         this.state.userLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            this.state.miscLinks = [...this.state.miscLinks, link]
+            array = [...array, link]
           }
         })
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
-      
-    
+
       if(tgtSlugs.length){
         let sendData = { slugs: tgtSlugs }
         fetch(`${this.URLbase}/` + 'loadLinks.php',{
@@ -896,7 +896,8 @@ export default {
                 serverTZO: data[2][i].serverTZO,
                 views: data[2][i].views
               }
-              this.state.miscLinks = [...this.state.miscLinks, obj]
+              this.state.miscLinks=[...this.state.miscLinks, obj]
+              array = [...array, obj]
             })
           }else{
             console.log('there was a problem loading the link', data)
