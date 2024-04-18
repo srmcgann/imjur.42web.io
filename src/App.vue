@@ -549,6 +549,23 @@ export default {
         })
       }
     },
+    syncCache(){
+      this.state.links.map(link=>{
+        if(!this.state.cacheLinks.filter(link_=>link_.id == link.id).length){
+          this.state.cacheLinks = [...this.state.cacheLinks, link]
+        }
+      })
+      this.state.userLinks.map(link=>{
+        if(!this.state.cacheLinks.filter(link_=>link_.id == link.id).length){
+          this.state.cacheLinks = [...this.state.cacheLinks, link]
+        }
+      })
+      this.state.miscLinks.map(link=>{
+        if(!this.state.cacheLinks.filter(link_=>link_.id == link.id).length){
+          this.state.cacheLinks = [...this.state.cacheLinks, link]
+        }
+      })
+    },
     updateCollection(colData){
       let sendData = {
         userID: this.state.loggedinUserID,
@@ -1066,7 +1083,9 @@ export default {
   },
   watch: {
     linksChange(val){
-      console.log(`detected linksChange event: val:${val}`)
+      //console.log(`detected linksChange event: val:${val}`)
+      this.syncCache()
+      console.log(`cache synced, new cache size: ${this.state.cacheLinks.length} items`)
     },
     'state.loadingAssets' (val){
       if(val){
