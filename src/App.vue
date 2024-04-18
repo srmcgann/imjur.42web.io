@@ -724,21 +724,19 @@ export default {
       }
     },
     deleteSingle(link, override=true){
-      if(override){
-        if(this.state.showEditCollection){
-          let collection = this.state.editCollection[0]
-          let obj = {
-            name: collection.name,
-            id: collection.id,
-            description: collection.meta.description,
-            slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
-            private: collection.meta.private,
-          }
-          let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
-          let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button onclick="window.choose('${sendCollObj}')">from this collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account AND all collections</button></div>`
-          this.state.showModal = true
+      if(override && this.state.showEditCollection){
+        let collection = this.state.editCollection[0]
+        let obj = {
+          name: collection.name,
+          id: collection.id,
+          description: collection.meta.description,
+          slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
+          private: collection.meta.private,
         }
+        let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
+        let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
+        this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button onclick="window.choose('${sendCollObj}')">from this collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account AND all collections</button></div>`
+        this.state.showModal = true
       }else{
         let lsel = []
         let ulsel = []
