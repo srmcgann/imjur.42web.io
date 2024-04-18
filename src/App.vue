@@ -591,13 +591,9 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          if(this.state.editCollection.length){
-            let temp = this.state.editCollection[0]
-            this.state.editCollection = []
-            this.$nextTick(() => {
-              this.state.showEditCollection(temp)
-            })
-          }
+          this.state.collections.filter(collection=>{
+            return +id == +colData.id
+          })[0].meta = data[1].meta
         }else{
           console.log('there was an error updating the collection')
         }
