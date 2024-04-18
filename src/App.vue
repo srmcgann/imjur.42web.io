@@ -591,6 +591,7 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
+          setCollectionProperty(this.state.collections.filter(v=>+v.id===colData.id), 'slugs', colData.slugs)
           this.loadLinks(colData.slugs)
         }else{
           console.log('there was an error updating the collection')
