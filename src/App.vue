@@ -847,7 +847,7 @@ export default {
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
       
-      slugs.map(tgtSlg => {
+      tgtSlugs.map(tgtSlg => {
         this.state.links.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
@@ -856,7 +856,7 @@ export default {
         })
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
-      slugs.map(tgtSlg => {
+      tgtSlugs.map(tgtSlg => {
         this.state.userLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
@@ -865,6 +865,7 @@ export default {
         })
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
+      tgtSlugs.map(tgtSlg => {
         this.state.miscLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
@@ -905,7 +906,6 @@ export default {
                 serverTZO: data[2][i].serverTZO,
                 views: data[2][i].views
               }
-              this.state.miscLinks=[...this.state.miscLinks, obj]
               this.state.miscLinks = [...this.state.miscLinks, obj]
             })
           }else{
