@@ -591,8 +591,6 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          setCollectionProperty(this.state.collections.filter(v=>+v.id===colData.id), 'slugs', colData.slugs)
-          this.loadLinks(colData.slugs)
         }else{
           console.log('there was an error updating the collection')
         }
@@ -1129,6 +1127,8 @@ export default {
         case 'collection':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
+          let col = this.state.collections.filter(v=> +val.obj.id == v.id)[0]
+          col.meta.slugs = col.meta.slugs.filter(slug=>slug!=link.slug)
           this.state.updateCollection(val.obj)
           //this.showEditCollection(this.state.collections.filter(v=>+v.id==+val.obj.id)[0])
         break
