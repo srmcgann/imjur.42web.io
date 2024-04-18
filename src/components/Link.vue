@@ -23,12 +23,12 @@ todo
   ✔ clicking anywhere hides collection selection lists
   ✔ scrollable edit-collection view
   ✔ no collections -> membership button becomes 'create collection'
+  ✔ add 'last seen' update to login
   * delete button on links in collection view delete link from the collection, not from disk
   * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * add menu item: w/selected -> add to collection
   * URLs for all "screens", including collections, with back-button functionality
   * adding/deleting items refactors pagination, where appropriate
-  * add 'last seen' update to login
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
