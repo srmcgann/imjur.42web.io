@@ -736,7 +736,7 @@ export default {
           }
           let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
           let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose('${sendCollObj}')">from collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account</button></div>`
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button onclick="window.choose('${sendCollObj}')">from this collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account AND all collections</button></div>`
           this.state.showModal = true
         }
       }else{
@@ -1129,6 +1129,12 @@ export default {
         case 'account':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
+          this.state.collections = this.state.collections.map(collection => {
+            collection.meta.slugs = collection.meta.slugs.filter(slug => {
+              return slug !== val.link.slug
+            })
+            return collection
+          })
           this.deleteSingle(val.link, false)
         break
       }
