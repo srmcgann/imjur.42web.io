@@ -1090,7 +1090,7 @@ export default {
     linksChange(val){
       //console.log(`detected linksChange event: val:${val}`)
       this.syncCache()
-      console.log(`cache synced, new cache size: ${this.state.cacheLinks.length} items`)
+      console.log(`cache synced, new cache size: ${this.state.cacheLinks.length} items`, this.state.cacheLinks)
     },
     'state.loadingAssets' (val){
       if(val){
