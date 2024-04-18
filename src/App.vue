@@ -727,16 +727,16 @@ export default {
       if(override){
         if(this.state.showEditCollection){
           let collection = this.state.editCollection[0]
-          let obj = JSON.stringify({
+          let obj = {
             name: collection.name,
             id: collection.id,
             description: collection.meta.description,
             slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
             private: collection.meta.private,
-          })
-          let sendCollObj = JSON.stringify({name: 'collection', obj})
-          let sendAcctObj = JSON.stringify({name: 'account', link})
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose(${sendCollObj})">from collection</button><br><button onclick="window.choose(${sendAcctObj})">from account</button></div>`
+          }
+          let sendCollObj = escape({name: 'collection', obj})
+          let sendAcctObj = escape({name: 'account', link})
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose('${sendCollObj}')">from collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account</button></div>`
           this.state.showModal = true
         }
       }else{
@@ -1120,13 +1120,14 @@ export default {
     'state.choice'(val){
       switch(val.name){
         case 'collection':  // delete asset from
-          //val.obj = JSON.parse(val.obj)
+          val.obj = unescape(val.obj)
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.editCollection[0].meta.slugs = val.obj.slugs
           this.state.updateCollection(val.obj)
         break
         case 'account':  // delete asset from
+          val.link = unescape(val.link)
           this.state.modalContent = ''
           this.state.showModal = false
           this.deleteSingle(val.link, false)
