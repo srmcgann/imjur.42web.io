@@ -593,8 +593,9 @@ export default {
         if(data[0]){
           if(this.state.editCollection.length){
             let temp = this.state.editCollection[0]
+            this.state.editCollection = []
             this.$nextTick(() => {
-              showEditCollection(temp)
+              this.state.showEditCollection(temp)
             })
           }
         }else{
