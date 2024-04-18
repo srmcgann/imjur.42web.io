@@ -42,8 +42,8 @@
           style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-evenly;"
           v-if="collection.meta.slugs.length">
           <Link
-            v-for="slug in collection.meta.slugs"
-            :state="state" :link="link(slug)" />
+            v-for="link in collectionLinks"
+            :state="state" :link="link" />
         </div>
         <div v-else>
           <br><br>
@@ -66,14 +66,12 @@ export default {
   },
   data(){
     return {
+      collectionLinks: []
     }
   },
+  computed:{
+  },
   methods: {
-    link(slug){
-      return this.state.userLinks.filter(link => {
-        return link.slug === slug
-      })[0]
-    },
     setProperty(property, value){
       this.collection.meta[property] = value
       this.save()
@@ -101,6 +99,7 @@ export default {
     this.$nextTick(()=>{
       this.$refs.name.focus()
     })
+    this.state.loadLinks(this.collection.meta.slugs, this.collectionLinks)
   }
 }
 </script>

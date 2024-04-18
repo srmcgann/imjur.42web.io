@@ -836,11 +836,39 @@ export default {
         })
       }
     },
-    loadLinks(slugs){
-      if(this.state.links.filter(link=>link.slug == slug).length ||
+    loadLinks(slugs, array){
+    
+      let cullSlgs = []
+      tgtSlgs = JSON.parse(JSON.stringify(slugs))
+      
+      slugs.map(tgtSlg => {
+        this.state.links.map(link => {
+          if(link.slug == tgtSlg){
+            cullSlgs = [...cullSlgs, tgtSlg]
+            array = [...array, link]
+          }
+        })
+        this.state.userLinks.map(link => {
+          if(link.slug == tgtSlg){
+            cullSlgs = [...cullSlgs, tgtSlg]
+            array = [...array, link]
+          }
+        })
+        this.state.miscLinks.map(link => {
+          if(link.slug == tgtSlg){
+            cullSlgs = [...cullSlgs, tgtSlg]
+            array = [...array, link]
+          }
+        })
+      })
+      
+      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filger(slug_=> slug_==slug).length)
+    
+      /*if(this.state.links.filter(link=>link.slug == slug).length ||
          this.state.userLinks.filter(link=>link.slug == slug).length ||
-         this.state.miscLinks.filter(link=>link.slug == slug).length) return
-      let sendData = { slugs }
+         this.state.miscLinks.filter(link=>link.slug == slug).length) return */
+
+      let sendData = { slugs: tgtSlugs }
       fetch(`${this.URLbase}/` + 'loadLinks.php',{
         method: 'POST',
         headers: {
@@ -849,7 +877,8 @@ export default {
         body: JSON.stringify(sendData),
       }).then(res => res.json()).then(data=>{
         if(data[0]){
-          this.state.miscLinks=[...this.state.miscLinks, data[1]]
+          this.state.miscLinks=[...this.state.miscLinks, ...data[1]]
+          array = [...array, ...data[1]]
         }else{
           console.log('there was a problem loading the link', data)
         }
