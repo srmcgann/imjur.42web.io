@@ -592,7 +592,7 @@ export default {
         console.log(data)
         if(data[0]){
           this.state.collections.filter(collection=>{
-            return +id == +colData.id
+            return +collection.id == +colData.id
           })[0].meta = data[1].meta
         }else{
           console.log('there was an error updating the collection')
