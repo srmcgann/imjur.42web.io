@@ -846,7 +846,6 @@ export default {
         return keep
       })
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
-      
       tgtSlugs.map(tgtSlg => {
         this.state.links.map(link => {
           if(link.slug == tgtSlg){
@@ -861,15 +860,6 @@ export default {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
             this.state.miscLinks = [...this.state.miscLinks, link]
-          }
-        })
-      })
-      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
-      tgtSlugs.map(tgtSlg => {
-        this.state.miscLinks.map(link => {
-          if(link.slug == tgtSlg){
-            cullSlgs = [...cullSlgs, tgtSlg]
-            this.state.miscLinks= [...this.state.miscLinks, link]
           }
         })
       })
