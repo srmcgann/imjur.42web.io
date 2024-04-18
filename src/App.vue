@@ -591,14 +591,7 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          let l;
-          (l=this.state.collections.filter(collection=>{
-            return +collection.id == +colData.id
-          })[0]).meta = data[1].meta
-          //this.state.miscLinks = []
-          this.$nextTick(() => {
-            this.loadLinks(data[1].meta.slugs)
-          })
+          this.loadLinks(data[1].colData.slugs)
         }else{
           console.log('there was an error updating the collection')
         }
