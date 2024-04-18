@@ -253,7 +253,7 @@ export default {
         break
         case 'default':
           //window.location.href = this.URLbase + '/' + pageNo + search
-          this.state.curPage = pageNo
+          this.state.curPage = Math.max(1, Math.min(this.state.totalPages, pageNo))
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           if(this.state.curPage){
             history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
@@ -665,6 +665,7 @@ export default {
             this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
             this.state.miscLinks = this.state.miscLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
             this.state.deleteEventTally++
+            this.state.jumpToPage(this.state.curPage)
             console.log(`deleted ${count} items`)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
@@ -1102,6 +1103,7 @@ export default {
       //console.log(`detected linksChange event: val:${val}`)
       this.syncCache()
       console.log(`cache synced, new cache size: ${this.state.cacheLinks.length} items`, this.state.cacheLinks)
+      
     },
     'state.loadingAssets' (val){
       if(val){
