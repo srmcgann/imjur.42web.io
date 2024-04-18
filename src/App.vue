@@ -1122,6 +1122,9 @@ export default {
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.editCollection[0].meta.slugs = val.obj.slugs
+          this.state.miscLinks = this.state.miscLinks.filter(link => {
+            return !!val.obj.slugs.filter(slug => slug == link.slug).length
+          })
           this.state.updateCollection(val.obj)
         break
         case 'account':  // delete asset from
