@@ -591,7 +591,7 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          this.loadLinks(data[1].colData.slugs)
+          this.loadLinks(colData.slugs)
         }else{
           console.log('there was an error updating the collection')
         }
