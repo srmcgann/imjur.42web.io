@@ -160,6 +160,7 @@ export default {
               this.state.links = []
               this.state.fetchUserLinks(this.state.loggedinUserID)
               this.state.jumpToPage(0)
+              this.state.uploadEventTally++
               /*this.state.modalContent = '<div style="box-sizing: border-box;min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #6666; color: #0f8; padding: 100px; text-align: left;">' + `imported asset:<br><br>${data[8][0]}` + '</div>'
               this.state.showModal = true*/
             }else{
@@ -168,6 +169,7 @@ export default {
                 this.state.showModal = true
                 this.state.showRegister = true
                 this.state.showLoginPrompt = true
+                this.state.uploadEventTally++
               }else{
                 this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
               }

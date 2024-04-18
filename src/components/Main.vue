@@ -205,10 +205,9 @@ export default {
                 this.state.modalContent = ''
                 this.state.closeModal()
                 this.state.links = []
-                this.$nextTick(()=>{
-                  this.state.fetchUserLinks(this.state.loggedinUserID)
-                  this.state.jumpToPage(0)
-                })
+                this.state.fetchUserLinks(this.state.loggedinUserID)
+                this.state.jumpToPage(0)
+                this.state.uploadEventTally++
               }else{
                 let data = JSON.parse(e.currentTarget.responseText)
                 if(data[0]){

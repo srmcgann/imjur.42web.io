@@ -128,6 +128,7 @@ export default {
         logout: null,
         onkeydown: null,
         showAdmin: false,
+        uploadEventTally: 0,
         regusername: '',
         username: '',
         userView: false,
@@ -1092,7 +1093,10 @@ export default {
   },
   computed:{
     linksChange(){
-      return this.state.links.length*1e2+this.state.userLinks.length*1e3+this.state.miscLinks.length*1e4
+      return this.state.uploadEventTally +
+             this.state.links.length*1e2 +
+             this.state.userLinks.length*1e3 + 
+             this.state.miscLinks.length*1e4
     },
     showAdminButton(){
       return this.state.loggedIn && 
