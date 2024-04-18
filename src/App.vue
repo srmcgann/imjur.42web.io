@@ -725,7 +725,7 @@ export default {
     deleteSingle(link, override=true){
       if(override && this.state.editCollection.length){
         let sendAcctObj = escape(JSON.stringify({link}))
-        this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button style="width: 375px;" onclick="sendAcctObj.name='collection';window.choose('${sendAcctObj}')">from this collection ONLY</button><br><br><button style="width: 375px; background: #f44;" onclick="sendAcctObj.name='account';window.choose('${sendAcctObj}')">from ACCOUNT AND ALL COLLECTIONS</button></div>`
+        this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button style="width: 375px;" onclick="window.choose('collection','${sendAcctObj}')">from this collection ONLY</button><br><br><button style="width: 375px; background: #f44;" onclick="window.choose('account','${sendAcctObj}')">from ACCOUNT AND ALL COLLECTIONS</button></div>`
         this.state.showModal = true
       }else{
         let lsel = []
@@ -1112,9 +1112,9 @@ export default {
     }
   },
   watch: {
-    'state.choice'(val){
+    'state.choice'(mode, val){
       val = JSON.parse(unescape(val))
-      switch(val.name){
+      switch(mode){
         case 'collection':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
