@@ -836,75 +836,83 @@ export default {
         })
       }
     },
-    loadLinks(slugs, array){
-    
+    loadLinks(slugs){
       let cullSlgs = []
       let tgtSlugs = JSON.parse(JSON.stringify(slugs))
+      
+      thie.state.miscLinks = this.state.miscLinks.filter(link => {
+        let keep = !!tgtSlugs.filter(tgtSlg => tgtSlg == link.slug).length
+        if(keep) cullSlgs = [..cullSlgs, link.slug]
+        return keep
+      })
+      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
       
       slugs.map(tgtSlg => {
         this.state.links.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            array = [...array, link]
+            this.state.miscLinks = [...this.state.miscLinks, link]
           }
         })
+      })
+      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
+      slugs.map(tgtSlg => {
         this.state.userLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            array = [...array, link]
+            this.state.miscLinks = [...this.state.miscLinks, link]
           }
         })
+      })
+      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
         this.state.miscLinks.map(link => {
           if(link.slug == tgtSlg){
             cullSlgs = [...cullSlgs, tgtSlg]
-            array = [...array, link]
+            this.state.miscLinks= [...this.state.miscLinks, link]
           }
         })
       })
-      
       tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
-    
-      /*if(this.state.links.filter(link=>link.slug == slug).length ||
-         this.state.userLinks.filter(link=>link.slug == slug).length ||
-         this.state.miscLinks.filter(link=>link.slug == slug).length) return */
-
-      let sendData = { slugs: tgtSlugs }
-      fetch(`${this.URLbase}/` + 'loadLinks.php',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(sendData),
-      }).then(res => res.json()).then(data=>{
-        console.log(data)
-        if(data[0]){
-          data[1].map((v, i) => {
-            let obj = {
-              size: +data[2][i].size,
-              type: data[2][i].type,
-              selected: false,
-              ct: i,
-              href: v,
-              userID: +data[2][i].userID,
-              id: +data[2][i].id,
-              slug: data[2][i].slug,
-              originalSlug: data[2][i].originalSlug,
-              originalDate: data[2][i].originalDate,
-              origin: data[2][i].origin,
-              date: data[2][i].date,
-              private: !!(+data[2][i].private),
-              linkType: 'userLink',
-              serverTZO: data[2][i].serverTZO,
-              views: data[2][i].views
-            }
-            this.state.miscLinks=[...this.state.miscLinks, obj]
-            array = [...array, obj]
-          })
-        }else{
-          console.log('there was a problem loading the link', data)
-        }
-      })
       
+    
+      if(tgtSlugs.length){
+        let sendData = { slugs: tgtSlugs }
+        fetch(`${this.URLbase}/` + 'loadLinks.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        }).then(res => res.json()).then(data=>{
+          console.log(data)
+          if(data[0]){
+            data[1].map((v, i) => {
+              let obj = {
+                size: +data[2][i].size,
+                type: data[2][i].type,
+                selected: false,
+                ct: i,
+                href: v,
+                userID: +data[2][i].userID,
+                id: +data[2][i].id,
+                slug: data[2][i].slug,
+                originalSlug: data[2][i].originalSlug,
+                originalDate: data[2][i].originalDate,
+                origin: data[2][i].origin,
+                date: data[2][i].date,
+                private: !!(+data[2][i].private),
+                linkType: 'userLink',
+                serverTZO: data[2][i].serverTZO,
+                views: data[2][i].views
+              }
+              this.state.miscLinks=[...this.state.miscLinks, obj]
+              this.state.miscLinks = [...this.state.miscLinks, obj]
+            })
+          }else{
+            console.log('there was a problem loading the link', data)
+          }
+        })
+      }
     },
     showEditCollection(collection){
       console.log('collection', collection)

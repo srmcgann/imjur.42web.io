@@ -66,7 +66,6 @@ export default {
   },
   data(){
     return {
-      collectionLinks: []
     }
   },
   computed:{
@@ -99,7 +98,7 @@ export default {
     this.$nextTick(()=>{
       this.$refs.name.focus()
     })
-    this.state.loadLinks(this.collection.meta.slugs, this.collectionLinks)
+    this.state.loadLinks(this.collection.meta.slugs)
   }
 }
 </script>
