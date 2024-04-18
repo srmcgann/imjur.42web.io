@@ -59,7 +59,7 @@ error_reporting(E_ALL);
         $ar['id']          = $id;
         $ar['name']        = $name;
         $ar['userID']      = $userID;
-        $ar['meta']        = $meta;
+        $ar['meta']        = $meta_;
         $updatedCollection = $ar;
         echo json_encode([$success, $updatedCollection]);
       }else{

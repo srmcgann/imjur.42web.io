@@ -1134,6 +1134,7 @@ export default {
         case 'account':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
+          let collection = this.state.editCollection[0]
           this.state.collections = this.state.collections.map(collection => {
             collection.meta.slugs = collection.meta.slugs.filter(slug => {
               return slug !== val.link.slug
