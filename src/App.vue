@@ -105,6 +105,7 @@ export default {
         loggedinUserName: '',
         copyLink: null,
         deleteSingle: null,
+        syncCache: null,
         deleteCollection: null,
         createCollection: null,
         downloadLink: null,
@@ -646,9 +647,9 @@ export default {
           console.log(data)
           if(data[0]){
             this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
-            this.state.miscLinks = this.state.miscLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
-            this.state.cacheLinks = this.state.cacheLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
+            this.state.userLinks = this.state.userLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.miscLinks = this.state.miscLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            //this.state.cacheLinks = this.state.cacheLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             console.log(`deleted ${count} items`)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
@@ -1227,6 +1228,7 @@ export default {
     this.state.selectAll = this.selectAll
     this.state.shortText = this.shortText
     this.state.setCookie = this.setCookie
+    this.state.syncCache = this.syncCache
     this.state.jumpToPage = this.jumpToPage
     this.state.checkLogin = this.checkLogin
     this.state.closeModal = this.closeModal
