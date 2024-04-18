@@ -821,7 +821,7 @@ export default {
               this.fetchUserLinks(this.state.loggedinUserID)
             }
           }else{
-            if(location.href !== this.URLbase + '/') location.href = this.URLbase
+            if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '1'
           }
         }else{
           this.state.mode = 'non-default'
