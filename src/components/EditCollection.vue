@@ -43,6 +43,7 @@
           v-if="collection.meta.slugs.length">
           <Link
             v-for="link in state.miscLinks"
+            :key="link.id"
             :state="state" :link="link" />
         </div>
         <div v-else>
@@ -76,10 +77,6 @@ export default {
       this.save()
     },
     save(){
-      //if(!this.collection.name) {
-      //  alert('you must provide a name')
-      //  return
-      //}
       let obj = {
         name: this.collection.name,
         id: this.collection.id,
@@ -88,7 +85,6 @@ export default {
         private: this.collection.meta.private,
       }
       this.state.updateCollection(obj)
-      //this.state.editCollection = []
     },
     close(){
       this.state.editCollection = []
