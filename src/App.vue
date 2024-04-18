@@ -724,17 +724,8 @@ export default {
     },
     deleteSingle(link, override=true){
       if(override && this.state.editCollection.length){
-        let collection = this.state.editCollection[0]
-        let obj = {
-          name: collection.name,
-          id: collection.id,
-          description: collection.meta.description,
-          slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
-          private: collection.meta.private,
-        }
-        let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
-        let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
-        this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button style="width: 375px;" onclick="window.choose('${sendCollObj}')">from this collection ONLY</button><br><br><button style="width: 375px; background: #f44;" onclick="window.choose('${sendAcctObj}')">from ACCOUNT AND ALL COLLECTIONS</button></div>`
+        let sendAcctObj = escape(JSON.stringify({link}))
+        this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button style="width: 375px;" onclick="sendAcctObj.name='collection';window.choose('${sendAcctObj}')">from this collection ONLY</button><br><br><button style="width: 375px; background: #f44;" onclick="sendAcctObj.name='account';window.choose('${sendAcctObj}')">from ACCOUNT AND ALL COLLECTIONS</button></div>`
         this.state.showModal = true
       }else{
         let lsel = []
@@ -1127,10 +1118,20 @@ export default {
         case 'collection':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
-          let col = this.state.collections.filter(v=> +val.obj.id == v.id)[0]
-          col.meta.slugs = col.meta.slugs.filter(slug=>slug!=val.obj.slug)
-          this.state.updateCollection(val.obj)
-          //this.showEditCollection(this.state.collections.filter(v=>+v.id==+val.obj.id)[0])
+          this.state.collections = this.state.collections.map(collection => {
+            collection.meta.slugs = collection.meta.slugs.filter(slug => {
+              return slug !== val.link.slug
+            })
+            let obj = {
+              name: collection.name,
+              id: collection.id,
+              description: collection.meta.description,
+              slugs: collection.meta.slugs,
+              private: collection.meta.private,
+            }
+            this.updateCollection(obj)
+            return collection
+          })
         break
         case 'account':  // delete asset from
           this.state.modalContent = ''
