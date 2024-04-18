@@ -734,8 +734,8 @@ export default {
             slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
             private: collection.meta.private,
           })
-          let sendCollObj = JSON.stringify({name: 'collection', obj}).replaceAll('"', '\"')
-          let sendAcctObj = JSON.stringify({name: 'account', link}).replaceAll('"', '\"')
+          let sendCollObj = JSON.stringify({name: 'collection', obj}).replaceAll('"', '\\"')
+          let sendAcctObj = JSON.stringify({name: 'account', link}).replaceAll('"', '\\"')
           this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose('${sendCollObj}')">from collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account</button></div>`
           this.state.showModal = true
         }
