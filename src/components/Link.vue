@@ -19,15 +19,15 @@ todo
   ✔ log & display asset origin
   ✔ anonymous uploads are autodeleted after 24hrs
   ✔ admin panel (auto-available to logged in admins)
-  * random Link loading function (for general purposes, including viewing of collections)
-  * clicking anywhere hides collection selection lists
-  * scrollable edit-collection view
+  ✔ random Link loading function (for general purposes, including viewing of collections)
+  ✔ clicking anywhere hides collection selection lists
+  ✔ scrollable edit-collection view
+  ✔ no collections -> membership button becomes 'create collection'
+  * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * add menu item: w/selected -> add to collection
-  * no collections -> membership button becomes 'create collection'
   * URLs for all "screens", including collections, with back-button functionality
   * adding/deleting items refactors pagination, where appropriate
   * add 'last seen' update to login
-  * admin data -> add 'owner' & 'number of owners' for disk assets
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
@@ -39,6 +39,7 @@ todo
   * social media metadata
   * gallery / trending
   * load/resource balancing
+  * admin data -> add 'owner' & 'number of owners' for disk assets
   * youtube field  // likely not to work without shell access
   
 -->
