@@ -448,7 +448,11 @@ export default {
             //this.state.userInfo[this.state.loggedinUserID].avatar = data[2]
             //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[3]
             if(+data[3]) this.state.isAdmin = true
-            this.fetchUserLinks(this.state.loggedinUserID)
+            
+            
+            //this.fetchUserLinks(this.state.loggedinUserID)
+            
+            
             //this.state.maxResultsPerPage = +data[4]
           }else{
             console.log('not logged in.')
