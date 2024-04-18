@@ -108,6 +108,7 @@ export default {
         syncCache: null,
         deleteCollection: null,
         createCollection: null,
+        choice: null,
         downloadLink: null,
         next: null,
         prev: null,
@@ -722,30 +723,45 @@ export default {
         })
       }
     },
-    deleteSingle(link){
-      let lsel = []
-      let ulsel = []
-      this.state.links.map(v=>{
-        lsel = [...lsel, v.selected]
-      })
-      this.state.userLinks.map(v=>{
-        ulsel = [...ulsel, v.selected]
-      })
-      this.deSelectAll()
-      this.state.links.map(v=>{
-        if(v.id == link.id) v.selected = true
-      })
-      this.state.userLinks.map(v=>{
-        if(v.id == link.id) v.selected = true
-      })
-      this.deleteSelected()
-      lsel.map((v, i) => {
-        this.state.links[i].selected = v
-      })
-      ulsel.map((v, i) => {
-        this.state.userLinks[i].selected = v
-      })
-      this.state.showPreview = false
+    deleteSingle(link, override=true){
+      if(override){
+        if(this.state.showEditCollection){
+          let collection = this.state.editCollection[0]
+          let obj = {
+            name: collection.name,
+            id: collection.id,
+            description: collection.meta.description,
+            slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
+            private: collection.meta.private,
+          }
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', link: ${link}})">from collection</button><br><button onclick="window.choose({name: 'account', obj: ${obj}})">from account</button></div>`
+          this.state.showModal = true
+        }
+      }else{
+        let lsel = []
+        let ulsel = []
+        this.state.links.map(v=>{
+          lsel = [...lsel, v.selected]
+        })
+        this.state.userLinks.map(v=>{
+          ulsel = [...ulsel, v.selected]
+        })
+        this.deSelectAll()
+        this.state.links.map(v=>{
+          if(v.id == link.id) v.selected = true
+        })
+        this.state.userLinks.map(v=>{
+          if(v.id == link.id) v.selected = true
+        })
+        this.deleteSelected()
+        lsel.map((v, i) => {
+          this.state.links[i].selected = v
+        })
+        ulsel.map((v, i) => {
+          this.state.userLinks[i].selected = v
+        })
+        this.state.showPreview = false
+      }
     },
     multipleLinks(){
       return (this.state.userLinks.length > 1 || this.state.links.length > 1) ||
@@ -1099,6 +1115,21 @@ export default {
     }
   },
   watch: {
+    'state.choice'(val){
+      switch(val.name){
+        case 'collection':  // delete asset from
+          this.state.modalContent = ''
+          this.state.showModal = false
+          this.state.editCollection[0].meta.slugs = val.obj.slugs
+          this.state.updateCollection(val.obj)
+        break
+        case 'account':  // delete asset from
+          this.state.modalContent = ''
+          this.state.showModal = false
+          this.deleteSingle(val.link, false)
+        break
+      }
+    },
     linksChange(val){
       //console.log(`detected linksChange event: val:${val}`)
       this.syncCache()
@@ -1154,7 +1185,9 @@ export default {
     }
   },
   mounted(){
-  
+    window.choose = choice => {
+      this.state.choice = choice
+    }
     this.state.doMouseDown = window.onmousedown = e => {
       this.state.keys[18] = false
       this.state.click = true

@@ -24,12 +24,12 @@ todo
   ✔ scrollable edit-collection view
   ✔ no collections -> membership button becomes 'create collection'
   ✔ add 'last seen' update to login
-  * link cache for all links loaded in current session
+  ✔ link cache for all links loaded in current session
+  ✔ adding/deleting items refactors pagination, where appropriate
   * link tools in collections view are collection tools
   * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
-  * add menu item: w/selected -> add to collection
+  * menu item: w/selected -> add to collection
   * URLs for all "screens", including collections, with back-button functionality
-  * adding/deleting items refactors pagination, where appropriate
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
