@@ -862,7 +862,7 @@ export default {
         })
       })
       
-      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filger(slug_=> slug_==slug).length)
+      tgtSlugs = tgtSlugs.filter(slug => !cullSlgs.filter(slug_=> slug_==slug).length)
     
       /*if(this.state.links.filter(link=>link.slug == slug).length ||
          this.state.userLinks.filter(link=>link.slug == slug).length ||
