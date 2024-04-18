@@ -724,7 +724,7 @@ export default {
       }
     },
     deleteSingle(link, override=true){
-      if(override && this.state.showEditCollection){
+      if(override && this.state.showEditCollection.length){
         let collection = this.state.editCollection[0]
         let obj = {
           name: collection.name,
