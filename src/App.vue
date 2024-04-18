@@ -899,7 +899,7 @@ export default {
             }
             this.state.miscLinks=[...this.state.miscLinks, obj]
             array = [...array, obj]
-          }
+          })
         }else{
           console.log('there was a problem loading the link', data)
         }
