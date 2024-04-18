@@ -1118,16 +1118,15 @@ export default {
   },
   watch: {
     'state.choice'(val){
+      val = unescape(val)
       switch(val.name){
         case 'collection':  // delete asset from
-          val.obj = unescape(val.obj)
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.editCollection[0].meta.slugs = val.obj.slugs
           this.state.updateCollection(val.obj)
         break
         case 'account':  // delete asset from
-          val.link = unescape(val.link)
           this.state.modalContent = ''
           this.state.showModal = false
           this.deleteSingle(val.link, false)
