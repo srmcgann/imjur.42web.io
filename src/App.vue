@@ -734,8 +734,8 @@ export default {
             slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
             private: collection.meta.private,
           }
-          let sendCollObj = escape({name: 'collection', obj})
-          let sendAcctObj = escape({name: 'account', link})
+          let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
+          let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
           this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose('${sendCollObj}')">from collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account</button></div>`
           this.state.showModal = true
         }
@@ -1118,7 +1118,7 @@ export default {
   },
   watch: {
     'state.choice'(val){
-      val = unescape(val)
+      val = JSON.parse(unescape(val))
       switch(val.name){
         case 'collection':  // delete asset from
           this.state.modalContent = ''
