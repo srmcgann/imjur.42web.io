@@ -840,7 +840,7 @@ export default {
       let cullSlgs = []
       let tgtSlugs = JSON.parse(JSON.stringify(slugs))
       
-      thie.state.miscLinks = this.state.miscLinks.filter(link => {
+      this.state.miscLinks = this.state.miscLinks.filter(link => {
         let keep = !!tgtSlugs.filter(tgtSlg => tgtSlg == link.slug).length
         if(keep) cullSlgs = [..cullSlgs, link.slug]
         return keep
