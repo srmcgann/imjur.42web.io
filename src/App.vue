@@ -591,11 +591,12 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
-          this.state.editCollection[0] = data[1]
-          this.state.miscLinks = this.state.cacheLinks.filter(link => {
-            return !!colData.slugs.filter(slug => link.slug == slug).length
-          })
-          //this.state.editCollection = []
+          if(this.state.editCollection.length){
+            let temp = this.state.editCollection[0]
+            this.$nextTick(() => {
+              showEditCollection(temp)
+            })
+          }
         }else{
           console.log('there was an error updating the collection')
         }
@@ -1134,7 +1135,6 @@ export default {
         case 'account':  // delete asset from
           this.state.modalContent = ''
           this.state.showModal = false
-          let collection = this.state.editCollection[0]
           this.state.collections = this.state.collections.map(collection => {
             collection.meta.slugs = collection.meta.slugs.filter(slug => {
               return slug !== val.link.slug
