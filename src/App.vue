@@ -839,7 +839,7 @@ export default {
     loadLinks(slugs, array){
     
       let cullSlgs = []
-      let tgtSlgs = JSON.parse(JSON.stringify(slugs))
+      let tgtSlugs = JSON.parse(JSON.stringify(slugs))
       
       slugs.map(tgtSlg => {
         this.state.links.map(link => {
