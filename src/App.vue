@@ -727,15 +727,15 @@ export default {
       if(override){
         if(this.state.showEditCollection){
           let collection = this.state.editCollection[0]
-          let obj = {
+          let obj = JSON.stringify({
             name: collection.name,
             id: collection.id,
             description: collection.meta.description,
             slugs: collection.meta.slugs.filter(slug=>slug!=link.slug),
             private: collection.meta.private,
-          }
-          obj = JSON.stringify(obj)
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', link: ${link}})">from collection</button><br><button onclick="window.choose({name: 'account', obj })">from account</button></div>`
+          })
+          let sendLink = JSON.stringify(link)
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', obj: ${obj}})">from collection</button><br><button onclick="window.choose({name: 'account', link: ${sendLink}})">from account</button></div>`
           this.state.showModal = true
         }
       }else{
