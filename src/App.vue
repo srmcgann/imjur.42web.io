@@ -878,8 +878,28 @@ export default {
       }).then(res => res.json()).then(data=>{
         console.log(data)
         if(data[0]){
-          this.state.miscLinks=[...this.state.miscLinks, ...data[1]]
-          array = [...array, ...data[1]]
+          data[1].map((v, i) => {
+            let obj = {
+              size: +data[2][i].size,
+              type: data[2][i].type,
+              selected: false,
+              ct: i,
+              href: v,
+              userID: +data[2][i].userID,
+              id: +data[2][i].id,
+              slug: data[2][i].slug,
+              originalSlug: data[2][i].originalSlug,
+              originalDate: data[2][i].originalDate,
+              origin: data[2][i].origin,
+              date: data[2][i].date,
+              private: !!(+data[2][i].private),
+              linkType: 'userLink',
+              serverTZO: data[2][i].serverTZO,
+              views: data[2][i].views
+            }
+            this.state.miscLinks=[...this.state.miscLinks, obj]
+            array = [...array, obj]
+          }
         }else{
           console.log('there was a problem loading the link', data)
         }
