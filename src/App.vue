@@ -1125,7 +1125,7 @@ export default {
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.updateCollection(val.obj)
-          this.showEditCollection(this.state.collections.filter(v=>v.id==val.obj.id)[0])
+          this.showEditCollection(this.state.collections.filter(v=>+v.id==+val.obj.id)[0])
         break
         case 'account':  // delete asset from
           this.state.modalContent = ''
