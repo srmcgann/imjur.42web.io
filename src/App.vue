@@ -595,11 +595,10 @@ export default {
           (l=this.state.collections.filter(collection=>{
             return +collection.id == +colData.id
           })[0]).meta = data[1].meta
-          this.$nextTick(()=>{
-            this.state.cacheLinks(link => {
-              if(l.filter(link_=>link_.slug==link.slug).length){
-                this.state.miscLinks = [...this.state.miscLinks, link]
-              }
+          this.state.miscLinks = []
+          this.$nextTick(() => {
+            this.state.miscLinks = this.state.cacheLinks.filter(link => {
+              return !!l.filter(link_ => link_.slug==link.slug).length
             })
           })
         }else{
