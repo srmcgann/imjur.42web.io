@@ -735,7 +735,7 @@ export default {
         }
         let sendCollObj = escape(JSON.stringify({name: 'collection', obj}))
         let sendAcctObj = escape(JSON.stringify({name: 'account', link}))
-        this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button onclick="window.choose('${sendCollObj}')">from this collection</button><br><button onclick="window.choose('${sendAcctObj}')">from account AND all collections</button></div>`
+        this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">delete how?<br><br><button style="width: 375px;" onclick="window.choose('${sendCollObj}')">from this collection ONLY</button><br><br><button style="width: 375px;" onclick="window.choose('${sendAcctObj}')">from ACCOUNT AND ALL COLLECTIONS</button></div>`
         this.state.showModal = true
       }else{
         let lsel = []
