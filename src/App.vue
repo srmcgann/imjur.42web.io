@@ -130,6 +130,8 @@ export default {
         onkeydown: null,
         showAdmin: false,
         uploadEventTally: 0,
+        fetchEventTally: 0,
+        deleteEventTally: 0,
         regusername: '',
         username: '',
         userView: false,
@@ -541,6 +543,7 @@ export default {
                 serverTZO: data[2][i].serverTZO,
                 views: data[2][i].views
               }
+              this.state.fetchEventTally++
               this.state.userLinks.push(obj)
             })
             this.state.totalPages = +data[3]
@@ -650,6 +653,7 @@ export default {
             this.state.userLinks = this.state.userLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             this.state.miscLinks = this.state.miscLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             //this.state.cacheLinks = this.state.cacheLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.deleteEventTally++
             console.log(`deleted ${count} items`)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
@@ -1113,10 +1117,12 @@ export default {
   },
   computed:{
     linksChange(){
-      return this.state.uploadEventTally +
-             this.state.links.length*1e2 +
-             this.state.userLinks.length*1e3 + 
-             this.state.miscLinks.length*1e4
+      return this.state.uploadEventTally * 1e1 + 
+             this.state.fetchEventTally  * 1e2 + 
+             this.state.deleteEventTally * 1e3 +
+             this.state.links.length*1e2 * 1e4 +
+             this.state.userLinks.length * 1e5 +
+             this.state.miscLinks.length * 1e6
     },
     showAdminButton(){
       return this.state.loggedIn && 
