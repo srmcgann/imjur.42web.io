@@ -617,6 +617,7 @@ export default {
       let confirmed = false
       let linksToProcess = []
       let userLinksToProcess = []
+      let miscLinksToProcess = []
       let slugs = []
       this.state.links.map((v, i) => {
         if(v.selected){
@@ -629,6 +630,13 @@ export default {
         if(v.selected){
           count++
           userLinksToProcess = [...userLinksToProcess, v.id]
+          slugs = [...slugs, v.slug]
+        }
+      })
+      this.state.miscLinks.map((v, i) => {
+        if(v.selected){
+          count++
+          miscLinksToProcess = [...miscLinksToProcess, v.id]
           slugs = [...slugs, v.slug]
         }
       })
@@ -654,9 +662,8 @@ export default {
           console.log(data)
           if(data[0]){
             this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            this.state.userLinks = this.state.userLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            this.state.miscLinks = this.state.miscLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            //this.state.cacheLinks = this.state.cacheLinks.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
+            this.state.miscLinks = this.state.miscLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
             this.state.deleteEventTally++
             console.log(`deleted ${count} items`)
           }else{
