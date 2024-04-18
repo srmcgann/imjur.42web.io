@@ -65,9 +65,10 @@ export default {
     return {
       state: {
         footerMsg: '<b><span style="transform: scaleX(4.1);display: inline-block; margin-left: 86px; ">IMJUR</span></b><br>A FREE DIGITAL ASSET<br><span style="transform: scaleX(.87);display: inline-block; margin-left: -18px;">HOSTING SERVICE - ©'+(new Date()).getFullYear() + `</span><br><a href="mailto:whitehotrobot@gmail.com"><span style="transform: scaleX(.87);display: inline-block; margin-left: -18px;">whitehotrobot@gmail.com</span></a>`,
-        links: [],
-        userLinks: [],
-        miscLinks: [],
+        links: [],         // immediate uploads
+        userLinks: [],     // logged-in user - current pg only
+        miscLinks: [],     // alt views, e.g. per-collection links
+        cacheLinks: [],    // set of links seen in current session
         uploadInProgress: false,
         showModal: false,
         fetchUserLinks: null,
@@ -122,7 +123,8 @@ export default {
         collections: [],
         setLinkPropertySelected: null,
         URLbase: null,
-        showCollections: null,
+        showCollection: false,  // to view an individual collection
+        showCollections: null,  // to invoke user's collection list view
         logout: null,
         onkeydown: null,
         showAdmin: false,
@@ -627,9 +629,9 @@ export default {
           if(data[0]){
             this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
+            this.state.miscLinks = this.state.miscLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
+            this.state.cacheLinks = this.state.cacheLinks.filter((v, i) => !miscLinksToProcess.filter(q => q == v.id).length)
             console.log(`deleted ${count} items`)
-            //this.state.links = []
-            //this.fetchUserLinks(this.state.loggedinUserID)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
           }
@@ -711,7 +713,8 @@ export default {
       this.state.showPreview = false
     },
     multipleLinks(){
-      return this.state.userLinks.length > 1 || this.state.links.length > 1
+      return (this.state.userLinks.length > 1 || this.state.links.length > 1) ||
+             (this.state.miscLinks > 1 && (this.state.showEditCollection || this.state.showCollection))
     },
     setCookie() {
       let cookies = document.cookie
@@ -808,6 +811,12 @@ export default {
         if(link.selected) this.setLinkProperty(link, property, value)
       })
       this.state.userLinks.map(link=>{
+        if(link.selected) this.setLinkProperty(link, property, value)
+      })
+      this.state.miscLinks.map(link=>{
+        if(link.selected) this.setLinkProperty(link, property, value)
+      })
+      this.state.cacheLinks.map(link=>{
         if(link.selected) this.setLinkProperty(link, property, value)
       })
     },
@@ -1055,6 +1064,9 @@ export default {
     }
   },
   watch: {
+    linksChange(val){
+      console.log(`detected linksChange event: val:${val}`)
+    },
     'state.loadingAssets' (val){
       if(val){
         this.state.modalContent = '<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">... loading ...</div>'
@@ -1079,6 +1091,9 @@ export default {
     }
   },
   computed:{
+    linksChange(){
+      return this.state.links.length*1e2+this.state.userLinks.length*1e3+this.state.miscLinks.length*1e4
+    },
     showAdminButton(){
       return this.state.loggedIn && 
              this.state.isAdmin && 

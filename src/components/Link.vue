@@ -24,7 +24,8 @@ todo
   ✔ scrollable edit-collection view
   ✔ no collections -> membership button becomes 'create collection'
   ✔ add 'last seen' update to login
-  * delete button on links in collection view delete link from the collection, not from disk
+  * link cache for all links loaded in current session
+  * link tools in collections view are collection tools
   * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * add menu item: w/selected -> add to collection
   * URLs for all "screens", including collections, with back-button functionality
@@ -37,6 +38,7 @@ todo
         * votes
         
   * search
+  * "trending/popular" page
   * social media metadata
   * gallery / trending
   * load/resource balancing
