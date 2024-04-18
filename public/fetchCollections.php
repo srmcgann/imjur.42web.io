@@ -35,20 +35,20 @@ error_reporting(E_ALL);
     $row = mysqli_fetch_assoc($res);
     $private = json_decode($row['meta'])->{'private'};
     if(!$private || ($passhash && ($admin || $enabled))){
-      $ar = [];
-      $ar['id'] = $row['id'];
-      $ar['name'] = $row['name'];
+      $ar           = [];
+      $ar['id']     = $row['id'];
+      $ar['name']   = $row['name'];
       $ar['userID'] = $userID;
-      $ar['meta'] = [
-        'date' => json_decode($row['meta'])->{'date'},
-        'description' => json_decode($row['meta'])->{'description'},
-        'slugs' => json_decode($row['meta'])->{'slugs'},
-        'upvotes' => json_decode($row['meta'])->{'upvotes'},
-        'downvotes' => json_decode($row['meta'])->{'downvotes'},
-        'private' => $private,
-        'views' => json_decode($row['meta'])->{'views'},
-        'originalSlugs' => json_decode($row['meta'])->{'originalSlugs'},
-        'serverTZO' => getServerTZOffset(),
+      $ar['meta']   = [
+                      'date'          => json_decode($row['meta'])->{'date'},
+                      'description'   => json_decode($row['meta'])->{'description'},
+                      'slugs'         => json_decode($row['meta'])->{'slugs'},
+                      'upvotes'       => json_decode($row['meta'])->{'upvotes'},
+                      'downvotes'     => json_decode($row['meta'])->{'downvotes'},
+                      'private'       => $private,
+                      'views'         => json_decode($row['meta'])->{'views'},
+                      'originalSlugs' => json_decode($row['meta'])->{'originalSlugs'},
+                      'serverTZO'     => getServerTZOffset(),
       ];
       $collections[] = $ar;
     }

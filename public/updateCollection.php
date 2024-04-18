@@ -37,25 +37,31 @@ error_reporting(E_ALL);
         $res = mysqli_query($link, $sql);
         $originalSlugs[] = $row['originalSlug'];
       }
-      $private = $colData->{'private'};
-      $oMeta = json_decode($row['meta']);
-      $meta = [];
-      $meta['description'] = $description;
-      $meta['slugs'] = $slugs;
-      $meta['private'] = $private;
+      $private               = $colData->{'private'};
+      $oMeta                 = json_decode($row['meta']);
+      $meta                  = [];
+      $meta['description']   = $description;
+      $meta['slugs']         = $slugs;
+      $meta['private']       = $private;
       $meta['originalSlugs'] = $originalSlugs;
-      $meta['date'] = $oMeta->{'date'};
-      $meta['upvotes'] = $oMeta->{'upvotes'};
-      $meta['downvotes'] = $oMeta->{'downvotes'};
-      $meta['views'] = $oMeta->{'views'};
-      $meta['serverTZO'] = $oMeta->{'serverTZO'};
+      $meta['date']          = $oMeta->{'date'};
+      $meta['upvotes']       = $oMeta->{'upvotes'};
+      $meta['downvotes']     = $oMeta->{'downvotes'};
+      $meta['views']         = $oMeta->{'views'};
+      $meta['serverTZO']     = $oMeta->{'serverTZO'};
 
       $meta_ = $meta;
       $meta = mysqli_real_escape_string($link, json_encode($meta));
       $sql = "UPDATE imjurCollections SET name = \"$name\", meta = \"$meta\" WHERE userID = $userID AND id = $id";
       if(mysqli_query($link, $sql)){
-        $success = true;
-        echo json_encode([$success]);
+        $success           = true;
+        $ar                = [];
+        $ar['id']          = $id;
+        $ar['name']        = $name;
+        $ar['userID']      = $userID;
+        $ar['meta']        = $meta;
+        $updatedCollection = $ar;
+        echo json_encode([$success, $updatedCollection]);
       }else{
         echo json_encode([$success, 1, $sql]);
       }

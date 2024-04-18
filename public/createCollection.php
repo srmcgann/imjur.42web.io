@@ -3,12 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-/*
-        userName: this.state.username,
-        password: this.state.password,
-        colData
-*/
-
   require_once('db.php');
   require_once('functions.php');
   $data = json_decode(file_get_contents('php://input'));
@@ -32,18 +26,18 @@ error_reporting(E_ALL);
       $res = mysqli_query($link, $sql);
       $originalSlugs[] = $row['originalSlug'];
     }
-    $private = $colData->{'private'};
-    $serverTZO = getServerTZOffset();
-    $meta = [];
-    $meta['date'] = date("Y/m/d H:i:s", strtotime('now'));
-    $meta['description'] = $description;
-    $meta['slugs'] = $slugs;
-    $meta['upvotes'] = 0;
-    $meta['downvotes'] = 0;
-    $meta['private'] = $private;
-    $meta['views'] = 0;
+    $private               = $colData->{'private'};
+    $serverTZO             = getServerTZOffset();
+    $meta                  = [];
+    $meta['date']          = date("Y/m/d H:i:s", strtotime('now'));
+    $meta['description']   = $description;
+    $meta['slugs']         = $slugs;
+    $meta['upvotes']       = 0;
+    $meta['downvotes']     = 0;
+    $meta['private']       = $private;
+    $meta['views']         = 0;
     $meta['originalSlugs'] = $originalSlugs;
-    $meta['serverTZO'] = $serverTZO;
+    $meta['serverTZO']     = $serverTZO;
     
     $meta_ = $meta;
     $meta = mysqli_real_escape_string($link, json_encode($meta));
@@ -58,11 +52,12 @@ error_reporting(E_ALL);
       \"$meta\"
     )";
     if(mysqli_query($link, $sql)){
-      $ret = [];
-      $ret['id'] = mysqli_insert_id($link);
-      $ret['name'] = $colData->{'name'};
+      $ret           = [];
+      $ret['id']     = mysqli_insert_id($link);
+      $ret['name']   = $colData->{'name'};
       $ret['userID'] = $userID;
-      $ret['meta'] = $meta_;
+      $ret['meta']   = $meta_;
+      
       $success = true;
       echo json_encode([$success, $ret]);
     }else{

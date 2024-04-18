@@ -591,6 +591,7 @@ export default {
       }).then(res => res.json()).then(data => {
         console.log(data)
         if(data[0]){
+          this.state.editCollection[0] = data[1]
           this.state.miscLinks = this.state.cacheLinks.filter(link => {
             return !!colData.slugs.filter(slug => link.slug == slug).length
           })
