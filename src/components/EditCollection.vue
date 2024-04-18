@@ -42,7 +42,7 @@
           style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-evenly;"
           v-if="collection.meta.slugs.length">
           <Link
-            v-for="link in collectionLinks"
+            v-for="link in state.miscLinks"
             :state="state" :link="link" />
         </div>
         <div v-else>
