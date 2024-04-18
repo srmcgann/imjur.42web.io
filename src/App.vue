@@ -735,7 +735,7 @@ export default {
             private: collection.meta.private,
           })
           let sendLink = JSON.stringify(link)
-          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', obj: ${obj}})">from collection</button><br><button onclick="window.choose({name: 'account', link: ${sendLink}})">from account</button></div>`
+          this.state.modalContent = `<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">how to delete?<br><br><button onclick="window.choose({name:'collection', obj: '${obj}'})">from collection</button><br><button onclick="window.choose({name: 'account', link: '${sendLink}'})">from account</button></div>`
           this.state.showModal = true
         }
       }else{
