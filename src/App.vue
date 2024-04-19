@@ -845,10 +845,10 @@ export default {
           this.state.mode = 'non-default'
         }
       } else{
+        if(location.href !== this.URLbase + '/1') location.href = this.URLbase + '/1'
         console.log('flow ',3)
         this.state.mode = 'default'
         this.getPages()
-        if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
       }
       console.log('mode', this.state.mode)
     },

@@ -26,7 +26,7 @@ todo
   ✔ add 'last seen' update to login
   ✔ link cache for all links loaded in current session
   ✔ adding/deleting items refactors pagination, where appropriate
-  * link tools in collections view are collection tools
+  ✔ link tools in collections view are collection tools
   * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * menu item: w/selected -> add to collection
   * URLs for all "screens", including collections, with back-button functionality
