@@ -23,8 +23,6 @@
       :style="`height: ${colHeight}`"
       :class="{'show': showCollection, 'hide': !showCollection}"
     >
-
-
       <div v-for="collection in state.collections" style="position: relative;">
         <label
           class="checkboxLabel collectionLabel"
@@ -40,22 +38,6 @@
           <span class="collectionName">{{state.shortText(collection.name, 18)}}</span>
         </label><br>
       </div>
-
-
-      <!-- <label
-        v-for="collection in state.collections"
-        class="collectionLabel"
-        @mousedown.stop.prevent
-      >
-        <input
-          :checked="checked(collection)"
-          type="checkbox"
-          @mousedown.stop.prevent
-          @change="updateSelection($event, collection)"
-        >
-        {{state.shortText(collection.name, 18)}}
-      </label>
-      -->
     </div>
   </div>
 </template>
@@ -64,7 +46,9 @@
 
 export default {
   name: 'CollectionSelection',
-  props: [ 'state', 'link' ],
+    // "links" prop might receive an array of links (mode == 'multi'),
+    //  or a single link (no array, mode != 'multi')
+  props: [ 'state', 'links', 'mode' ],
   components: {
   },
   data(){
@@ -84,7 +68,18 @@ export default {
   },
   methods: {
     checked(collection){
-      return !!collection.meta.slugs.filter(v=>v==this.link.slug).length
+      switch(this.mode){
+        case 'multi':
+          let checked = false
+          this.links.filter(link=>link.selected).map(v=>{
+            if(!!collection.meta.slugs.filter(q=>q==v.slug).length) checked = true
+          })
+          return checked
+        break
+        default:
+          return !!collection.meta.slugs.filter(v=>v==this.links.slug).length
+        break
+      }
     },
     manageCollections(){
       this.state.closePrompts()
@@ -100,14 +95,7 @@ export default {
         })
       }
     },
-    updateSelection(e, collection){
-      let val = e.target.checked
-      collection.meta.slugs = collection.meta.slugs.filter(slug=>{
-        return slug !== this.link.slug
-      })
-      if(val){
-        collection.meta.slugs.push(this.link.slug)
-      }
+    pushUpdate(collection){
       let obj = {
         name: collection.name,
         id: collection.id,
@@ -116,6 +104,31 @@ export default {
         private: collection.meta.private,
       }
       this.state.updateCollection(obj)
+    },
+    updateSelection(e, collection){
+      let val = e.target.checked
+      switch(mode){
+        case 'multi':
+          this.links.filter(link=>link.selected).map(link=>{
+            collection.meta.slugs = collection.meta.slugs.filter(slug=>{
+              return slug !== link.slug
+            })
+            if(val){
+              collection.meta.slugs.push(link.slug)
+            }
+            this.pushUpdate(collection)
+          })
+        break
+        default:
+          collection.meta.slugs = collection.meta.slugs.filter(slug=>{
+            return slug !== this.link.slug
+          })
+          if(val){
+            collection.meta.slugs.push(this.link.slug)
+          }
+          this.pushUpdate(collection)
+        break
+      }
     }
   },
   mounted(){

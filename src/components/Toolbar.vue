@@ -63,7 +63,7 @@
         </div>
         <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" @click="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
-          <CollectionMultiSelection :state="state" :links="filteredLinksForCollectionSelection" />
+          <CollectionSelection :state="state" :links="filteredLinksForCollectionSelection"  :mode="multi"/>
         </div>
         <div class="sub" style="min-width: 180px;" @click="state.showCollections=true">My Collections</div>
         <div class="sub" @click="">sub b</div>
@@ -93,14 +93,14 @@
 
 <script>
 import User from './User'
-import CollectionMultiSelection from './CollectionMultiSelection'
+import CollectionSelection from './CollectionSelection'
 
 export default {
   name: 'Toolbar',
   props: [ 'state' ],
   components: {
     User,
-    CollectionMultiSelection
+    CollectionSelection
   },
   data(){
     return {
