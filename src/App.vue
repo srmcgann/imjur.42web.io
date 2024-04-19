@@ -1133,6 +1133,7 @@ export default {
             this.updateCollection(obj)
             return collection
           })
+          this.state.deleteEventTally++
         break
         case 'account':  // delete asset from
           this.state.modalContent = ''
