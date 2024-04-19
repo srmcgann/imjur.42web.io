@@ -71,7 +71,7 @@ export default {
       switch(this.mode){
         case 'multi':
           let checked = false
-          this.links.filter(link=>links.selected).map(v=>{
+          this.links.filter(link=>link.selected).map(v=>{
             if(!!collection.meta.slugs.filter(q=>q==v.slug).length) checked = true
           })
           return checked
@@ -109,12 +109,12 @@ export default {
       let val = e.target.checked
       switch(this.mode){
         case 'multi':
-          this.links.filter(link=>links.selected).map(link=>{
+          this.links.filter(link=>link.selected).map(link=>{
             collection.meta.slugs = collection.meta.slugs.filter(slug=>{
-              return slug !== this.links.slug
+              return slug !== link.slug
             })
             if(val){
-              collection.meta.slugs.push(links.slug)
+              collection.meta.slugs.push(link.slug)
             }
             this.pushUpdate(collection)
           })
