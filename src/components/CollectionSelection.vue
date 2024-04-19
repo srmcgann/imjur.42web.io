@@ -41,7 +41,7 @@
     </div>
   </div>
   <div v-else>
-    nothing selected
+    nothing selected 
   </div>
 </template>
 
