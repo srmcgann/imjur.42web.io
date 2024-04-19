@@ -70,7 +70,7 @@
           <div
             class="sub2"
             v-for="collection in state.collections"
-            @click="window.open(`${state.URLbase}/col/{encodeURIComponent(collection.name)}`, '_blank')"
+            @click="window.open(`${state.URLbase}/col/${encodeURIComponent(collection.name)}`, '_blank')"
             v-html="collection.name"
           ></div>
         </div>
