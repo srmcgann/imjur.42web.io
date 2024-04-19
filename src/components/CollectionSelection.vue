@@ -147,6 +147,8 @@ export default {
 
 <style scoped>
   .collectionSelection{
+    display: inline-block;
+    margin-left: 10px;
   }
   .show{
     display: inline-block;

@@ -28,8 +28,8 @@ todo
   ✔ adding/deleting items refactors pagination, where appropriate
   ✔ link tools in collections view are collection tools
   ✔ menu item: w/selected -> add to collection
-  * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * URLs for all "screens", including collections, with back-button functionality
+  * slideshow queues appropriate next/prev items, depending on mode (curpage vs collection etc)
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
