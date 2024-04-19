@@ -5,7 +5,7 @@
       upload
     </button>
     <div class="menu" ref="menu" v-if="!memo.length && state.loggedIn">
-      <div class="parent" style="z-index: 1900" style="width: 145px">
+      <div class="parent" style="z-index: 1900; width: 145px">
         asset tools
         <div class="sub" @click="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
           <button
