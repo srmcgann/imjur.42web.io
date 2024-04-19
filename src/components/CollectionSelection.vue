@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div v-else style="display: inline-block;">
+  <div v-else class="collectionSelection">
     nothing selected 
   </div>
 </template>
