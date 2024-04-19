@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div v-else>
+  <div v-else style="display: inline-block;">
     nothing selected 
   </div>
 </template>
