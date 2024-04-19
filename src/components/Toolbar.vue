@@ -70,7 +70,7 @@
           <div
             class="sub2"
             v-for="collection in state.collections"
-            @click="window.open(`${state.URLbase}/col/${encodeURIComponent(collection.name)}`, '_blank')"
+            @click.prevent.stop="window.open(`${state.URLbase}/col/${encodeURIComponent(collection.name)}`, '_blank')"
             v-html="collection.name"
           ></div>
         </div>
@@ -292,6 +292,7 @@ export default {
     background: #036d;
     text-align: left;
     min-height: 40px;
+    min-width: 160px;
     padding-left: 10px;
   }
   .sub2 {
@@ -300,13 +301,13 @@ export default {
     text-align: left;
     padding-left: 10px;
     min-height: 30px;
+    min-width: 300px;
   }
   .sub, .sub2{
     position: relative;
     display: none;
     z-index: 10;
     margin-top: 0px;
-    min-width: 160px;
     border: 4px solid #fff2;
   }
   .parent{
