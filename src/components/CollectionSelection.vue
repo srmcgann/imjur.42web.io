@@ -107,7 +107,7 @@ export default {
     },
     updateSelection(e, collection){
       let val = e.target.checked
-      switch(mode){
+      switch(this.mode){
         case 'multi':
           this.links.filter(link=>link.selected).map(link=>{
             collection.meta.slugs = collection.meta.slugs.filter(slug=>{
