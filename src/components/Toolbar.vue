@@ -63,7 +63,7 @@
         </div>
         <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" @click="console.log('this menu item')">
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
-          <CollectionMultiSelection :state="" />
+          <CollectionMultiSelection :state="state" :links="filteredLinksForCollectionSelection" />
         </div>
         <div class="sub" style="min-width: 180px;" @click="state.showCollections=true">My Collections</div>
         <div class="sub" @click="">sub b</div>
@@ -109,6 +109,16 @@ export default {
     }
   },
   computed: {
+    filteredLinksForCollectionSelection(){
+      let links = []
+      this.state.links.map(v=>{
+        if(v.selected) links = [...links, v]
+      })
+      this.state.userLinks.map(v=>{
+        if(v.selected) links = [...links, v]
+      })
+      return links
+    },
     someSelected(){
       return this.state.links.filter(v=>v.selected).length || this.state.userLinks.filter(v=>v.selected).length
     },

@@ -85,7 +85,7 @@ export default {
   methods: {
     checked(collection){
       let checked = false
-      this.links.filter(link=>link.selected).map(v=>{
+      this.links.map(v=>{
         if(!!collection.meta.slugs.filter(q=>q==v.slug).length) checked = true
       })
       return checked
@@ -106,7 +106,7 @@ export default {
     },
     updateSelection(e, collection){
       let val = e.target.checked
-      this.links.filter(link=>link.selected).map(link=>{
+      this.links.map(link=>{
         collection.meta.slugs = collection.meta.slugs.filter(slug=>{
           return slug !== link.slug
         })
