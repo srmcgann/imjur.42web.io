@@ -1134,6 +1134,9 @@ export default {
             return collection
           })
           this.state.deleteEventTally++
+          this.state.miscLinks = this.state.miscLinks.filter((v, i) => {
+            return v.slug != val.link.slug
+          })
         break
         case 'account':  // delete asset from
           this.state.modalContent = ''
