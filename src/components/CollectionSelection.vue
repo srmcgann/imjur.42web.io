@@ -111,7 +111,7 @@ export default {
         case 'multi':
           this.links.filter(link=>links.selected).map(link=>{
             collection.meta.slugs = collection.meta.slugs.filter(slug=>{
-              return slug !== links.slug
+              return slug !== this.links.slug
             })
             if(val){
               collection.meta.slugs.push(links.slug)
