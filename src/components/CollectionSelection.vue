@@ -1,5 +1,5 @@
 <template>
-  <div class="collectionSelection">
+  <div class="collectionSelection" v-if="someSelected">
     <button
       @mousedown.stop.prevent
       @click.stop.prevent="toggleShowCollection()"
@@ -40,6 +40,9 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    nothing selected
+  </div>
 </template>
 
 <script>
@@ -48,7 +51,7 @@ export default {
   name: 'CollectionSelection',
     // "links" prop might receive an array of links (mode == 'multi'),
     //  or a single link (no array, mode != 'multi')
-  props: [ 'state', 'links', 'mode' ],
+  props: [ 'state', 'links', 'mode', 'someSelected' ],
   components: {
   },
   data(){
@@ -71,7 +74,8 @@ export default {
       switch(this.mode){
         case 'multi':
           let checked = false
-          this.links.filter(link=>link.selected).map(v=>{
+          console.log('check', this.links)
+          this.links.map(v=>{
             if(!!collection.meta.slugs.filter(q=>q==v.slug).length) checked = true
           })
           return checked
@@ -109,7 +113,7 @@ export default {
       let val = e.target.checked
       switch(this.mode){
         case 'multi':
-          this.links.filter(link=>link.selected).map(link=>{
+          this.links.map(link=>{
             collection.meta.slugs = collection.meta.slugs.filter(slug=>{
               return slug !== link.slug
             })
