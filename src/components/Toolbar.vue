@@ -5,7 +5,7 @@
       upload
     </button>
     <div class="menu" ref="menu" v-if="!memo.length && state.loggedIn">
-      <div class="parent" style="z-index: 1900">
+      <div class="parent" style="z-index: 1900" style="width: 145px">
         asset tools
         <div class="sub" @click="console.log(Math.PI)" STYLE="width: 300px; height:47px;">
           <button
@@ -61,6 +61,10 @@
             delete
           </button>
         </div>
+        <div class="sub" style="z-index: 1700;width: 375px;height: 69px;" @click="console.log('this menu item')">
+          <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
+          <CollectionMultiSelection :state="" />
+        </div>
         <div class="sub" style="min-width: 180px;" @click="state.showCollections=true">My Collections</div>
         <div class="sub" @click="">sub b</div>
         <div class="sub" @click="">sub c</div>
@@ -89,12 +93,14 @@
 
 <script>
 import User from './User'
+import CollectionMultiSelection from './CollectionMultiSelection'
 
 export default {
   name: 'Toolbar',
   props: [ 'state' ],
   components: {
-    User
+    User,
+    CollectionMultiSelection
   },
   data(){
     return {

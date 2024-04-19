@@ -1230,6 +1230,10 @@ export default {
       e.stopPropagation()
       this.state.keys[e.keyCode] = false
       this.state.keys[18] = false
+      this.state.click = true
+      this.$nextTick(() => {
+        this.state.click = false
+      })
     }
     
     this.state.onkeydown = window.onkeydown = e => {
