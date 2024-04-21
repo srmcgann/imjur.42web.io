@@ -14,6 +14,7 @@ error_reporting(E_ALL);
   $originalDates = [];
   $sizes         = [];
   $slugs         = [];
+  $names         = [];
   $views         = [];
   $ids           = [];
   $origins       = [];
@@ -141,6 +142,7 @@ error_reporting(E_ALL);
             $sizes[]         = $size;
             $types[]         = $type;
             $slugs[]         = $slug;
+            $names[]         = $name;
             $dates[]         = $date;
             $originalDates[] = $originalDate;
             $ids[]           = $id;
@@ -168,5 +170,5 @@ error_reporting(E_ALL);
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates, $visibilities]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates, $visibilities, $names]);
 ?>

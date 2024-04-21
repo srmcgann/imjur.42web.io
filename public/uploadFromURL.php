@@ -14,6 +14,7 @@ error_reporting(E_ALL);
   $originalDates = [];
   $sizes         = [];
   $slugs         = [];
+  $names         = [];
   $views         = [];
   $ids           = [];
   $origins       = [];
@@ -203,6 +204,7 @@ error_reporting(E_ALL);
             $sizes[]         = $size;
             $types[]         = $type;
             $slugs[]         = $slug;
+            $names[]         = $name;
             $dates[]         = $date;
             $visibilities[]  = 1;
             $originalDates[] = $originalDate;
@@ -232,5 +234,5 @@ error_reporting(E_ALL);
     }
   }    
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates, $visibilities]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates, $originalDates, $visibilities, $names]);
 ?>
