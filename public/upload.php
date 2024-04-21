@@ -96,12 +96,13 @@ error_reporting(E_ALL);
             
             $description = '';
             $origin = mysqli_real_escape_string($link, "user file: $original_name");
-            
+            $name = $original_name;
   $sql = <<<SQL
   INSERT INTO imjurUploads (id, 
                             slug,
                             originalSlug,
                             meta,
+                            name,
                             hash,
                             filetype,
                             origin,
@@ -115,6 +116,7 @@ error_reporting(E_ALL);
                               "$slug",
                               "$originalSlug",
                               "$meta",
+                              "$name",
                               "$hash",
                               "$type",
                               "$origin",
