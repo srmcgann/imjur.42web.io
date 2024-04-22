@@ -568,8 +568,10 @@ export default {
             })
           }
         }else{
-          this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">oh snap.<br><br>that's a 404 good buddy!</div>`
-          this.state.showModal = true
+          if(show){
+            this.state.modalContent = `<div style="width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">oh snap.<br><br>that's a 404 good buddy!</div>`
+            this.state.showModal = true
+          }
         }
       })
     },
@@ -820,6 +822,7 @@ export default {
       }else{
         let lsel = []
         let ulsel = []
+        let mlsel = []
         this.state.links.map(v=>{
           lsel = [...lsel, v.selected]
         })
@@ -827,7 +830,7 @@ export default {
           ulsel = [...ulsel, v.selected]
         })
         this.state.miscLinks.map(v=>{
-          ulsel = [...ulsel, v.selected]
+          mlsel = [...mlsel, v.selected]
         })
         this.deSelectAll()
         this.state.links.map(v=>{
@@ -843,7 +846,7 @@ export default {
         ulsel.map((v, i) => {
           this.state.userLinks[i].selected = v
         })
-        ulsel.map((v, i) => {
+        mlsel.map((v, i) => {
           this.state.miscLinks[i].selected = v
         })
         this.state.showPreview = false
@@ -1178,7 +1181,7 @@ export default {
     addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id, date, originalDate, visibility, name){
       let obj = {
         size,
-        type,
+        filetype,
         name,
         ct,
         href,
