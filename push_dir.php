@@ -7,7 +7,7 @@
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_36324953',
       'ftp_pass'    => 'p7bQZRnvTdjuCtK',
-      'local_dir'   => '/home/scottmcgann4/imjur.42web.io/dist_public',
+      'local_dir'   => '~/imjur.42web.io/dist_public',
       'remote_dir'  => '/htdocs'
     ],
     /*[
