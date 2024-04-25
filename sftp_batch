@@ -1,2 +1,2 @@
 cd /htdocs
-put -r /home/whitehotrobot/imjur.42web.io/dist_public/*
+put -r ~/imjur.42web.io/dist_public/*
