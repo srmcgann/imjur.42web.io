@@ -69,6 +69,9 @@
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <CollectionSelection :state="state" :links="filteredLinksForCollectionSelection"  :mode="'multi'" :someSelected="someSelected"/>
         </div>
+        <div class="sub" @click.stop.prevent style="width: 175px;">
+          <PageSel :state="state" />
+        </div>
         <div
           class="sub"
           style="z-index: 1700;width: 375px;height: 44px;line-height: 16px;padding-top: 4px; font-size: .8em;"
@@ -104,9 +107,6 @@
             >✎</button>
             <span>{{state.shortText(collection.name, 16)}}</span>
           </div>
-        </div>
-        <div class="sub" @click="">
-          <PageSel :state="state" />
         </div>
         <div class="sub" @click="">
           submenus [unused]
