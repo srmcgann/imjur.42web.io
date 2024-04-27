@@ -61,6 +61,9 @@
             delete
           </button>
         </div>
+        <div class="sub" @click.stop.prevent style="width: 175px;">
+          <PageSel :state="state" />
+        </div>
         <div
           class="sub"
           style="z-index: 1700;width: 375px;height: 44px;"
@@ -68,9 +71,6 @@
           >
           <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
           <CollectionSelection :state="state" :links="filteredLinksForCollectionSelection"  :mode="'multi'" :someSelected="someSelected"/>
-        </div>
-        <div class="sub" @click.stop.prevent style="width: 175px;">
-          <PageSel :state="state" />
         </div>
         <div
           class="sub"
