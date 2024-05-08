@@ -75,15 +75,12 @@ export default {
           }
 
           this.refresh()
-          setTimeout(()=>{
-            this.reset()
-          }, 2000)
         })
       }
     },
     refresh(){
       if(!this.$refs.magnifyingGlass.contains(this.contents)) {
-        this.reset()
+        this.$nextTick(()=>this.reset())
       }else{
         if(
           typeof this.$refs.magnifyingGlass != 'undefined' &&
