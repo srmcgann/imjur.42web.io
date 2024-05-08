@@ -129,7 +129,8 @@ export default {
   .magnifyingGlass{
     pointer-events: none;
     border-radius: 50%;
-    border: 8px solid #fff1;
+    border: 2px solid #8883;
+    box-shadow: 0 0 40px 40px #fff4;
     box-sizing: unset;
     width: 400px;
     height: 400px;
