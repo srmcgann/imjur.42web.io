@@ -599,7 +599,6 @@ export default {
         .then(res => res.json())
         .then(data => {
           console.log('checkEnabled.php: ', data)
-          this.getMode()
           if(!!(+data[0])){
             console.log('logged in.')
             this.state.loggedIn= true
@@ -617,7 +616,6 @@ export default {
                 this.state.fetchUserInfo(this.state.loggedinUserID)
               break
               case 'user':
-                this.state.fetchUserLinks(this.state.userID)
               break
             }
           }else{
@@ -630,6 +628,7 @@ export default {
             this.state.isAdmin = false
             this.state.invalidLoginAttempt = true
           }
+          if(!this.state.mode) this.getMode()
         })
       }
     },
@@ -1271,6 +1270,7 @@ export default {
                 }else{
                   this.state.curPage = 0
                 }
+                this.state.fetchUserLinks(this.state.userID)
               } else {
                 if(location.href !== this.URLbase + '/1') history.pushState(null,null,this.URLbase + '/1')
                 this.state.mode = 'default'
@@ -1705,6 +1705,7 @@ export default {
           let l3 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuserID')
           if(l3.length){
             this.state.loggedinUserID = +l3[0].split('=')[1]
+            this.getMode()
             this.checkEnabled()
           }
         }
