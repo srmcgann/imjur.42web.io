@@ -1022,6 +1022,10 @@ export default {
           this.state.previewLink = link
           history.pushState(null,null,`${this.URLbase}/item/${link.slug}`)
         break
+        case 'user':
+          this.state.previewLink = link
+          //history.pushState(null,null,`${this.URLbase}/user/${state.userID}/${link.slug}`)
+        break
       }
       this.state.showPreview = true
     },
@@ -1265,8 +1269,8 @@ export default {
                 }
                 this.state.mode = 'user'
                 this.state.userID = +vars[l+1]
-                if(typeof vars[l+3] != 'undefined'){
-                  this.state.curPage = (+vars[l+3])-1
+                if(typeof vars[l+2] != 'undefined'){
+                  this.state.curPage = (+vars[l+2])-1
                 }else{
                   this.state.curPage = 0
                 }
@@ -2211,6 +2215,16 @@ a{
   width: 90px;
   text-align: center;
   line-height: 0;
+}
+.commentButton{
+  padding:0;
+  min-width: 60px;
+  line-height: 14px;
+  font-size: 13px;
+  padding-top: 1px;
+  margin: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 .copyButton{
   display: inline-block;
