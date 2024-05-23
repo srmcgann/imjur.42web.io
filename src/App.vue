@@ -1780,7 +1780,7 @@ export default {
           slugs: tgtSlugs,
           forCollection,
           collectionID,
-          userName: this.state.userName,
+          userName: this.state.loggedinUserName,
           passhash: this.state.passhash
         }
         fetch(`${this.URLbase}/` + 'loadLinks.php', {
