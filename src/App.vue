@@ -921,6 +921,7 @@ export default {
           userID,
           passhash: this.state.passhash,
           page: this.state.curPage,
+          loggedinUserID: this.state.loggedinUserID,
           maxResultsPerPage: this.state.maxResultsPerPage
         }
         console.log('fetchUserLinks.php sendData: ', sendData)
