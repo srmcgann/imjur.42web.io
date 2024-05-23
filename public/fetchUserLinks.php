@@ -63,7 +63,7 @@ error_reporting(E_ALL);
       'votes'          => $votes,
       'upvotes'        => $row['upvotes'],
       'private'        => $row['private'],
-      'downvotes'      => $row['downvotes'],
+      'votesCast'      => $row['votesCast'],
       'views'          => $row['views'],
       'description'    => $row['description'],
       'originalSlug'   => $row['originalSlug'],
